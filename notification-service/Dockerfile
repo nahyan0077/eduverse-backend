@@ -1,1 +1,1 @@
-"use strict";
+FROM baseImage
