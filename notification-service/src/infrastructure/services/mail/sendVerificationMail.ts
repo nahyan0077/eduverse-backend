@@ -1,5 +1,5 @@
-import { generateOTP } from "@/_lib/utils/otp"
-import { accountVerificationMail } from "@/_lib/utils/sendGrid"
+import { generateOTP } from "../../../_lib/utils/otp"
+import { accountVerificationMail } from "../../../_lib/utils/sendGrid"
 
 
 export const sendVerifcationMail = async ( email: string ) => {

@@ -6,17 +6,17 @@ export const sendVerifcationMailController = (dependencies: IDependencies) => {
     return async (req: Request, res: Response, next: NextFunction) => {
 
         try {
-            // if(!req.user){
-            //     throw new Error("Email is required!");
-            // }
+            if(!req.user){
+                throw new Error("Email is required!");
+            }
     
-            // await sendVerifcationMail(req.user)
+            await sendVerifcationMail(req.user.email)
     
-            // res.status(200).json({
-            //     success: true,
-            //     data: {},
-            //     message: "Email send!"
-            // });
+            res.status(200).json({
+                success: true,
+                data: {},
+                message: "Email send!"
+            });
         } catch (error: any) {
             next(error)
         }

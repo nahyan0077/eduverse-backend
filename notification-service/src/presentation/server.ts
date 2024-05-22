@@ -2,7 +2,6 @@ import express, { Application, Request, Response } from 'express'
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
-import { generateOTP } from '../_lib/utils/otp/generateOTP';
 
 config()
 
