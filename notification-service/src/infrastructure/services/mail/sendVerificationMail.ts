@@ -1,3 +1,4 @@
+import sendVerifyMailProducer from "../../../infrastructure/kafka/producer/sendVerifyMailProducer"
 import { generateOTP } from "../../../_lib/utils/otp"
 import { accountVerificationMail } from "../../../_lib/utils/sendGrid"
 
@@ -7,6 +8,11 @@ export const sendVerifcationMail = async ( email: string ) => {
         let otp = generateOTP()
 
         await accountVerificationMail({
+            email: email,
+            otp: otp
+        })
+
+        await sendVerifyMailProducer({
             email: email,
             otp: otp
         })
