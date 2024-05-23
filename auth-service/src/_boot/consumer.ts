@@ -1,5 +1,5 @@
-import { consumer } from "@/infrastructure/kafka"
-import { IAuthSubscriber, createSubscriber } from "@/infrastructure/kafka/subscriber";
+import { consumer } from "../infrastructure/kafka"
+import { IAuthSubscriber, createSubscriber } from "../infrastructure/kafka/subscriber";
 
 
 

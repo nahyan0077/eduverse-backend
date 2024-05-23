@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 
 enum Role {
     pending='pending',
@@ -31,6 +32,7 @@ interface Profile {
 
 
 export interface UserEntity {
+    _id?: ObjectId;
     firstName: string,
     lastName: string,
     userName: string,
