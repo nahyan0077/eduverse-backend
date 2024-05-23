@@ -21,10 +21,21 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
+app.get('/',(req,res)=>{
+    res.status(200).json({
+        message: "Auth service ON!"
+    });
+})
+
 const routes = [
     {
         context: "/api/auth",
         target: "http://localhost:4001",
+        changeOrigin: true,
+    },
+    {
+        context: "/api/notification",
+        target: "http://localhost:5001",
         changeOrigin: true,
     },
 ]
