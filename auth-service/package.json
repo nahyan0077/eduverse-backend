@@ -29,6 +29,7 @@
     "kafkajs": "^2.2.4",
     "mongoose": "^8.4.0",
     "morgan": "^1.10.0",
+    "react-toastify": "^10.0.5",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0"
   },
