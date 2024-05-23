@@ -14,13 +14,15 @@ export const updateOtp = async (data: {
 		);
 
 		if (!result) {
-			throw new Error("OTP update/creation failed!");
+			console.error("OTP update/creation failed!");
+			return null;
 		}
 
 		const updatedUser = await Otp.findOne({ email: data.email });
 
 		return updatedUser;
 	} catch (error: any) {
-		throw new Error(error?.message);
+		console.error("Error updating OTP:", error.message);
+		return null;
 	}
 };
