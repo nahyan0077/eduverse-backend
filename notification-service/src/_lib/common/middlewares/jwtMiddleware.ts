@@ -19,7 +19,8 @@ export const jwtMiddleware = async (req: Request, res: Response, next: NextFunct
     const token = req.cookies.access_token || (req.headers.authorization?.split(' ')[1] || '');
 
     if (!token) {
-        return res.sendStatus(401); 
+        console.log("No token provided");
+        return res.status(401).json({ message: "No token provided" });
     }
 
     try {
@@ -27,6 +28,7 @@ export const jwtMiddleware = async (req: Request, res: Response, next: NextFunct
         req.user = decoded;
         next();
     } catch (err) {
-        res.sendStatus(403); 
+        console.error("Token verification failed:", err);
+        res.status(403).json({ message: "Invalid token" });
     }
 };
