@@ -1,5 +1,5 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
-import { sendVerifcationMail } from "@/infrastructure/services/mail/sendVerificationMail";
+import { sendVerifcationMail } from "../../infrastructure/services/mail/sendVerificationMail";
 import { Request, Response, NextFunction } from "express";
 
 export const sendVerifcationMailController = (dependencies: IDependencies) => {

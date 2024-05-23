@@ -1,6 +1,10 @@
 import sendGridMail from '@sendgrid/mail'
+import {config} from 'dotenv'
+
+config()
 
 let sendgridAPI = String(process.env.SEND_GRID_API_KEY)
+
 sendGridMail.setApiKey(sendgridAPI)
 
 export const accountVerificationMail = async (
