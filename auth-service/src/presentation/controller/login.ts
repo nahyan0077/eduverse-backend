@@ -9,12 +9,8 @@ export const loginController = (dependancies: IDependancies) => {
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const { email, password } = req.body;
-            console.log("login data",req.body);
 
 			const result = await loginUserUseCase(dependancies).execute(email, password);
-
-            console.log(result,"heeeeee");
-            
 
 			if (!result) {
 				return res

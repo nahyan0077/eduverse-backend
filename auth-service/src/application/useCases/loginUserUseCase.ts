@@ -8,13 +8,11 @@ export const loginUserUseCase = (dependancies: IDependancies) => {
         execute: async (email: string, password: string): Promise <UserEntity | null> => {
             try {
                 const user = await findUserByEmail(email);
-                console.log(user?.password,"casds user");
                 
 				if (!user) {
 					return null;
 				}
-				const isMatch = await comparePassword(password, user.password);
-                console.log(isMatch,"case log is mata");
+				const isMatch = comparePassword(password, user.password);
                 
 				if (!isMatch) {
 					return null;
