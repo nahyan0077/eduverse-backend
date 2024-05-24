@@ -1,4 +1,5 @@
 import { ICheckExistingUserNameUseCase, ICreateUser, IFindUserByEmailUseCase } from "@/domain/IUseCases";
+import { ILoginUserUseCase } from "@/domain/IUseCases/ILoginUserUseCase";
 import { IVerifyOtpUseCase } from "@/domain/IUseCases/IVerifyOtpUseCase";
 
 export interface IUseCases {
@@ -6,4 +7,5 @@ export interface IUseCases {
     createUserUseCase: (depenedancies: any) => ICreateUser
     checkExistingUserNameUseCase: (dependancies: any) => ICheckExistingUserNameUseCase
     verifyOtpUseCase:(dependancies: any) => IVerifyOtpUseCase
+    loginUserUseCase: (dependancies: any) => ILoginUserUseCase
 }

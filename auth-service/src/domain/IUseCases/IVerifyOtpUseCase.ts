@@ -1,3 +1,3 @@
 export interface IVerifyOtpUseCase {
-    execute(email: string, otp: string) : Promise < boolean >
+    execute(email: string, otp: string) : Promise < boolean | undefined >
 }

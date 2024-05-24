@@ -5,11 +5,13 @@ import { jwtMiddleware } from '../../_lib/common/middlewares/jwtMiddleware'
 
 export const routes = (dependancies: IDependancies) => {
 
-    const { signup, findUserByEmail, checkExistingUserName, verifyOtp } = controllers(dependancies)
+    const { signup, findUserByEmail, checkExistingUserName, verifyOtp, login } = controllers(dependancies)
 
     const router = Router()
 
     router.route("/signup").post(signup)
+
+    router.route('/login').post(login)
 
     router.route("/available-email/:email").get(findUserByEmail)
 

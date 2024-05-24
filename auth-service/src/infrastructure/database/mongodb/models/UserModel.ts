@@ -1,6 +1,7 @@
 import { UserEntity } from "@/domain/entities";
 import mongoose, { Schema, model } from "mongoose";
 
+
 const userSchema = new Schema(
 	{
 		firstName: {
@@ -35,6 +36,7 @@ const userSchema = new Schema(
 		profile: {
 			avatar: {
 				type: String,
+				default: "https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png"
 			},
 			dataOfBirth: {
 				type: String,
