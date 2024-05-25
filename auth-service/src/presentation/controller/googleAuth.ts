@@ -57,16 +57,21 @@ export const googleAuthController = (dependancies: IDependancies) => {
 
                 return res.status(200).json({
                     success: true,
+                    existingUser: true,
                     data: existingUser,
                     message: "User Google login!",
                 });
+
             }else{
+
                 let signUpData = {
                     email: email,
                     password: `${generateRandomString()}`
                 }
+
                 return res.status(200).json({
                     success: true,
+                    existingUser: false,
                     data: signUpData,
                     message: "User Google login!",
                 });
