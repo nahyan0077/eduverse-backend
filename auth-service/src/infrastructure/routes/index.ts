@@ -5,7 +5,7 @@ import { jwtMiddleware } from '../../_lib/common/middlewares/jwtMiddleware'
 
 export const routes = (dependancies: IDependancies) => {
 
-    const { signup, findUserByEmail, checkExistingUserName, verifyOtp, login } = controllers(dependancies)
+    const { signup, findUserByEmail, checkExistingUserName, verifyOtp, login, googleAuth } = controllers(dependancies)
 
     const router = Router()
 
@@ -18,6 +18,8 @@ export const routes = (dependancies: IDependancies) => {
     router.route("/available-username/:username").get(checkExistingUserName)
 
     router.route('/verify-otp').post(jwtMiddleware,verifyOtp)
+
+    router.route('/google-auth').post(googleAuth)
 
     return router
 

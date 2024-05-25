@@ -45,6 +45,7 @@ export interface UserEntity {
     profession: Profession,
     isBlocked: boolean;
     isVerified: boolean;
+    isGAuth: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
