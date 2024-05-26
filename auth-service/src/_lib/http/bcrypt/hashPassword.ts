@@ -1,18 +1,16 @@
-import {genSalt, hash} from 'bcrypt'
+const bcrypt = require("bcrypt");
 
 export const hashPassword = async (password: string) => {
-    try {
-        
-        const salt = await genSalt(10);
-        const hashedPassword = await hash(password, salt)
+	try {
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(password, salt);
 
-        if (!hashedPassword) {
-            console.error("Password hashing error!");
-        }
+		if (!hashedPassword) {
+			throw new Error("Password hashing error!");
+		}
 
-        return hashedPassword;
-
-    } catch (error: any) {
-        console.error(error.message);
-    }
-}
+		return hashedPassword;
+	} catch (error: any) {
+		throw new Error(error.message);
+	}
+};

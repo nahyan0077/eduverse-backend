@@ -3,25 +3,29 @@ import { comparePassword } from "../../_lib/http/bcrypt/comparePassword";
 import { IDependancies } from "../interfaces/IDependancies";
 
 export const loginUserUseCase = (dependancies: IDependancies) => {
-    const { repositories: {findUserByEmail} } = dependancies
+    const { repositories: { findUserByEmail } } = dependancies;
+
     return {
-        execute: async (email: string, password: string): Promise <UserEntity | null> => {
+        execute: async (email: string, password: string): Promise<UserEntity | null> => {
             try {
                 const user = await findUserByEmail(email);
                 
-				if (!user) {
-					return null;
-				}
-				const isMatch = comparePassword(password, user.password);
+                if (!user) {
+                    throw new Error('User not found');
+                }
+                            
+                const isMatch = await comparePassword(password, user.password);
                 
-				if (!isMatch) {
-					return null;
-				}
-				return user;
+                
+                if (!isMatch) {
+                    throw new Error('Password does not match');
+                }
+
+                return user;
             } catch (error: any) {
-                console.error("login user usecase error",error);
-                return null
+                console.error("Login user use case error:", error.message);
+                return null;
             }
         }
-    }
-}
+    };
+};

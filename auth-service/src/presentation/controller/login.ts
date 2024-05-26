@@ -11,7 +11,8 @@ export const loginController = (dependancies: IDependancies) => {
 			const { email, password } = req.body;
 
 			const result = await loginUserUseCase(dependancies).execute(email, password);
-
+			console.log(result,"login confirm");
+			
 			if (!result) {
 				return res
 					.status(200)

@@ -3,6 +3,8 @@ import { IDependancies } from "@/application/interfaces/IDependancies";
 import userCreatedProducer from "../../infrastructure/kafka/producers/userCreatedProducer";
 import { NextFunction, Request, Response } from "express";
 import { generateAccessToken, generateRefreshToken } from "../../_lib/http/jwt";
+import bcrypt from 'bcrypt'
+import { comparePassword } from "@/_lib/http/bcrypt";
 
 export const signupController = (dependancies: IDependancies) => {
 	const {
@@ -10,7 +12,7 @@ export const signupController = (dependancies: IDependancies) => {
 	} = dependancies;
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			req.body.password = await hashPassword(req.body.email);			
+			req.body.password = await hashPassword(req.body.password);		
 
 			const created = await createUserUseCase(dependancies).execute(req.body);
 
