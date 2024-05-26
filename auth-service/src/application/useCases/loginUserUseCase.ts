@@ -16,7 +16,6 @@ export const loginUserUseCase = (dependancies: IDependancies) => {
                             
                 const isMatch = await comparePassword(password, user.password);
                 
-                
                 if (!isMatch) {
                     throw new Error('Password does not match');
                 }
