@@ -1,5 +1,5 @@
 import { IDependencies } from '@/application/interfaces/IDependencies'
-import { controllers } from '@/presentation/controllers'
+import { controllers } from '../../presentation/controllers'
 import {Router} from 'express'
 
 export const userRoutes = (dependencies: IDependencies) => {
