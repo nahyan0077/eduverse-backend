@@ -3,6 +3,6 @@ import { getAllInstructorsController } from "./getAllInstructorsController";
 
 export const controllers = (dependencies: IDependencies) => {
     return {
-        getAllINstructors: getAllInstructorsController(dependencies)
+        getAllInstructors: getAllInstructorsController(dependencies)
     }
 }
