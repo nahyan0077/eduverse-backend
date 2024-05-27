@@ -12,6 +12,9 @@ export const getAllInstructorsController = (dependencies: IDependencies) => {
             const page = req.query.page ? parseInt(req.query.page as string, 10) : undefined;
             const limit = req.query.limit ? parseInt(req.query.limit as string, 10) : undefined;
 
+            console.log(page,limit,"hee heee");
+            
+
             if (page !== undefined && isNaN(page)) {
                 res.status(400).json({
                     success: false,
