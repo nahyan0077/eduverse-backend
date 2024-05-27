@@ -30,12 +30,17 @@ app.get('/',(req,res)=>{
 const routes = [
     {
         context: "/api/auth",
-        target: "http://localhost:4001",
+        target: String(process.env.AUTH_SERVICE),
         changeOrigin: true,
     },
     {
         context: "/api/notification",
-        target: "http://localhost:5001",
+        target: String(process.env.NOTIFICATION_SERVICE),
+        changeOrigin: true,
+    },
+    {
+        context: "/api/user",
+        target: String(process.env.USER_SERVICE),
         changeOrigin: true,
     },
 ]
