@@ -2,8 +2,8 @@ import express, { Request, Response, NextFunction, Application } from 'express'
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
 import morgan from 'morgan'
-import { userRoutes } from '@/infrastructure/routes'
-import { dependencies } from '@/_boot/dependencies'
+import { userRoutes } from '../infrastructure/routes'
+import { dependencies } from '../_boot/dependencies'
 
 config()
 
