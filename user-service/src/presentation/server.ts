@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction, Application } from 'express'
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
+import morgan from 'morgan'
 
 config()
 
@@ -13,6 +14,7 @@ const PORT: number = Number(process.env.PORT) || 6001
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
+app.use(morgan("dev"))
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({
