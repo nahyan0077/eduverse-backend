@@ -9,7 +9,8 @@ export const getAllStudents = async (page?: number, limit?:number): Promise<User
         const skipNo = (pageNo - 1) * limitNo
 
 		const data = await User.find({ role: "student" }).skip(skipNo).limit(limitNo);
-
+		console.log(data,"studuuuu");
+		
 		return data;
 	} catch (error: any) {
 
