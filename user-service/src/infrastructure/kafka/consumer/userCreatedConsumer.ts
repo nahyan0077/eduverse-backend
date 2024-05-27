@@ -1,5 +1,5 @@
 import { UserEntity } from "@/domain/entities";
-import { createUser } from "@/infrastructure/database/mongo/respositories";
+import { createUser } from "../../../infrastructure/database/mongo/respositories";
 
 export const userCreatedConsumer = async (
     data: UserEntity
