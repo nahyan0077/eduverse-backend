@@ -4,17 +4,18 @@ import { producer } from "..";
 export default async (data: UserEntity) => {
 	try {
 		await producer.connect();
-		const messages: any = {
+		const message: any = {
 			topic: "user-service-topic",
-			message: [
+			messages: [
 				{
-					key: "user-created",
+					key: "userCreated",
 					value: JSON.stringify(data),
 				},
 			],
 		};
+		
 
-		await producer.send(messages);
+		await producer.send(message);
 	} catch (error: any) {
 		console.error("kafka produce error:", error?.message);
 	} finally {
