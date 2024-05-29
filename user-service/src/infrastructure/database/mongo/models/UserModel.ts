@@ -12,7 +12,7 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		username: {
+		userName: {
 			type: String,
 			required: true,
 			unique: true,
@@ -38,7 +38,7 @@ const userSchema = new Schema(
 				type: String,
 				default: "https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png"
 			},
-			dataOfBirth: {
+			dateOfBirth: {
 				type: String,
 			},
 			gender: {
