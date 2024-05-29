@@ -1,10 +1,10 @@
 import { User } from "../models";
 
 export const isExistingUserName = async (
-	username: string
+	userName: string
 ): Promise<boolean | null> => {
 	try {
-		const existingUsername = await User.findOne({ username });
+		const existingUsername = await User.findOne({ userName });
 		if (!existingUsername) {
 			return true;
 		}
