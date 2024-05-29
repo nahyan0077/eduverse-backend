@@ -5,14 +5,9 @@ import { Request, Response, NextFunction } from "express";
 export const sendVerifcationMailController = (dependencies: IDependencies) => {
     return async (req: Request, res: Response, next: NextFunction) => {
 
-        try {
-            if(!req.user){
-                throw new Error("Email is required!");
-            }
-
-            const { email } = req.body
+        try {      
     
-            await sendVerifcationMail(email)
+            await sendVerifcationMail(req.body.email)
     
             res.status(200).json({
                 success: true,

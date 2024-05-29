@@ -14,6 +14,7 @@ const PORT: number = Number(process.env.PORT) || 5001;
 
 app.use(helmet())
 app.use(express())
+app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(morgan('dev'))
