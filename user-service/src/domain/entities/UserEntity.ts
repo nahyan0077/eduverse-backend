@@ -27,7 +27,7 @@ interface Contact {
 interface Profile {
     avatar: string,
     dateOfBirth?: string,
-    gender: string
+    gender: Gender
 }
 
 
@@ -41,7 +41,6 @@ export interface UserEntity {
     role: Role,
     contact: Contact,
     profile: Profile,
-    otp: string,
     profession: Profession,
     isBlocked: boolean;
     isVerified: boolean;
