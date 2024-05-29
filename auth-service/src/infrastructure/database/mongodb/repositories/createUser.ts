@@ -8,6 +8,9 @@ export const createUser = async ( data: UserEntity ) : Promise < UserEntity | nu
             data = {...data, isVerified: true}
         }
 
+        console.log(data,"create suse ");
+        
+
         const newUser  = await User.create(data)
         if (!newUser) {
             throw new Error("User creation failed!");

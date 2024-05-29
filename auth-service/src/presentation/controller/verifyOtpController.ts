@@ -7,18 +7,12 @@ export const verifyOtpController = (dependancies: IDependancies) => {
 	} = dependancies;
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			const { otp } = req.body;
+			const { otp, email } = req.body;
 
             console.log(otp,"otp reacher");
-            console.log(req.user,"user exist or not");
-            
-
-			if (!req.user || !req.user?.email) {
-				return res.status(500).json({ message: "user doesn't exists" });
-			}
 
 			const result = await verifyOtpUseCase(dependancies).execute(
-				req.user.email,
+				email,
 				otp
 			);
 

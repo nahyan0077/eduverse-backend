@@ -34,7 +34,7 @@ export interface UserEntity {
     _id?: ObjectId;
     firstName: string,
     lastName: string,
-    userName: string,
+    userName?: string,
     email: string,
     password: string,
     role: Role,

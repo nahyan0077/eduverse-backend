@@ -17,7 +17,7 @@ export const routes = (dependancies: IDependancies) => {
 
     router.route("/available-username/:username").get(checkExistingUserName)
 
-    router.route('/verify-otp').post(jwtMiddleware,verifyOtp)
+    router.route('/verify-otp').post(verifyOtp)
 
     router.route('/google-auth').post(googleAuth)
 

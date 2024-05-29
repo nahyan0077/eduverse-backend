@@ -13,10 +13,7 @@ export const signupController = (dependancies: IDependancies) => {
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			req.body.password = await hashPassword(req.body.password);		
-
-			console.log(req.body,"signup dataaaaaaaa");
 			
-
 			const created = await createUserUseCase(dependancies).execute(req.body);
 
 			if (!created) {
