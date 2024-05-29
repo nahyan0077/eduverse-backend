@@ -1,7 +1,6 @@
 import { ObjectId } from "mongoose";
 
 enum Role {
-    pending='pending',
     student='student',
     teacher='instructor',
     admin='admin'
@@ -21,13 +20,13 @@ enum Profession {
 interface Contact {
     phone?: string,
     social?: string,
-    address: string
+    address?: string
 }
 
 interface Profile {
-    avatar: string,
+    avatar?: string,
     dateOfBirth?: string,
-    gender: Gender
+    gender?: Gender
 }
 
 
@@ -41,11 +40,11 @@ export interface UserEntity {
     role: Role,
     contact: Contact,
     profile: Profile,
+    cv?: string,
     profession: Profession,
-    cv:string,
     isBlocked: boolean;
     isVerified: boolean;
-    isGAuth: boolean;
+    isGAuth?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
