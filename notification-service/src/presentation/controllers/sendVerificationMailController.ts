@@ -9,8 +9,10 @@ export const sendVerifcationMailController = (dependencies: IDependencies) => {
             if(!req.user){
                 throw new Error("Email is required!");
             }
+
+            const { email } = req.body
     
-            await sendVerifcationMail(req.user.email)
+            await sendVerifcationMail(email)
     
             res.status(200).json({
                 success: true,
