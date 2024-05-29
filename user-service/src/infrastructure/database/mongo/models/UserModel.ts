@@ -61,7 +61,7 @@ const userSchema = new Schema(
             enum: ["student", "working"],
             type: String,
 		},
-		otp: {
+		cv: {
             type: String,
 		},
 		profit: {

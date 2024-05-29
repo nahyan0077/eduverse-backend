@@ -42,6 +42,7 @@ export interface UserEntity {
     contact: Contact,
     profile: Profile,
     profession: Profession,
+    cv:string,
     isBlocked: boolean;
     isVerified: boolean;
     isGAuth: boolean;
