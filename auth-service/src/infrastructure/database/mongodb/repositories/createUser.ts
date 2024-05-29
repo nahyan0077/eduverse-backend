@@ -3,6 +3,11 @@ import { User } from "../models";
 
 export const createUser = async ( data: UserEntity ) : Promise < UserEntity | null > => {
     try {
+
+        if (data.role == 'student') {
+            data = {...data, isVerified: true}
+        }
+
         const newUser  = await User.create(data)
         if (!newUser) {
             throw new Error("User creation failed!");
