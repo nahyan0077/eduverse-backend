@@ -8,7 +8,7 @@ export const notificationRouter = (dependencies: IDependencies) => {
 
     const router = Router()
 
-    router.route('/email-verification').get(jwtMiddleware, sendVerificationMail)
+    router.route('/email-verification').post(sendVerificationMail)
 
     return router
 }
