@@ -5,6 +5,7 @@ import { chechExistingUserNameController } from "./checkExistingUserName";
 import { verifyOtpController } from "./verifyOtpController";
 import { loginController } from "./login";
 import { googleAuthController } from "./googleAuth";
+import { getUser } from "./getUser";
 
 
 export const controllers = (dependancies: IDependancies) => {
@@ -14,6 +15,7 @@ export const controllers = (dependancies: IDependancies) => {
         checkExistingUserName: chechExistingUserNameController(dependancies),
         verifyOtp: verifyOtpController(dependancies),
         login: loginController(dependancies),
-        googleAuth: googleAuthController(dependancies)
+        googleAuth: googleAuthController(dependancies),
+        getUser: getUser(dependancies)
     }
 }
