@@ -1,13 +1,14 @@
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { Request, Response, NextFunction } from "express";
 
-export const getUser = (dependancies: IDependancies) => {
+export const getUserController = (dependancies: IDependancies) => {
 	const {
 		useCases: { findUserByIdUseCase },
 	} = dependancies;
 
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
+			
 			if (!req.user) {
 				throw new Error("Authentication required: No user provided.");
 			}
