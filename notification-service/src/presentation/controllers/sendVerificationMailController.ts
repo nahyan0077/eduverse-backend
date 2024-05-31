@@ -6,7 +6,7 @@ export const sendVerifcationMailController = (dependencies: IDependencies) => {
     return async (req: Request, res: Response, next: NextFunction) => {
 
         try {      
-    
+
             await sendVerifcationMail(req.body.email)
     
             res.status(200).json({
