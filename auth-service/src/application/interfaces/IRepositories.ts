@@ -7,4 +7,8 @@ export interface IRepositores {
 	isExistingUserName: (username: string) => Promise<boolean | null>;
 	verifyOtp: (email: string, otp: string) => Promise<boolean>;
 	findUserById: (id: string) => Promise<UserEntity | null>;
+	updatePassword: (
+		email: string,
+		password: string
+	) => Promise<UserEntity | null>;
 }

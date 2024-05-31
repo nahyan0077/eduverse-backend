@@ -12,6 +12,7 @@ export const routes = (dependancies: IDependancies) => {
 		login,
 		googleAuth,
 		getUser,
+		forgotPasswordMail,
 		logout,
 	} = controllers(dependancies);
 
@@ -30,6 +31,8 @@ export const routes = (dependancies: IDependancies) => {
 	router.route("/google-auth").post(googleAuth);
 
 	router.route("/getUser").get(jwtMiddleware,getUser);
+
+	router.route('/forgot-password-mail').post(forgotPasswordMail)
 
 	router.route("/logout").delete(logout);
 
