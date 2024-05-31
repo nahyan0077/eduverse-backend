@@ -8,6 +8,7 @@ import { googleAuthController } from "./googleAuth";
 import { getUserController } from "./getUser";
 import { logoutController } from "./logout";
 import { forgotPasswordMailController } from "./forgotPasswordMail";
+import { updatePasswordController } from "./updatePasswordController";
 
 
 export const controllers = (dependancies: IDependancies) => {
@@ -20,6 +21,7 @@ export const controllers = (dependancies: IDependancies) => {
         googleAuth: googleAuthController(dependancies),
         getUser: getUserController(dependancies),
         logout: logoutController(dependancies),
-        forgotPasswordMail: forgotPasswordMailController(dependancies)
+        forgotPasswordMail: forgotPasswordMailController(dependancies),
+        updatePassword: updatePasswordController(dependancies)
     }
 }

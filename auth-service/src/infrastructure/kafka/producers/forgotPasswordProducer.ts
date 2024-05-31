@@ -5,7 +5,7 @@ export default async (data: { email: string; token: string }) => {
 	try {
 		await producer.connect();
 		const message: any = {
-			topic: "notificaiton-service-topic",
+			topic: "notification-service-topic",
 			messages: [
 				{
 					key: "forgotPassword",
