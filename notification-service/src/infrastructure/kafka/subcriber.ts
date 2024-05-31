@@ -4,14 +4,14 @@ import userCreatedConsumer from "./consumer/userCreatedConsumer";
 
 interface ISubscriber {
     userCreated(data: any): Promise<void>;
-    forgetPassword(data: any): Promise<void>
+    forgotPassword(data: any): Promise<void>
 }
 
-export interface INotificationSubscriber extends Pick<ISubscriber, 'userCreated' | 'forgetPassword'  > { }
+export interface INotificationSubscriber extends Pick<ISubscriber, 'userCreated' | 'forgotPassword'  > { }
 
 export const createSubscriber = (): INotificationSubscriber => {
     return {
         userCreated: userCreatedConsumer,
-        forgetPassword: forgotPasswordConsumer
+        forgotPassword: forgotPasswordConsumer
     }
 }
