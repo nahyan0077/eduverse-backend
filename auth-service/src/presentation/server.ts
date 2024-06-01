@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import morgan from 'morgan';
 import { routes } from '../infrastructure/routes';
 import { dependancies } from '../_boot/dependancies';
+import errorHandler from '../_lib/common/error/errorhandler';
 
 
 
@@ -34,7 +35,7 @@ app.all("*", (req: Request, res: Response) => {
     res.status(404).json({ success: false, status: 404, message: "API Not found" });
 });
 
-
+app.use(errorHandler)
 
 // Start server
 const start = () => {

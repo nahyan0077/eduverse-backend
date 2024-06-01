@@ -1,3 +1,4 @@
+import ErrorResponse from "../../_lib/common/error/errorResponse";
 import { generateAccessToken, generateRefreshToken } from "../../_lib/http/jwt";
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { NextFunction, Request, Response } from "express";
@@ -18,6 +19,12 @@ export const loginController = (dependancies: IDependancies) => {
 					.status(200)
 					.json({ success: false, message: "User doesn't exist or incorrect password" });
 			}
+
+			if(result.isBlocked){
+				throw ErrorResponse.unauthorized("Eduverse team blocked your account")
+				
+			}
+
 
 			const accessToken = generateAccessToken({
                 _id: String(result?._id),
