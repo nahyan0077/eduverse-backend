@@ -9,7 +9,7 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 export const googleAuthController = (dependancies: IDependancies) => {
 	const {
-		useCases: { createUserUseCase, findUserByEmailUseCase },
+		useCases: { findUserByEmailUseCase },
 	} = dependancies;
 
 	return async (req: Request, res: Response, next: NextFunction) => {
