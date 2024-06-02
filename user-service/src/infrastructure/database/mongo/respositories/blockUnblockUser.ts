@@ -14,6 +14,6 @@ export const blockUnblockUser = async (id: string, isBlocked: boolean): Promise<
 
     } catch (error: any) {
         console.error(error);
-        throw new Error(error.message);
+        throw new Error(error?.message);
     }
 }
