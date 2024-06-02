@@ -6,6 +6,8 @@ export const createUserUseCase = (depandancies: IDependancies) => {
     return {
         execute: async (data: UserEntity) => {
             try {
+                console.log("data use case",data);
+                
                 return await createUser(data)
             } catch (error: any) {
                 throw new Error(error.message || "User creation failed");

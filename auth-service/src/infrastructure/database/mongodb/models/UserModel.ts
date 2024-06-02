@@ -1,6 +1,7 @@
 import { UserEntity } from "@/domain/entities";
 import mongoose, { Schema, model } from "mongoose";
 
+
 const userSchema = new Schema(
 	{
 		firstName: {
@@ -11,7 +12,7 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		username: {
+		userName: {
 			type: String,
 			required: true,
 			unique: true,
@@ -29,14 +30,15 @@ const userSchema = new Schema(
 		},
 		role: {
 			type: String,
-			enum: ["student", "instructor", "admin","pending"],
+			enum: ["student", "instructor", "admin"],
 			default: "pending",
 		},
 		profile: {
 			avatar: {
 				type: String,
+				default: "https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png"
 			},
-			dataOfBirth: {
+			dateOfBirth: {
 				type: String,
 			},
 			gender: {
@@ -59,7 +61,7 @@ const userSchema = new Schema(
             enum: ["student", "working"],
             type: String,
 		},
-		otp: {
+		cv: {
             type: String,
 		},
 		profit: {
@@ -74,6 +76,10 @@ const userSchema = new Schema(
             type: Boolean,
             default: false,
         },
+		isGAuth: {
+			type: Boolean,
+			default: false
+		},
 	},
 	{
 		timestamps: true,
