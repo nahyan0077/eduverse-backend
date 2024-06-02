@@ -13,7 +13,8 @@ export default async (data: UserEntity) => {
 				},
 			],
 		};
-		
+
+		console.log(message, "produced--->");
 
 		await producer.send(message);
 	} catch (error: any) {
