@@ -1,5 +1,5 @@
 import { UserEntity } from "../entities";
 
-export interface IVerifyInstructor {
+export interface IVerifyInstructorUseCase {
     execute: (id: string) => Promise < UserEntity | null >
 }
