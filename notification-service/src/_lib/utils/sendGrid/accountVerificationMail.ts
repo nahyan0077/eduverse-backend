@@ -1,33 +1,35 @@
-import sendGridMail from '@sendgrid/mail'
-import {config} from 'dotenv'
+import sendGridMail from '@sendgrid/mail';
+import { config } from 'dotenv';
 
-config()
+config();
 
-let sendgridAPI = String(process.env.SEND_GRID_API_KEY)
+const sendgridAPI = String(process.env.SEND_GRID_API_KEY);
 
-sendGridMail.setApiKey(sendgridAPI)
+sendGridMail.setApiKey(sendgridAPI);
 
 export const accountVerificationMail = async (
     data: {
-        email: string,
-        otp: string
+        email: string;
+        otp: string;
     }
 ) => {
-    let sendgridEmail = String(process.env.SEND_GRID_EMAIL)
+    const { email, otp } = data;
+    const senderEmail = String(process.env.SEND_GRID_EMAIL);
+
     const message = {
-        to: data.email,
+        to: email,
         from: {
-            name: "EduVerse Learning",
-            email: sendgridEmail
+            name: 'EduVerse Learning',
+            email: senderEmail,
         },
-        subject: "EduVerse account verification",
-        text: "Please verify your account with this OTP",
-        html: `<h2>Your OTP : ${data.otp}</h2>`
+        subject: 'EduVerse Account Verification',
+        text: `Dear User,\n\nPlease verify your account with this OTP: ${otp}\n\nBest regards,\nEduVerse Team`,
+        html: `<p>Dear User,</p><p>Please verify your account with this OTP:</p><h2>${otp}</h2><p>Best regards,<br/>EduVerse Team</p>`,
     };
 
     try {
-         await sendGridMail.send(message)   
+        await sendGridMail.send(message);
     } catch (error: any) {
-        throw new Error(error.message || "send grid mail issue!");
+        throw new Error(error.message || 'Failed to send account verification email.');
     }
-}
+};
