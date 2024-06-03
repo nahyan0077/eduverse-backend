@@ -1,6 +1,6 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
-import rejectInstructorProducer from "@/infrastructure/kafka/producer/rejectInstructorProducer";
+import rejectInstructorProducer from "../../infrastructure/kafka/producer/rejectInstructorProducer";
 
 
 export const rejectInstructorController = (dependencies: IDependencies) => {
