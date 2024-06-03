@@ -45,6 +45,7 @@ export interface UserEntity {
     isBlocked: boolean;
     isVerified: boolean;
     isGAuth?: boolean;
+    isRejected?:boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
