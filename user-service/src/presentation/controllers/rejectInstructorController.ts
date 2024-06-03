@@ -1,6 +1,6 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
-import verifyInstructorProducer from "../../infrastructure/kafka/producer/verifyInstructorProducer";
 import { Request, Response, NextFunction } from "express";
+import rejectInstructorProducer from "@/infrastructure/kafka/producer/rejectInstructorProducer";
 
 
 export const rejectInstructorController = (dependencies: IDependencies) => {
@@ -21,9 +21,9 @@ export const rejectInstructorController = (dependencies: IDependencies) => {
                 throw new Error("intructor verfication error");
             }
 
-            //produced instructor verification to notification and auth services
+            //produced instructor rejection to notification and auth services
 
-            // await verifyInstructorProducer({id,email})
+            await rejectInstructorProducer({id,email})
 
             res.status(200).json({
                 success: true,
