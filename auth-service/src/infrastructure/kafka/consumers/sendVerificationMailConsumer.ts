@@ -1,6 +1,6 @@
 import { updateOtpService } from "../../../infrastructure/services/updateOtpService";
 
-export default async (data: { email: string; otp: string }) => {
+export const sendVerificationMailConsumer = async (data: { email: string; otp: string }) => {
 	try {
 		await updateOtpService(data.email, data.otp);
 
