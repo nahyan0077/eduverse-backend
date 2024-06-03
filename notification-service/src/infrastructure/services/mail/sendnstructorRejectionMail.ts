@@ -1,4 +1,4 @@
-import { instructorRejectionMail } from "@/_lib/utils/sendGrid";
+import { instructorRejectionMail } from "../../../_lib/utils/sendGrid";
 
 
 export const sendInstructorRejectionMail = async (email: string) => {
