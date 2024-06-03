@@ -1,5 +1,6 @@
-import { Request, Response, NextFunction } from "express";
 import jwt from 'jsonwebtoken';
+import { generateAccessToken } from "../../../_lib/http/jwt";
+import { Request, Response, NextFunction } from "express";
 
 interface UserPayload {
     _id: string;
@@ -16,20 +17,38 @@ declare global {
 }
 
 export const jwtMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const token = req.cookies.access_token || (req.headers.authorization?.split(' ')[1] || '');
-
-    if (!token) {
-        console.log("No token provided");
-        return res.status(401).json({ message: "No token provided" });
-    }
-
     try {
-        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET!) as UserPayload;
-        
-        req.user = decoded;
+        const { access_token, refresh_token } = req.cookies;
+
+        if (!access_token && !refresh_token) {
+            return next();
+        }
+
+        let user;
+
+        if (access_token) {
+            
+            user = jwt.verify(access_token, process.env.ACCESS_TOKEN_SECRET!) as UserPayload;
+        }
+
+        if (!user && refresh_token) {
+            
+            user = jwt.verify(refresh_token, process.env.REFRESH_TOKEN_SECRET!) as UserPayload;
+
+            if (user) {
+                console.log("fourth if");
+                
+                const newAccessToken = generateAccessToken(user);
+                res.cookie("access_token", newAccessToken, {
+                    httpOnly: true,
+                });
+            }
+        }
+
+        req.user = user;
         next();
-    } catch (err) {
-        console.error("Token verification failed:", err);
-        res.status(403).json({ message: "Invalid token" });
+    } catch (error) {
+        console.error("Error in JWT middleware:", error);
+        next(error); 
     }
 };
