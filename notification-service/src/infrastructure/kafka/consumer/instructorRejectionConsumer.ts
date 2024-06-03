@@ -1,4 +1,4 @@
-import { sendInstructorRejectionMail } from "@/infrastructure/services/mail";
+import { sendInstructorRejectionMail } from "../../../infrastructure/services/mail";
 
 
 
