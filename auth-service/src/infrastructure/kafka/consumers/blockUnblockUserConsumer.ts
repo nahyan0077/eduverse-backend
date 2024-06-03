@@ -1,6 +1,6 @@
 import { blockUnblockUser } from "../../../infrastructure/database/mongodb/repositories/blockUnblockUser";
 
-export default async (data: { id: string; isBlocked: boolean }) => {
+export const blockUnblockUserConsumer = async (data: { id: string; isBlocked: boolean }) => {
 	try {
 		await blockUnblockUser(data.id,data.isBlocked);
 

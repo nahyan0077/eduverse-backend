@@ -43,8 +43,9 @@ export interface UserEntity {
     cv?: string,
     profession: Profession,
     isBlocked: boolean;
-    isVerified: boolean;
+    isVerified?: boolean;
     isGAuth?: boolean;
+    isRejected?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
