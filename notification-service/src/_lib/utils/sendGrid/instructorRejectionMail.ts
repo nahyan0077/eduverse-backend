@@ -5,8 +5,6 @@ config();
 
 const sendgridAPI = String(process.env.SEND_GRID_API_KEY);
 
-const website = String(process.env.CLIENT_URL);
-
 sendGridMail.setApiKey(sendgridAPI);
 
 export const instructorRejectionMail = async (data: { email: string }) => {
