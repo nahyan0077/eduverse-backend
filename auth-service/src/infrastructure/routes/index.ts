@@ -37,7 +37,7 @@ export const routes = (dependancies: IDependancies) => {
 
 	router.route('/update-password').post(updatePassword)
 
-	router.route("/logout").delete(logout);
+	router.route("/logout").delete(jwtMiddleware,logout);
 
 	return router;
 };
