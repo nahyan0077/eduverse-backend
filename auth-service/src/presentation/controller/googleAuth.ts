@@ -39,7 +39,7 @@ export const googleAuthController = (dependancies: IDependancies) => {
 
             const existingUser = await findUserByEmailUseCase(dependancies).execute(email)
 
-            if (existingUser) {
+            if (existingUser && !existingUser.isBlocked) {
                 const accessToken = generateAccessToken({
                     _id:String(existingUser?._id),
                     email: String(existingUser?.email),
@@ -62,6 +62,13 @@ export const googleAuthController = (dependancies: IDependancies) => {
                     message: "User Google login!",
                 });
 
+            }else if(existingUser && existingUser.isBlocked){
+                return res.status(200).json({
+                    success: true,
+                    existingUser: true,
+                    data: existingUser,
+                    message: "User is been blocked my eduverse team..!",
+                });
             }else{
 
                 let signUpData = {
