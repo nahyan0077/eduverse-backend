@@ -45,7 +45,7 @@ const routes = [
     },
     {
         context: "/api/course",
-        target: String(process.env.COURSE_SERVICE   ),
+        target: String(process.env.COURSE_SERVICE),
         changeOrigin: true,
     },
 ]
