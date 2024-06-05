@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction, Application } from 'express'
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
+import { routes } from '../infrastructure/routes'
+import { dependancies } from '../_boot/dependancies'
 
 config()
 
@@ -19,6 +21,8 @@ app.get('/', (req: Request, res: Response) => {
         message: `${process.env.SERVICE} ON!`
     })
 });
+
+app.use(routes(dependancies))
 
 
 app.use("*",(req: Request, res: Response) => {
