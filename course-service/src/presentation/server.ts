@@ -3,6 +3,8 @@ import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
 import { routes } from '../infrastructure/routes'
 import { dependancies } from '../_boot/dependancies'
+import errorHandler from '../_lib/common/error/errorhandler'
+import morgan from 'morgan'
 
 config()
 
@@ -15,6 +17,7 @@ const PORT: number = Number(process.env.PORT) || 7001
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
+app.use(morgan('dev'));
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).json({
@@ -29,7 +32,7 @@ app.use("*",(req: Request, res: Response) => {
     res.status(404).json({ success: false, status: 404, message: "Api Not found" });
   });  
 
-
+app.use(errorHandler)
   
 const start = () => {
     app.listen(PORT, () => {
