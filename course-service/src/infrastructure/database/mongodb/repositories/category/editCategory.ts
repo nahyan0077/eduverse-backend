@@ -6,6 +6,7 @@ export const editCategory = async (
 	data: CategoryEntity
 ): Promise<CategoryEntity | null> => {
 	try {
+		
 		const normalisedName = data.categoryName.trim().toLowerCase();
 
 		const duplicateCategory = await Category.findOne({
