@@ -10,6 +10,6 @@ export const generateRefreshToken = (
     return jwt.sign(
         payload,
         String(process.env.REFRESH_TOKEN_SECRET),
-        { expiresIn: '30d' }
+        { expiresIn: '15d' }
     );
 };
