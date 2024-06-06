@@ -7,6 +7,6 @@ enum Status {
 
 export interface CategoryEntity {
 	_id: Types.ObjectId;
-	title: string;
+	categoryName: string;
 	status: Status;
 }
