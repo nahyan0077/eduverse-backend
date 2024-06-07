@@ -5,13 +5,16 @@ import { Router } from "express";
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
 
-	const { addCategory, getAllCategories, editCategory } = controller(dependancies);
+	const { addCategory, getAllCategories, editCategory, createCourse } =
+		controller(dependancies);
 
 	router.route("/add-category").post(addCategory);
 
 	router.route("/get-all-categories").get(getAllCategories);
 
-	router.route("/edit-category").put(editCategory)
+	router.route("/edit-category").put(editCategory);
+
+	router.route("/create-course").post(createCourse);
 
 	return router;
 };
