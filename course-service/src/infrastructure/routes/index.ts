@@ -1,6 +1,7 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { controller } from "../../presentation/controller";
 import { Router } from "express";
+import { jwtMiddleware } from "@/_lib/common/middlewares/jwtMiddleware";
 
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
