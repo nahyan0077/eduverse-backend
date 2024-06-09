@@ -2,15 +2,15 @@ import { Schema, model, Types } from "mongoose";
 import { CourseEntity } from "../../../../domain/entities";
 
 const lessonSchema = new Schema({
+    lessonNumber: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
     },
     description: {
-        type: String,
-        required: true
-    },
-    thumbnail: {
         type: String,
         required: true
     },
@@ -18,22 +18,15 @@ const lessonSchema = new Schema({
         type: String,
         required: true
     },
-    attachments: {
-        title: String,
-        url: String
+    duration: {
+        type: String,
+    },
+    objectives: {
+        type: Array,
     }
 });
 
 const trialSchema = new Schema({
-    title: {
-        type: String
-    },
-    description: {
-        type: String
-    },
-    thumbnail: {
-        type: String
-    },
     video: {
         type: String
     }
@@ -78,6 +71,14 @@ const courseSchema = new Schema({
             type: Number,
             default: 0
         }
+    },
+    attachments: {
+        title: String,
+        url: String
+    },
+    level: {
+        type: String,
+        enum: ["beginner","intermediate", "advanced"]
     },
     isBlocked: {
         type: Boolean,
