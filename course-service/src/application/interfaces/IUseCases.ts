@@ -1,4 +1,4 @@
-import { IAddCategoryUseCase, ICreateCourseUseCase, IEditCategoryUseCase, IGetAllCategoriesUseCases } from "@/domain/IUseCases";
+import { IAddCategoryUseCase, ICreateCourseUseCase, IEditCategoryUseCase, IGetAllCategoriesUseCases, IGetAllCourseUseCase } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
 
 
@@ -12,5 +12,6 @@ export interface IUseCases {
 
     //course
     createCourseUseCase: (dependecies: IDependencies) => ICreateCourseUseCase
+    getAllCourseUseCase: (depenedencies: IDependencies) => IGetAllCourseUseCase
  }
 

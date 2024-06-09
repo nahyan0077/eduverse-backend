@@ -6,8 +6,13 @@ import { jwtMiddleware } from "@/_lib/common/middlewares/jwtMiddleware";
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
 
-	const { addCategory, getAllCategories, editCategory, createCourse } =
-		controller(dependancies);
+	const {
+		addCategory,
+		getAllCategories,
+		editCategory,
+		createCourse,
+		getAllCourse,
+	} = controller(dependancies);
 
 	router.route("/add-category").post(addCategory);
 
@@ -16,6 +21,8 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/edit-category").put(editCategory);
 
 	router.route("/create-course").post(createCourse);
+
+	router.route("/get-all-courses").get(getAllCourse);
 
 	return router;
 };

@@ -5,6 +5,10 @@ export const createCourseController = (depedencies: IDependencies) => {
     const { useCases: {createCourseUseCase} } = depedencies
     return async (req: Request, res: Response, next: NextFunction) => {
 		try {
+
+			console.log(req.body,"create course data ");
+			
+
 			const result = await createCourseUseCase(depedencies).execute(req.body);
 
 			if (!result) {
@@ -16,6 +20,7 @@ export const createCourseController = (depedencies: IDependencies) => {
 				data: result,
 				message: "Course created!",
 			});
+
 		} catch (error: any) {
 			next(error);
 		}

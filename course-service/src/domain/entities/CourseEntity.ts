@@ -1,21 +1,21 @@
-import { Date, ObjectId } from "mongoose";
+import { Date, Types } from "mongoose";
 
 interface Lesson {
+    lessonNumber: string,
     title: string;
     description: string;
-    thumbnail: string;
     video: string;
-    attachments?: {
-        title: string;
-        url: string;
-    }
+    duration: string;
+    objectives: string[];
 }
 
 interface Trial {
-    title: string;
-    description: string;
-    thumbnail: string;
     video: string;
+}
+
+interface Attachments {
+    title: string;
+    url: string;
 }
 
 enum PricingType {
@@ -28,19 +28,27 @@ interface Pricing {
     type: PricingType;
 }
 
+enum Level {
+    beginner = 'beginner',
+    intermediate = 'intermediate',
+    advanced = 'advanced'
+}
+
 export interface CourseEntity {
-    _id?: ObjectId;
+    _id: Types.ObjectId;
     title: string;
     description: string;
     thumbnail: string;
-    instructorRef: ObjectId;
-    categoryRef: ObjectId;
+    instructorRef: string;
+    categoryRef: Types.ObjectId;
     language?: string;
     lessons: [Lesson]
     trial?: Trial;
+    attachments?: Attachments;
     createdAt?: Date;
     updatedAt?: Date;
     pricing: Pricing;
+    level: Level;
     isBlocked?: boolean | string;
     isPublished?: boolean | string;
 }
