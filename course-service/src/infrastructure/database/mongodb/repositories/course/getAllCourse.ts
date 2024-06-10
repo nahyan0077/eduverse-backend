@@ -3,9 +3,12 @@ import { Course } from "../../models/CourseModel"
 
 export const getAllCourse = async () => {
     try {
-        const result = await Course.find()
+        const result = await Course.find().populate('instructorRef', 'firstName').populate('categoryRef', 'title')
+        .sort({ updatedAt: "descending" })
 
-        if (!result) {
+        
+
+        if (result.length == 0) {
             throw ErrorResponse.internalError("get all course error");
         }
         return result
