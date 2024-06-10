@@ -15,7 +15,7 @@ export const getAllCourseController = (dependancies: IDependencies) => {
 				? parseInt(req.query.limit as string, 10)
 				: undefined;
 
-			console.log(page, limit, "hee heee");
+			console.log(page, limit, "hee this heee");
 
 			if (page !== undefined && isNaN(page)) {
 				res.status(400).json({
