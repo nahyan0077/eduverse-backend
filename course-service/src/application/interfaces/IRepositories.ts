@@ -11,6 +11,7 @@ export interface IRepositories {
     //course
     createCourse: (data: CourseEntity) => Promise < CourseEntity | null >
     getAllCourse: () => Promise < CourseEntity [] | null >
+    getAllActiveCourses: (data: {page: string | number, limit: string | number }) => Promise < CourseEntity [] | null >
 }
 
 
