@@ -6,6 +6,7 @@ import { startConsumer } from './_boot/consumer';
     try {
       server.start();
       
+      
       await Promise.all([database(),startConsumer()])
     } catch (error: any) {
         console.error(error?.message || 'An error occurred');
