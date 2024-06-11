@@ -3,7 +3,7 @@ import { Course } from "../../models/CourseModel"
 
 export const getAllCourse = async () => {
     try {
-        const result = await Course.find().populate('instructorRef', 'firstName').populate('categoryRef', 'title')
+        const result = await Course.find().populate('instructorRef', 'firstName').populate('categoryRef', 'categoryName')
         .sort({ updatedAt: "descending" })
 
         
