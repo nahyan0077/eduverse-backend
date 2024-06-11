@@ -49,6 +49,7 @@ export interface CourseEntity {
     updatedAt?: Date;
     pricing: Pricing;
     level: Level;
+    isRequested: boolean | string;
     isBlocked?: boolean | string;
     isPublished?: boolean | string;
 }

@@ -80,6 +80,10 @@ const courseSchema = new Schema({
         type: String,
         enum: ["beginner","intermediate", "advanced"]
     },
+    isRequested: {
+        type: Boolean,
+        default: true
+    },
     isBlocked: {
         type: Boolean,
         default: false
