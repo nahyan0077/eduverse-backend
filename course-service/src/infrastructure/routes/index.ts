@@ -12,6 +12,7 @@ export const routes = (dependancies: IDependencies) => {
 		editCategory,
 		createCourse,
 		getAllCourse,
+		updateCourse
 	} = controller(dependancies);
 
 	router.route("/add-category").post(addCategory);
@@ -23,6 +24,8 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/create-course").post(createCourse);
 
 	router.route("/get-all-courses").get(getAllCourse);
+
+	router.route("/update-course").put(updateCourse);
 
 	return router;
 };

@@ -1,12 +1,15 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
 
-export const createCourseController = (depedencies: IDependencies) => {
+export const updateCourseController = (depedencies: IDependencies) => {
     const { useCases: { updateCourseUseCase } } = depedencies
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
 
             const data = req.body
+
+            console.log(data,"set update course data");
+            
 
             const result = await updateCourseUseCase(depedencies).execute(data)
 
