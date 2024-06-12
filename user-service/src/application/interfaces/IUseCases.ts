@@ -1,4 +1,4 @@
-import {  IBlockUnblockUser, ICreateUser, IGetAllInstructorsUseCase, IGetAllStudentsUseCase, IRejectInstructorUseCase, IVerifyInstructorUseCase } from "@/domain/IUseCases";
+import {  IBlockUnblockUser, ICreateUser, IGetAllInstructorsUseCase, IGetAllStudentsUseCase, IRejectInstructorUseCase, IUpdateUserUseCase, IVerifyInstructorUseCase } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
 
 export interface IUseCases {
@@ -8,4 +8,5 @@ export interface IUseCases {
     blockUnblockUserUseCase: (dependencies: any) => IBlockUnblockUser
     verifyInstructorUseCase: (dependencies: any) => IVerifyInstructorUseCase
     rejectInstructorUseCase: (dependencies: any) => IRejectInstructorUseCase
+    updateUserUseCase: (dependencies: any) => IUpdateUserUseCase
 }

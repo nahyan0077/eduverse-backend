@@ -7,4 +7,5 @@ export interface IRepositories {
     blockUnblockUser: (id: string, isBlocked: boolean) => Promise < UserEntity | null >
     verifyInstructor: (id: string) => Promise < UserEntity | null >
     rejectInstructor: (id: string) => Promise < UserEntity | null >
+    updateUser: (data: UserEntity) => Promise < UserEntity | null >
 }

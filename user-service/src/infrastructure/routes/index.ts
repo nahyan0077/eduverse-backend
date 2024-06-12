@@ -10,6 +10,7 @@ export const userRoutes = (dependencies: IDependencies) => {
 		blockUnblockUser,
 		verifyInstructor,
 		rejectInstructor,
+		updateUser
 	} = controllers(dependencies);
 
 	const router = Router();
@@ -23,6 +24,8 @@ export const userRoutes = (dependencies: IDependencies) => {
 	router.route("/verify-instructor").patch(jwtMiddleware,verifyInstructor);
 
 	router.route("/reject-instructor").patch(jwtMiddleware,rejectInstructor);
+
+	router.route("/profile").put(updateUser)
 
 	return router;
 };
