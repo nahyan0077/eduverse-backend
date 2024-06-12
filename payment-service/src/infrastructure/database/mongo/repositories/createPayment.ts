@@ -1,5 +1,7 @@
 import { Payment } from "@/infrastructure/database/mongo/models";
 import { PaymentEntity } from "@/domain/entities";
+import errorHandler from "@/_lib/common/error/errorhandler";
+import ErrorResponse from "@/_lib/common/error/errorResponse";
 
 export const createPayment = async (
     data: PaymentEntity
@@ -19,12 +21,12 @@ export const createPayment = async (
         const newPayment = await Payment.create(data);
 
         if (!newPayment) {
-            throw new Error("Payment creation failed!");
+            throw ErrorResponse.internalError("Payment creation failed!");
         }
 
         return newPayment;
 
     } catch (error: any) {
-        throw new Error(error?.message);
+        throw ErrorResponse.internalError(error.message || "An unexpected error occurred");
     }
 }
