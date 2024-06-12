@@ -4,7 +4,12 @@ import {
 	editCategoryContorller,
 	getAllCategoriesController,
 } from "./category";
-import { createCourseController, getAllCourseController, updateCourseController } from "./course";
+import {
+	createCourseController,
+	getAllActiveCoursesController,
+	getAllCourseController,
+	updateCourseController,
+} from "./course";
 
 export const controller = (dependancies: IDependencies) => {
 	return {
@@ -13,6 +18,7 @@ export const controller = (dependancies: IDependencies) => {
 		editCategory: editCategoryContorller(dependancies),
 		createCourse: createCourseController(dependancies),
 		getAllCourse: getAllCourseController(dependancies),
-		updateCourse: updateCourseController(dependancies)
+		updateCourse: updateCourseController(dependancies),
+		getAllActive: getAllActiveCoursesController(dependancies),
 	};
 };

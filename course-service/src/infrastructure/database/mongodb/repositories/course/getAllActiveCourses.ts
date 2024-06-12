@@ -11,7 +11,8 @@ export const getAllActiveCourses = async (data: {
 		const skip = (page - 1) * limit;
 
 		const result = await Course.find({ isBlocked: false, isPublished: true })
-			.populate(["instructorRef", "categoryRef"])
+			.populate("instructorRef", "firstName")
+			.populate("categoryRef", "categoryName")
 			.sort({ updatedAt: "descending" })
 			.skip(skip)
 			.limit(limit);
