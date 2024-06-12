@@ -48,6 +48,11 @@ const routes = [
         target: String(process.env.COURSE_SERVICE),
         changeOrigin: true,
     },
+    {
+        context: "/api/payment",
+        target: String(process.env.PAYMENT_SERVICE),
+        changeOrigin: true,
+    },
 ]
 
 routes.forEach((route) => {
