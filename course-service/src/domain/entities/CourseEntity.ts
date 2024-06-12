@@ -52,4 +52,5 @@ export interface CourseEntity {
     isRequested: boolean | string;
     isBlocked?: boolean | string;
     isPublished?: boolean | string;
+    isRejected?: boolean | string;
 }

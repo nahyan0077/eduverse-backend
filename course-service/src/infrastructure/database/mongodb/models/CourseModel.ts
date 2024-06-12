@@ -91,7 +91,11 @@ const courseSchema = new Schema({
     isPublished: {
         type: Boolean,
         default: false
-    }
+    },
+    isRejected: {
+        type: Boolean,
+        default: false
+    },
 }, {
     timestamps: true
 });
