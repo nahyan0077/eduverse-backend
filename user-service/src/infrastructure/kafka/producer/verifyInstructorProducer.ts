@@ -17,11 +17,11 @@ export default async (data: { id: string ,email : string}) => {
 				],
 			},
 			{
-				topic: "notification-service-topic",
+				topic: "course-service-topic",
 				messages: [
 					{
-						key: "verifyInstructorMail",
-						value: JSON.stringify({email: data.email}),
+						key: "verifyInstructor",
+						value: JSON.stringify({id:data.id}),
 					},
 				],
 			},
