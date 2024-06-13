@@ -7,7 +7,7 @@ import {
 } from "./consumer";
 
 export interface ISubscriber {
-	updateUser: (data: any) => Promise<void>;
+	userUpdated: (data: any) => Promise<void>;
 	userCreated: (data: any) => Promise<void>;
 	blockUnblockUser: (data: any) => Promise<void>;
 	verifyInstructor: (data: any) => Promise<void>;
@@ -17,7 +17,7 @@ export interface ISubscriber {
 export interface IUserSubscriber
 	extends Pick<
 		ISubscriber,
-		| "updateUser"
+		| "userUpdated"
 		| "userCreated"
 		| "blockUnblockUser"
 		| "verifyInstructor"
@@ -26,7 +26,7 @@ export interface IUserSubscriber
 
 export const createSubscriber = (): IUserSubscriber => {
 	return {
-		updateUser: updateUserConsumer,
+		userUpdated: updateUserConsumer,
 		userCreated: userCreatedConsumer,
 		blockUnblockUser: blockUnblockUserConsumer,
 		verifyInstructor: verifyInstructorConsumer,

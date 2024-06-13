@@ -16,15 +16,6 @@ export default async (data: UserEntity) => {
 				],
 			},
 			{
-				topic: "notification-service-topic",
-				messages: [
-					{
-						key: "userUpdated",
-						value: JSON.stringify(data),
-					},
-				],
-			},
-			{
 				topic: "course-service-topic",
 				messages: [
 					{

@@ -1,5 +1,5 @@
 import { UserEntity } from "@/domain/entities";
-import { updateUser } from "@/infrastructure/database/mongodb/repositories";
+import { updateUser } from "../../../infrastructure/database/mongodb/repositories";
 
 export const updateUserConsumer = async (
     data: UserEntity

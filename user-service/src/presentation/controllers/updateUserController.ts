@@ -1,5 +1,6 @@
 import ErrorResponse from "../../_lib/common/error/errorResponse";
 import { IDependencies } from "@/application/interfaces/IDependencies";
+import userUpdateProducer from "../../infrastructure/kafka/producer/userUpdateProducer";
 import { Request, Response, NextFunction } from "express";
 
 export const updateUserController = (dependencies: IDependencies) => {
@@ -30,7 +31,7 @@ export const updateUserController = (dependencies: IDependencies) => {
             }
 
             //produce message -> auth, chat, course
-            // userUpdatedProducer(result);
+            await userUpdateProducer(result);
             //=====================================
 
             res.status(200).json({

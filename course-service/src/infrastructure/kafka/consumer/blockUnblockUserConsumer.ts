@@ -1,4 +1,4 @@
-import { blockUnblockUser } from "@/infrastructure/database/mongodb/repositories";
+import { blockUnblockUser } from "../../../infrastructure/database/mongodb/repositories";
 
 
 export const blockUnblockUserConsumer = async (data: { id: string; isBlocked: boolean }) => {
