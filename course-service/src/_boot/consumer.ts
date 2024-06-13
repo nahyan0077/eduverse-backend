@@ -1,5 +1,5 @@
 import { consumer } from "../infrastructure/kafka"
-import { IUserSubscriber, createSubscriber } from "../infrastructure/kafka/subscriber";
+import { ICourseSubscriber, createSubscriber } from "../infrastructure/kafka/subscriber";
 
 
 
@@ -19,7 +19,7 @@ export const startConsumer = async () => {
 
                 const { key, value } = message;
 
-                const subscriberMethod = String(key) as keyof IUserSubscriber;
+                const subscriberMethod = String(key) as keyof ICourseSubscriber;
                 const subscriberData = JSON.parse(String(value));
 
                 try {

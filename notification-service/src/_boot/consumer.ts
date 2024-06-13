@@ -1,16 +1,21 @@
-import { consumer } from "../infrastructure/kafka"
 import { INotificationSubscriber, createSubscriber } from "../infrastructure/kafka/subcriber";
+import { consumer } from "../infrastructure/kafka"
+
+
 
 
 export const startConsumer = async () => {
     try {
         await consumer.connect()
         await consumer.subscribe({
-            topic: "notification-service-topic", fromBeginning: true
+            topic: 'notification-service-topic',
+            fromBeginning: true
         })
+
         const subscriber = createSubscriber();
 
         await consumer.run({
+
             eachMessage: async ({ message }) => {
 
                 const { key, value } = message;
@@ -24,13 +29,12 @@ export const startConsumer = async () => {
                     throw new Error(error?.message);
                 }
             }
-        });
 
+        });
     } catch (error: any) {
-        throw new Error("Kafka Consume Error -> Notification : " + error?.message);
+        throw new Error("Kafka Consume Error : " + error?.message);
     }
 }
-
 
 export const stopConsumer = async () => {
     await consumer.stop();

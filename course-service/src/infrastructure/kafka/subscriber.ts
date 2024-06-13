@@ -14,7 +14,7 @@ export interface ISubscriber {
 	rejectInstructor: (data: any) => Promise<void>;
 }
 
-export interface IUserSubscriber
+export interface ICourseSubscriber
 	extends Pick<
 		ISubscriber,
 		| "userUpdated"
@@ -24,7 +24,7 @@ export interface IUserSubscriber
 		| "rejectInstructor"
 	> {}
 
-export const createSubscriber = (): IUserSubscriber => {
+export const createSubscriber = (): ICourseSubscriber => {
 	return {
 		userUpdated: updateUserConsumer,
 		userCreated: userCreatedConsumer,
