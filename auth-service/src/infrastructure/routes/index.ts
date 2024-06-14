@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { controllers } from "../../presentation/controller";
-import { jwtMiddleware } from "../../_lib/common/middlewares/jwtMiddleware";
+import {jwtMiddleware} from '@eduverse/common'
 
 export const routes = (dependancies: IDependancies) => {
 	const {

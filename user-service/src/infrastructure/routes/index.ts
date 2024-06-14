@@ -1,7 +1,8 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { controllers } from "../../presentation/controllers";
 import { Router } from "express";
-import { jwtMiddleware } from "../../_lib/common/middlewares/jwtMiddleware";
+// import { jwtMiddleware } from "../../_lib/common/middlewares/jwtMiddleware";
+import {jwtMiddleware, CurrentUser, RequireAuth} from '@eduverse/common'
 
 export const userRoutes = (dependencies: IDependencies) => {
 	const {
@@ -25,7 +26,7 @@ export const userRoutes = (dependencies: IDependencies) => {
 
 	router.route("/reject-instructor").patch(jwtMiddleware,rejectInstructor);
 
-	router.route("/profile").put(updateUser)
+	router.route("/profile").put(CurrentUser, RequireAuth, updateUser)
 
 	return router;
 };
