@@ -78,7 +78,7 @@ const userSchema = new Schema(
         },
         isRequested: {
             type: Boolean,
-            default: false,
+            default: true,
         },
 		isGAuth: {
 			type: Boolean,

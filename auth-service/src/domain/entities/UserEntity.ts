@@ -1,4 +1,4 @@
-import { ObjectId } from "mongoose";
+import { Types } from "mongoose";
 
 enum Role {
     student='student',
@@ -31,7 +31,7 @@ interface Profile {
 
 
 export interface UserEntity {
-    _id?: ObjectId;
+    _id?: Types.ObjectId;
     firstName: string,
     lastName: string,
     userName?: string,
@@ -44,6 +44,7 @@ export interface UserEntity {
     profession: Profession,
     isBlocked: boolean;
     isVerified?: boolean;
+    isRequested?: boolean;
     isGAuth?: boolean;
     isRejected?: boolean;
     createdAt?: Date;

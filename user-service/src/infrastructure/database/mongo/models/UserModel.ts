@@ -76,6 +76,10 @@ const userSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        isRequested: {
+            type: Boolean,
+            default: true,
+        },
 		isGAuth: {
 			type: Boolean,
 			default: false
@@ -83,7 +87,7 @@ const userSchema = new Schema(
 		isRejected: {
 			type: Boolean,
 			default: false
-		}
+		},
 	},
 	{
 		timestamps: true,
