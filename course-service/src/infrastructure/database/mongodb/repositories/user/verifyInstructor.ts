@@ -4,7 +4,7 @@ export const verifyInstructor = async (id: string) => {
 	try {
 		const verify = await User.findByIdAndUpdate(
 			id,
-			{ isVerified: true },
+			{ isVerified: true, isRequested: false },
 			{ new: true }
 		);
 

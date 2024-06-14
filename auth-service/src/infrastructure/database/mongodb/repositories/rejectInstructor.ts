@@ -4,7 +4,7 @@ export const rejectInstructor = async (id: string) => {
 	try {
 		const reject = await User.findByIdAndUpdate(
 			id,
-			{ isRejected: true },
+			{ isRejected: true, isRequested: false },
 			{ new: true }
 		);
 
