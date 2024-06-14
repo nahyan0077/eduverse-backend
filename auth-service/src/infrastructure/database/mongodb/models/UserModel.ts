@@ -76,6 +76,10 @@ const userSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        isRequested: {
+            type: Boolean,
+            default: false,
+        },
 		isGAuth: {
 			type: Boolean,
 			default: false

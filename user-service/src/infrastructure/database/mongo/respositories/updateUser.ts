@@ -8,6 +8,9 @@ export const updateUser = async (
 	try {
 		const { _id, ...rest } = data;
 
+		console.log(data,"update user repoo");
+		
+
 		const updatedUser = await User.findByIdAndUpdate(
 			_id,
 			{ $set: { ...rest } },

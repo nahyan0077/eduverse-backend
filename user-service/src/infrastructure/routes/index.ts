@@ -15,7 +15,7 @@ export const userRoutes = (dependencies: IDependencies) => {
 
 	const router = Router();
 
-	router.route("/get-all-instructors").get(jwtMiddleware,getAllInstructors);
+	router.route("/get-all-instructors").get(getAllInstructors);
 
 	router.route("/get-all-students").get(jwtMiddleware,getAllStudents);
 

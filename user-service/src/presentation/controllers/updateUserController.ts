@@ -13,7 +13,8 @@ export const updateUserController = (dependencies: IDependencies) => {
 
         try {
             
-
+            console.log(req.body,"update profiel data");
+            
 
             if(!req.body?._id){
                 res.status(200).json({
