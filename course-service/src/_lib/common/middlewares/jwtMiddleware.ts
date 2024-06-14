@@ -30,6 +30,8 @@ const verifyToken = (token: string, secret: string): UserPayload | null => {
 
 export const jwtMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
     try {
+        console.log( process.env.ACCESS_TOKEN_SECRET,"acccesssssss");
+        
         const { access_token, refresh_token } = req.cookies;
         let user: UserPayload | null = null;
 

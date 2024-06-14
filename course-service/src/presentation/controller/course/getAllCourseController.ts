@@ -8,6 +8,7 @@ export const getAllCourseController = (dependancies: IDependencies) => {
 
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
+			
 			const page = req.query.page
 				? parseInt(req.query.page as string, 10)
 				: undefined;

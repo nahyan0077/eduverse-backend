@@ -6,6 +6,8 @@ export const getAllCategoriesController = (dependencies: IDependencies) => {
     const { useCases : {getAllCategoriesUseCase} } = dependencies
     return  async (req: Request, res: Response, next: NextFunction) => {
         try {
+            console.log("grt all category");
+            
             const result = await getAllCategoriesUseCase(dependencies).execute()
             if(!result){
                 throw new Error("Categories retrievel failed");
