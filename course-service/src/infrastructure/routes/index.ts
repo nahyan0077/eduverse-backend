@@ -1,7 +1,9 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { controller } from "../../presentation/controller";
 import { Router } from "express";
-import { jwtMiddleware } from "@/_lib/common/middlewares/jwtMiddleware";
+import { CurrentUser, RequireAuth } from "@eduverse/common";
+import { requireAdmin } from "../../_lib/common/middlewares/requireAdmin";
+import { requireInstructor } from "../../_lib/common/middlewares/requireInsructor";
 
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
@@ -13,7 +15,7 @@ export const routes = (dependancies: IDependencies) => {
 		createCourse,
 		getAllCourse,
 		updateCourse,
-		getAllActive
+		getAllActive,
 	} = controller(dependancies);
 
 	router.route("/add-category").post(addCategory);
@@ -22,13 +24,12 @@ export const routes = (dependancies: IDependencies) => {
 
 	router.route("/edit-category").put(editCategory);
 
-	router.route("/create-course").post(createCourse);
+	router.route("/")
+		.get(CurrentUser, requireAdmin, getAllCourse)
+		.post(CurrentUser, requireInstructor, createCourse)
+		.put(CurrentUser, requireInstructor, updateCourse);
 
-	router.route("/get-all-courses").get(getAllCourse);
-
-	router.route("/get-all-active").get(getAllActive)
-
-	router.route("/update-course").put(updateCourse);
+	router.route("/get-all-active").get(getAllActive);
 
 	return router;
 };

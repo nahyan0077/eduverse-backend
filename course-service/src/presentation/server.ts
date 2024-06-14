@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(morgan('dev'));
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/test', (req: Request, res: Response) => {
     res.status(200).json({
         message: `${process.env.SERVICE} ON!`
     })
