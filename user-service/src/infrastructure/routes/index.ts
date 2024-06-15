@@ -5,8 +5,6 @@ import { Router } from "express";
 import { jwtMiddleware, CurrentUser, RequireAuth } from "@eduverse/common";
 import { requireAdmin } from "../../_lib/common/middlewares/requireAdmin";
 
-
-
 export const userRoutes = (dependencies: IDependencies) => {
 	const {
 		getAllInstructors,
@@ -21,9 +19,13 @@ export const userRoutes = (dependencies: IDependencies) => {
 
 	router.route("/get-all-instructors").get(getAllInstructors);
 
-	router.route("/get-all-students").get(jwtMiddleware, getAllStudents);
+	router
+		.route("/get-all-students")
+		.get(CurrentUser, requireAdmin, getAllStudents);
 
-	router.route("/admin-block-unblock").patch(CurrentUser, requireAdmin, blockUnblockUser);
+	router
+		.route("/admin-block-unblock")
+		.patch(CurrentUser, requireAdmin, blockUnblockUser);
 
 	router
 		.route("/verify-instructor")

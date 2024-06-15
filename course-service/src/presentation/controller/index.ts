@@ -2,6 +2,7 @@ import { IDependencies } from "@/application/interfaces/IDependencies";
 import {
 	addCategoryController,
 	editCategoryContorller,
+	getAllActiveCategoriesController,
 	getAllCategoriesController,
 } from "./category";
 import {
@@ -18,7 +19,7 @@ export const controller = (dependancies: IDependencies) => {
 		addCategory: addCategoryController(dependancies),
 		getAllCategories: getAllCategoriesController(dependancies),
 		editCategory: editCategoryContorller(dependancies),
-		getAllActiveCategory: getAllActiveCoursesController(dependancies),
+		getAllActiveCategory: getAllActiveCategoriesController(dependancies),
 
 
 		//courses

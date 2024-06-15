@@ -2,7 +2,8 @@ import { Category } from "../../models/CategoryModel"
 
 export const getAllActiveCategories = async () => {
     try {
-        const categories = await Category.find({},{status: 'active'})
+        const categories = await Category.find({status: 'active'})
+        
 
         return categories
 

@@ -4,7 +4,6 @@ import { Router } from "express";
 import { CurrentUser } from "@eduverse/common";
 import { requireAdmin } from "../../_lib/common/middlewares/requireAdmin";
 import { requireInstructor } from "../../_lib/common/middlewares/requireInsructor";
-import { jwtMiddleware } from "../../_lib/common/middlewares/jwtMiddleware";
 
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
