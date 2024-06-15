@@ -25,6 +25,6 @@ export const controller = (dependancies: IDependencies) => {
 		createCourse: createCourseController(dependancies),
 		getAllCourse: getAllCourseController(dependancies),
 		updateCourse: updateCourseController(dependancies),
-		getAllActive: getAllActiveCoursesController(dependancies),
+		getAllActiveCourse : getAllActiveCoursesController(dependancies),
 	};
 };

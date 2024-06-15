@@ -16,24 +16,25 @@ export const routes = (dependancies: IDependencies) => {
 		createCourse,
 		getAllCourse,
 		updateCourse,
-		getAllActive,
-		getAllActiveCategory
+		getAllActiveCourse,
+		getAllActiveCategory,
 	} = controller(dependancies);
 
-	
-	router.route("/")
+	router
+		.route("/")
 		.get(CurrentUser, requireAdmin, getAllCourse)
 		.post(CurrentUser, requireInstructor, createCourse)
 		.put(CurrentUser, requireInstructor, updateCourse);
-	
-	router.route("/category")
-		.post(CurrentUser, requireAdmin,addCategory)
+
+	router
+		.route("/category")
+		.post(CurrentUser, requireAdmin, addCategory)
 		.get(CurrentUser, requireAdmin, getAllCategories)
 		.put(CurrentUser, requireAdmin, editCategory);
 
-	router.route("/get-active-courses").get(getAllActive);
+	router.route("/get-active-courses").get(getAllActiveCourse);
 
-	router.route("/get-active-category").get(getAllActiveCategory)
+	router.route("/get-active-category").get(getAllActiveCategory);
 
 	return router;
 };
