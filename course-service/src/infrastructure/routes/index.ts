@@ -30,7 +30,7 @@ export const routes = (dependancies: IDependencies) => {
 		.get(CurrentUser, requireAdmin, getAllCategories)
 		.put(CurrentUser, requireAdmin, editCategory);
 
-	router.route("/get-all-active").get(getAllActive);
+	router.route("/get-active-courses").get(getAllActive);
 
 	return router;
 };
