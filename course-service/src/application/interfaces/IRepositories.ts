@@ -7,6 +7,7 @@ export interface IRepositories {
     addCategory: (data: CategoryEntity) => Promise < CategoryEntity | null >
     getAllCategories: () => Promise < CategoryEntity[] | null >
     editCategory: (data: CategoryEntity) => Promise < CategoryEntity | null >
+    getAllActiveCategories: () => Promise < CategoryEntity[] | null >
 
     //course
     createCourse: (data: CourseEntity) => Promise < CourseEntity | null >

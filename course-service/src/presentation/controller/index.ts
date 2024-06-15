@@ -13,9 +13,15 @@ import {
 
 export const controller = (dependancies: IDependencies) => {
 	return {
+
+		//category
 		addCategory: addCategoryController(dependancies),
 		getAllCategories: getAllCategoriesController(dependancies),
 		editCategory: editCategoryContorller(dependancies),
+		getAllActiveCategory: getAllActiveCoursesController(dependancies),
+
+
+		//courses
 		createCourse: createCourseController(dependancies),
 		getAllCourse: getAllCourseController(dependancies),
 		updateCourse: updateCourseController(dependancies),

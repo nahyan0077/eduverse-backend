@@ -17,6 +17,7 @@ export const routes = (dependancies: IDependencies) => {
 		getAllCourse,
 		updateCourse,
 		getAllActive,
+		getAllActiveCategory
 	} = controller(dependancies);
 
 	
@@ -31,6 +32,8 @@ export const routes = (dependancies: IDependencies) => {
 		.put(CurrentUser, requireAdmin, editCategory);
 
 	router.route("/get-active-courses").get(getAllActive);
+
+	router.route("/get-active-category").get(getAllActiveCategory)
 
 	return router;
 };

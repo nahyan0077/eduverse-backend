@@ -1,5 +1,5 @@
 import { CategoryEntity } from "@/domain/entities";
 
-export interface IGetAllCategoriesUseCases {
+export interface IGetAllActiveCategoriesUseCase {
     execute(): Promise < CategoryEntity[] | null >
 }
