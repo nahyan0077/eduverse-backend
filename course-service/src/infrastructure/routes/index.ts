@@ -21,7 +21,7 @@ export const routes = (dependancies: IDependencies) => {
 
 	router
 		.route("/")
-		.get(CurrentUser, requireAdmin, getAllCourse)
+		.get(CurrentUser, getAllCourse)
 		.post(CurrentUser, requireInstructor, createCourse)
 		.put(CurrentUser, requireInstructor, updateCourse);
 
