@@ -1,4 +1,4 @@
-import { Payment } from "@/infrastructure/database/mongo/models";
+import { Payment } from "../../../../infrastructure/database/mongo/models";
 import { PaymentEntity } from "@/domain/entities";
 
 export const updatePayment = async (

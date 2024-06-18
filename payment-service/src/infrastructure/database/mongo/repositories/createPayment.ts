@@ -1,7 +1,7 @@
-import { Payment } from "@/infrastructure/database/mongo/models";
+import { Payment } from "../../../../infrastructure/database/mongo/models";
 import { PaymentEntity } from "@/domain/entities";
 import errorHandler from "@/_lib/common/error/errorhandler";
-import ErrorResponse from "@/_lib/common/error/errorResponse";
+import ErrorResponse from "../../../../_lib/common/error/errorResponse";
 
 export const createPayment = async (
     data: PaymentEntity

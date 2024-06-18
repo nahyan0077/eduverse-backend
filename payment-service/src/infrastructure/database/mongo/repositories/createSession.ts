@@ -1,4 +1,4 @@
-import { Session } from "@/infrastructure/database/mongo/models";
+import { Session } from "../../../../infrastructure/database/mongo/models";
 import { SessionEntity } from "@/domain/entities";
 
 export const createSession = async (

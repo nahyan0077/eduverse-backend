@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction, Application } from 'express'
 import cookieParser from 'cookie-parser'
 import {config} from 'dotenv'
+import { routes } from '../infrastructure/routes'
+import { dependencies } from '../_boot/dependencies'
 
 config()
 
@@ -14,7 +16,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 
-app.get('/', (req: Request, res: Response) => {
+
+app.use(routes(dependencies))
+
+app.get('/test', (req: Request, res: Response) => {
     res.status(200).json({
         message: "Payment service ON!"
     })
