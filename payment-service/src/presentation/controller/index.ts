@@ -5,6 +5,6 @@ import { getPaymentSessionController } from "./getPaymentSession";
 export const controllers = (dependencies: IDependencies) => {
     return {
         createSession: createPaymentSessionController(dependencies),
-        getPaymentSessioin: getPaymentSessionController(dependencies),
+        getPaymentSession: getPaymentSessionController(dependencies),
     }
 }
