@@ -23,7 +23,7 @@ export const getPaymentSessionController = (dependencies: IDependencies) => {
             });
 
 		} catch (error: any) {
-            next(error)
+            next(error      )
         }
 	};
 };
