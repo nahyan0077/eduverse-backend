@@ -1,0 +1,10 @@
+import { PaymentEntity } from "@/domain/entities";
+import { IDependencies } from "./IDependencies";
+import { ICreatePaymentUseCase, ICreateSessionUseCase, IGetPaymentSessionByIdUseCase, IUpdatePaymentUseCase } from "@/domain/useCases";
+
+export interface IUseCases {
+    createPaymentUseCase: (dependencies: IDependencies) => ICreatePaymentUseCase;
+    updatePaymentUseCase: (dependencies: IDependencies) => IUpdatePaymentUseCase;
+    createSessionUseCase: (dependencies: IDependencies) => ICreateSessionUseCase;
+    getPaymentSessionByIdUseCase: (dependencies: IDependencies) => IGetPaymentSessionByIdUseCase;
+}
