@@ -19,7 +19,7 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
             const data = [
                 {
                     price_data: {
-                        currency: "USD",
+                        currency: "INR",
                         product_data: {
                             name: courseName,
                             images: [courseThumbnail]
@@ -34,8 +34,8 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
                 payment_method_types: ["card"],
                 line_items: data,
                 mode: "payment",
-                success_url: `${process.env.FRONTENT_URL}/payment-success`,
-                cancel_url: `${process.env.FRONTENT_URL}/payment-failed`
+                success_url: `${process.env.FRONTEND_URL}/payment-success`,
+                cancel_url: `${process.env.FRONTEND_URL}/payment-failed`
             });
 
             const result = await createSessionUseCase(dependencies).execute({
