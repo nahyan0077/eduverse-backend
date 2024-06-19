@@ -15,19 +15,13 @@ export const getEnrollmentByUserIdController = (
 				id
 			);
 
-			if (!result) {
-				return res.status(200).json({
-					success: true,
-					data: {},
-					message: "Enroll to this course!",
-				});
-			} else {
-				return res.status(200).json({
-					success: false,
-					data: {},
-					message: "You have already enrolled to this course!",
-				});
-			}
+            return res.status(200).json({
+                success: true,
+                data: result,
+                message: "All enrolled courses fetched!",
+            });
+
+
 		} catch (error: any) {
 			next(error);
 		}

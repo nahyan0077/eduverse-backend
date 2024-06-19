@@ -45,9 +45,8 @@ export const routes = (dependancies: IDependencies) => {
 
 
 	//enrollment---------------------->
-	router.route("/enrollment")
-				.post(createEnrollment)
-				.get(getEnrollment)
+	router.route("/enrollment").post(createEnrollment)
+	router.route("/enrollment/:id").get(getEnrollment)
 
 
 

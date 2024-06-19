@@ -3,7 +3,7 @@ import { createEnrollment, getEnrollmentByUserId, updateUserProfit } from "../..
 export const coursePurchaseSuccessConsumer = async (
     data: any
 ) => {
-    try {
+    try {        
 
         const existingEnrollments = await getEnrollmentByUserId(data.userId)
 
@@ -12,13 +12,13 @@ export const coursePurchaseSuccessConsumer = async (
         if (match) return
 
         await createEnrollment({
-            userId: data.userId.toString(),
+            userId: data.studentId,
             courseId: data.courseId,
             enrolledAt: Date.now().toString()
         })
 
         //updateing users profits
-        await updateUserProfit(data.userId, data.amount)
+        await updateUserProfit(data.instructorId, data.amount)
 
         console.log("==========");
         console.log("updateUserProfit-consumed--->course-services");

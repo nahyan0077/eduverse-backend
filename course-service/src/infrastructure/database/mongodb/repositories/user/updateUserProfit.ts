@@ -3,7 +3,7 @@ import { User } from "../../models";
 import { Types } from "mongoose";
 
 export const updateUserProfit = async (
-	userId: Types.ObjectId,
+	userId: string,
 	amount: number
 ): Promise<UserEntity | null> => {
 	try {
