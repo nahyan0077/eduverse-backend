@@ -18,6 +18,7 @@ export const routes = (dependancies: IDependencies) => {
 		getAllActiveCourse,
 		getAllActiveCategory,
 		createEnrollment,
+		getEnrollment,
 	} = controller(dependancies);
 
 
@@ -44,7 +45,10 @@ export const routes = (dependancies: IDependencies) => {
 
 
 	//enrollment---------------------->
-	router.route("/enrollment").post(createEnrollment);
+	router.route("/enrollment")
+				.post(createEnrollment)
+				.get(getEnrollment)
+
 
 
 
