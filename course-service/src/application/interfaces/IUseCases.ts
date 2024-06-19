@@ -9,6 +9,7 @@ import {
 	IUpdateCourseUseCase,
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
+import { ICreateEnrollmentUseCase } from "@/domain/IUseCases/IEnrollment";
 
 export interface IUseCases {
 	//category
@@ -22,4 +23,7 @@ export interface IUseCases {
 	getAllCourseUseCase: (depenedencies: IDependencies) => IGetAllCourseUseCase;
 	getAllActiveCoursesUseCase: (dependencies: IDependencies) => IGetAllActiveCoursesUseCases;
 	updateCourseUseCase: (dependencies: IDependencies) => IUpdateCourseUseCase;
+
+	//enrollment 
+	createEnrollmentUseCase: (dependencies: IDependencies) => ICreateEnrollmentUseCase
 }
