@@ -17,7 +17,7 @@ export const createPaymentController = (dependencies: IDependencies) => {
             }
 
             const producerData = {
-                userId: result.userId.toString(),
+                studentId: result.userId.toString(),
                 courseId: result.courseId.toString(),
                 amount: result.amount,
                 instructorId
