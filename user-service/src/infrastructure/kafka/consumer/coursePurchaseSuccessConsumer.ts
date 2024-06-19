@@ -15,6 +15,7 @@ export const coursePurchaseSuccessConsumer = async (
         console.log("==========");
 
     } catch (error: any) {
+        console.log("update user profit-->user",error);
         
     }
 }
