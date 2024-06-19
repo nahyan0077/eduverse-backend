@@ -2,13 +2,13 @@ import { PaymentEntity } from "@/domain/entities";
 import { producer } from "..";
 
 export default async (data: {
-	userId: string;
+	studentId: string;
 	courseId: string;
 	amount: number;
 	instructorId: string;
 }) => {
 	try {
-		const { userId, courseId, amount, instructorId } = data;
+		const { studentId, courseId, amount, instructorId } = data;
 
 		await producer.connect();
 		const message: any = [
@@ -18,9 +18,10 @@ export default async (data: {
 					{
 						key: "coursePurchaseSuccess",
 						value: JSON.stringify({
-							userId: instructorId,
+							instructorId,
 							courseId: courseId,
 							amount: amount,
+							studentId
 						}),
 					},
 				],
@@ -31,9 +32,24 @@ export default async (data: {
 					{
 						key: "coursePurchaseSuccess",
 						value: JSON.stringify({
-							userId: userId,
+							instructorId,
 							courseId: courseId,
 							amount: amount,
+							studentId
+						}),
+					},
+				],
+			},
+			{
+				topic: "auth-service-topic",
+				messages: [
+					{
+						key: "coursePurchaseSuccess",
+						value: JSON.stringify({
+							instructorId,
+							courseId: courseId,
+							amount: amount,
+							studentId
 						}),
 					},
 				],
