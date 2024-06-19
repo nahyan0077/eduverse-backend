@@ -1,4 +1,4 @@
-import { Enrollment } from "@/infrastructure/database/mongo/models";
+import { Enrollment } from "../../../../../infrastructure/database/mongodb/models";
 import { EnrollmentEntity } from "@/domain/entities";
 
 export const getEnrollmentByUserId = async (
