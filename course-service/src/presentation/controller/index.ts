@@ -11,6 +11,7 @@ import {
 	getAllCourseController,
 	updateCourseController,
 } from "./course";
+import { createEnrollmentController } from "./enrollment";
 
 export const controller = (dependancies: IDependencies) => {
 	return {
@@ -27,5 +28,8 @@ export const controller = (dependancies: IDependencies) => {
 		getAllCourse: getAllCourseController(dependancies),
 		updateCourse: updateCourseController(dependancies),
 		getAllActiveCourse : getAllActiveCoursesController(dependancies),
+
+		//enrollment
+		createEnrollment: createEnrollmentController(dependancies),
 	};
 };

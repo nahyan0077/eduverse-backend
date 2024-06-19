@@ -1,7 +1,7 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { controller } from "../../presentation/controller";
 import { Router } from "express";
-import { CurrentUser } from "@eduverse/common";
+import { CurrentUser, RequireAuth } from "@eduverse/common";
 import { requireAdmin } from "../../_lib/common/middlewares/requireAdmin";
 import { requireInstructor } from "../../_lib/common/middlewares/requireInsructor";
 
@@ -17,6 +17,7 @@ export const routes = (dependancies: IDependencies) => {
 		updateCourse,
 		getAllActiveCourse,
 		getAllActiveCategory,
+		createEnrollment,
 	} = controller(dependancies);
 
 	router
@@ -34,6 +35,9 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/get-active-courses").get(getAllActiveCourse);
 
 	router.route("/get-active-category").get(getAllActiveCategory);
+
+	router.route("/enrollment")
+	.post(CurrentUser, RequireAuth, createEnrollment)
 
 	return router;
 };
