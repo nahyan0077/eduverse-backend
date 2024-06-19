@@ -3,19 +3,17 @@ import { Enrollment } from "../../../../../infrastructure/database/mongodb/model
 import { EnrollmentEntity } from "@/domain/entities";
 
 export const getEnrollmentByUserId = async (
-    userId: Types.ObjectId
+	userId: string
 ): Promise<EnrollmentEntity[] | null> => {
-    try {
+	try {
+		const enrollment = await Enrollment.find({ userId }).populate("courseId");
 
-        const enrollment = await Enrollment.find({ userId }).populate("courseId");
+		if (!enrollment) {
+			throw new Error("Course enrollment failed!");
+		}
 
-        if (!enrollment) {
-            throw new Error("Course enrollment failed!");
-        }
-
-        return enrollment;
-
-    } catch (error: any) {
-        throw new Error(error?.message);
-    }
-}
+		return enrollment;
+	} catch (error: any) {
+		throw new Error(error?.message);
+	}
+};

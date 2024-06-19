@@ -1,4 +1,4 @@
-import ErrorResponse from "../../../_lib/common/error/errorResponse";
+
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
 
