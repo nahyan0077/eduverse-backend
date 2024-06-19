@@ -15,6 +15,9 @@ export const updateUserProfit = async (
 			{ new: true }
 		);
 
+		console.log(instructorProfit,"instructor profit");
+		
+
 		const updateAdminProfit = await User.findOneAndUpdate(
 			{ role: "admin" },
 			{ $inc: { profit: adminProfit } },

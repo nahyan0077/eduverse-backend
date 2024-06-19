@@ -15,7 +15,7 @@ export const routes = (dependencies: IDependencies) => {
 
 
 	//payments
-	router.route('/').post(CurrentUser, RequireAuth,createPayment);
+	router.route('/').post(createPayment);
         
 
 	return router;

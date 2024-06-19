@@ -10,6 +10,9 @@ export const getPaymentSessionController = (dependencies: IDependencies) => {
 		try {
 			const { id } = req.params;
 
+            console.log(id,"get payment session id");
+            
+
 			const result = await getPaymentSessionByIdUseCase(dependencies).execute(id);
 
             if (!result) {

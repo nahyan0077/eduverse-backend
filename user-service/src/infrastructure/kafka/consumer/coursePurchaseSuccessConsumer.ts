@@ -1,4 +1,4 @@
-import { updateUserProfit } from "@/infrastructure/database/mongo/respositories"
+import { updateUserProfit } from "../../../infrastructure/database/mongo/respositories"
 
 export const coursePurchaseSuccessConsumer = async (
     data: {
