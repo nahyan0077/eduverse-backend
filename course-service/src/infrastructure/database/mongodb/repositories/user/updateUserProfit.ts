@@ -7,19 +7,16 @@ export const updateUserProfit = async (
 	amount: number
 ): Promise<UserEntity | null> => {
 	try {
-		const instructorProfit = amount * 0.7;
-		const adminProfit = amount * 0.3;
+		const instructorProfit = Math.trunc(amount * 0.7);
+		const adminProfit = Math.trunc(amount * 0.3);
 
 		const updateInstructorProfit = await User.findByIdAndUpdate(
 			userId,
 			{ $inc: { profit: instructorProfit } },
 			{ new: true }
-		);
+		);		
 
-		console.log(instructorProfit,"instructor profit");
-		
-
-		const updateAdminProfit = await User.findOneAndUpdate(
+		await User.findOneAndUpdate(
 			{ role: "admin" },
 			{ $inc: { profit: adminProfit } },
 			{ new: true }
