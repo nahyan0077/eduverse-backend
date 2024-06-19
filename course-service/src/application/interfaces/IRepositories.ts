@@ -1,4 +1,4 @@
-import {CategoryEntity, CourseEntity } from "@/domain/entities";
+import {CategoryEntity, CourseEntity, EnrollmentEntity } from "@/domain/entities";
 
 
 
@@ -14,6 +14,9 @@ export interface IRepositories {
     getAllCourse: () => Promise < CourseEntity [] | null >
     getAllActiveCourses: (data: {page: string | number, limit: string | number }) => Promise < CourseEntity [] | null >
     updateCourse: (data: CourseEntity) => Promise < CourseEntity | null >
+
+    //enrollments
+    createEnrollment: (data: EnrollmentEntity) => Promise <EnrollmentEntity | null>
 }
 
 
