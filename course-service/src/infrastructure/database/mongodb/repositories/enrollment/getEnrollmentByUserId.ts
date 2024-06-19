@@ -1,8 +1,9 @@
+import { Types } from "mongoose";
 import { Enrollment } from "../../../../../infrastructure/database/mongodb/models";
 import { EnrollmentEntity } from "@/domain/entities";
 
 export const getEnrollmentByUserId = async (
-    userId: string
+    userId: Types.ObjectId
 ): Promise<EnrollmentEntity[] | null> => {
     try {
 

@@ -1,13 +1,24 @@
-import { updateUserProfit } from "../../../infrastructure/database/mongodb/repositories";
+import { createEnrollment, getEnrollmentByUserId, updateUserProfit } from "../../../infrastructure/database/mongodb/repositories";
 
 export const coursePurchaseSuccessConsumer = async (
-    data: {
-        userId: string,
-        amount: number
-    }
+    data: any
 ) => {
     try {
-        const update = await updateUserProfit(data.userId, data.amount)
+
+        const existingEnrollments = await getEnrollmentByUserId(data.userId)
+
+        const match = existingEnrollments?.find((item)=> item.courseId.toString() == data.courseId.toString())
+
+        if (match) return
+
+        await createEnrollment({
+            userId: data.userId.toString(),
+            courseId: data.courseId,
+            enrolledAt: Date.now().toString()
+        })
+
+        //updateing users profits
+        await updateUserProfit(data.userId, data.amount)
 
         console.log("==========");
         console.log("updateUserProfit-consumed--->course-services");

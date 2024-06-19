@@ -1,8 +1,9 @@
 import { UserEntity } from "@/domain/entities";
 import { User } from "../../models";
+import { Types } from "mongoose";
 
 export const updateUserProfit = async (
-	userId: string,
+	userId: Types.ObjectId,
 	amount: number
 ): Promise<UserEntity | null> => {
 	try {
