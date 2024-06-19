@@ -9,10 +9,12 @@ export const routes = (dependencies: IDependencies) => {
 
 	const router = Router();
 
+	//payment sessions
 	router.route("/session").post(createSession);
-
 	router.route("/session/:id").get(getPaymentSession)
 
+
+	//payments
 	router.route('/').post(CurrentUser, RequireAuth,createPayment);
         
 
