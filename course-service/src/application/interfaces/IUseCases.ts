@@ -10,6 +10,7 @@ import {
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
 import { ICreateEnrollmentUseCase } from "@/domain/IUseCases/IEnrollment";
+import { IGetEnrollmentByIdUseCase, IGetEnrollmentByUserIdUseCase } from "../useCases";
 
 export interface IUseCases {
 	//category
@@ -26,4 +27,6 @@ export interface IUseCases {
 
 	//enrollment 
 	createEnrollmentUseCase: (dependencies: IDependencies) => ICreateEnrollmentUseCase
+	getEnrollmentByUserIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByUserIdUseCase;
+    getEnrollmentByIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByIdUseCase;
 }
