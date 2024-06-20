@@ -9,7 +9,7 @@ export const coursePurchaseSuccessConsumer = async (
         const update = await updateUserProfit(data.instructorId, data.amount)
 
         console.log("==========");
-        console.log("updateUserProfit-consumed--->user-services");
+        console.log("updateUserProfit-consumed--->auth-services");
         console.log("==========");
 
     } catch (error: any) {

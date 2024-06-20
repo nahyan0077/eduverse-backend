@@ -7,10 +7,7 @@ export const updateUserProfit = async (
 ): Promise<UserEntity | null> => {
 	try {
 		const instructorProfit = Math.trunc(amount * 0.7);
-		const adminProfit = Math.trunc(amount * 0.3);
-
-		console.log(instructorProfit,adminProfit,"profit calculated and truc");
-		
+		const adminProfit = Math.trunc(amount * 0.3);		
 
 		const updateInstructorProfit = await User.findByIdAndUpdate(
 			userId,

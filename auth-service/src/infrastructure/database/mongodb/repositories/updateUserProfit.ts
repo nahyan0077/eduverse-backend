@@ -9,9 +9,6 @@ export const updateUserProfit = async (
 		const instructorProfit = Math.trunc(amount * 0.7);
 		const adminProfit = Math.trunc(amount * 0.3);
 
-		console.log(instructorProfit,adminProfit,"profit calculated and truc");
-		
-
 		const updateInstructorProfit = await User.findByIdAndUpdate(
 			userId,
 			{ $inc: { profit: instructorProfit } },

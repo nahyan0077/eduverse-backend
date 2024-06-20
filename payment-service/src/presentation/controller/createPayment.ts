@@ -10,6 +10,9 @@ export const createPaymentController = (dependencies: IDependencies) => {
             
             const { instructorId, ...data } = req.body;
 
+            console.log(req.body,"text purchase");
+            
+
             const result = await createPaymentUseCase(dependencies).execute(req.body)
 
             if (!result) {

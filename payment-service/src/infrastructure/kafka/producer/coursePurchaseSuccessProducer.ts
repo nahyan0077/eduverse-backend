@@ -58,7 +58,7 @@ export default async (data: {
 
 		await producer.sendBatch({ topicMessages: message });
 
-		console.log(message, "course purchase success produced--->");
+		console.log(message, "course purchase success produced ( payment-service )--->");
 	} catch (error: any) {
 		console.error("kafka produce error:", error?.message);
 	} finally {
