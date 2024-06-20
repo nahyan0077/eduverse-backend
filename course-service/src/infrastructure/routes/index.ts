@@ -29,7 +29,7 @@ export const routes = (dependancies: IDependencies) => {
 		.post(CurrentUser, requireInstructor, createCourse)
 		.put(CurrentUser, requireInstructor, updateCourse);
 
-	router.route("/:id").get(getCourseById);
+	router.route("/enrolled/:id").get(CurrentUser,RequireAuth , getCourseById);
 
 	//category----------------------->
 	router

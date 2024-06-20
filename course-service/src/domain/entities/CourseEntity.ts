@@ -35,7 +35,7 @@ enum Level {
 }
 
 export interface CourseEntity {
-    _id: Types.ObjectId;
+    _id?: Types.ObjectId;
     title: string;
     description: string;
     thumbnail: string;
