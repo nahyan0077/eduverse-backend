@@ -9,6 +9,7 @@ import {
 	createCourseController,
 	getAllActiveCoursesController,
 	getAllCourseController,
+	getCourseByIdController,
 	updateCourseController,
 } from "./course";
 import { createEnrollmentController, getEnrollmentByUserIdController } from "./enrollment";
@@ -28,6 +29,7 @@ export const controller = (dependancies: IDependencies) => {
 		getAllCourse: getAllCourseController(dependancies),
 		updateCourse: updateCourseController(dependancies),
 		getAllActiveCourse : getAllActiveCoursesController(dependancies),
+		getCourseById: getCourseByIdController(dependancies),
 
 		//enrollment
 		createEnrollment: createEnrollmentController(dependancies),

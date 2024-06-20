@@ -19,8 +19,8 @@ export const routes = (dependancies: IDependencies) => {
 		getAllActiveCategory,
 		createEnrollment,
 		getEnrollment,
+		getCourseById,
 	} = controller(dependancies);
-
 
 	//course------------------------->
 	router
@@ -29,7 +29,7 @@ export const routes = (dependancies: IDependencies) => {
 		.post(CurrentUser, requireInstructor, createCourse)
 		.put(CurrentUser, requireInstructor, updateCourse);
 
-
+	router.route("/:id").get(getCourseById);
 
 	//category----------------------->
 	router
@@ -42,13 +42,9 @@ export const routes = (dependancies: IDependencies) => {
 
 	router.route("/get-active-category").get(getAllActiveCategory);
 
-
-
 	//enrollment---------------------->
-	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment)
-	router.route("/enrollment/:id").get(CurrentUser, RequireAuth, getEnrollment)
+	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment);
+	router.route("/enrollment/:id").get(CurrentUser, RequireAuth, getEnrollment);
 
-
-	
 	return router;
 };
