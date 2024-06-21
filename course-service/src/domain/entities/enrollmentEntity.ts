@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 interface LessonProgress {
-    lessonId: Types.ObjectId | string;
+    lessonNumber: number;
     totalTimeWatched: number;
 }
 
@@ -18,9 +18,9 @@ export interface EnrollmentEntity {
     enrolledAt?: Date | string;
     completionStatus?: CompleationStatus;
     progress?: {
-        completedLessons?: Types.ObjectId[] | [] | null;
+        completedLessons?:  number[] | [] | null;
         completedAssessments?: Types.ObjectId[] | [] | null;
-        currentLesson?: Types.ObjectId | string;
         lessonProgress?: LessonProgress[] | null;
+        overallCompletionPercentage?: number
     };
 };
