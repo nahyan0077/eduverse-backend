@@ -44,7 +44,8 @@ export const routes = (dependancies: IDependencies) => {
 
 	//enrollment---------------------->
 	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment);
-	router.route("/enrollment/:id").get(CurrentUser, RequireAuth, getEnrollment);
+	router.route("/enrollment/user/:userId").get(CurrentUser, RequireAuth, getEnrollment);
+	
 
 	return router;
 };

@@ -9,10 +9,10 @@ export const getEnrollmentByUserIdController = (
 	} = dependencies;
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			const { id } = req.params;
+			const { userId } = req.params;
 
 			const result = await getEnrollmentByUserIdUseCase(dependencies).execute(
-				id
+				userId
 			);
 
             return res.status(200).json({
