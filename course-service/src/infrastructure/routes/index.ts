@@ -4,7 +4,6 @@ import { Router } from "express";
 import { CurrentUser, RequireAuth } from "@eduverse/common";
 import { requireAdmin } from "../../_lib/common/middlewares/requireAdmin";
 import { requireInstructor } from "../../_lib/common/middlewares/requireInsructor";
-import { getEnrollmentById } from "../database/mongodb/repositories";
 
 export const routes = (dependancies: IDependencies) => {
 	const router = Router();
@@ -21,6 +20,7 @@ export const routes = (dependancies: IDependencies) => {
 		createEnrollment,
 		getEnrollmentByUserId,
 		getCourseById,
+		getEnrollmentById
 	} = controller(dependancies);
 
 	//course------------------------->

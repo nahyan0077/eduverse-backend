@@ -9,6 +9,9 @@ export const getCourseByIdController = (depenedencies: IDependencies) => {
 		try {
 			const { id } = req.params;
 
+			console.log(id,"get id by enroll");
+			
+
 			const result = await getCourseByIdUseCase(depenedencies).execute(id);
 
 			if (!result) {
