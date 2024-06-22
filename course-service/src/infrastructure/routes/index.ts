@@ -21,7 +21,8 @@ export const routes = (dependancies: IDependencies) => {
 		getEnrollmentByUserId,
 		getCourseById,
 		getEnrollmentById,
-		updateLessonProgress
+		updateLessonProgress,
+		searchCourse,
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -32,6 +33,8 @@ export const routes = (dependancies: IDependencies) => {
 		.put(CurrentUser, RequireAuth, updateCourse);
 
 	router.route("/enrolled/:id").get(CurrentUser,RequireAuth , getCourseById);
+
+	router.route('/search').get(searchCourse)
 
 	//category----------------------->
 	router

@@ -16,6 +16,7 @@ export interface IRepositories {
     getAllActiveCourses: (data: {page: string | number, limit: string | number }) => Promise < CourseEntity [] | null >
     updateCourse: (data: CourseEntity) => Promise < CourseEntity | null >
     getCourseById: (id: string) => Promise < CourseEntity | null >
+    searchCourse: (query: string) => Promise <CourseEntity[] | []>
 
     //enrollments
     createEnrollment: (data: EnrollmentEntity) => Promise <EnrollmentEntity | null>
@@ -23,6 +24,3 @@ export interface IRepositories {
     getEnrollmentById: (id: string) => Promise<EnrollmentEntity | null>;
     updateLessonProgress: ( enrollmentId: Types.ObjectId,lessonId: Types.ObjectId, totalLessons: number) => Promise <EnrollmentEntity | null>
 }
-
-
-

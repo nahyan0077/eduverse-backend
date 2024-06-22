@@ -7,10 +7,16 @@ import {
 	IGetAllCategoriesUseCase,
 	IGetAllCourseUseCase,
 	IGetCourseByIdUseCase,
+	ISearchCourseUseCase,
 	IUpdateCourseUseCase,
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
-import { ICreateEnrollmentUseCase, IGetEnrollmentByIdUseCase, IGetEnrollmentByUserIdUseCase, IUpdateLessonProgressUseCase } from "@/domain/IUseCases/IEnrollment";
+import { 
+	ICreateEnrollmentUseCase, 
+	IGetEnrollmentByIdUseCase, 
+	IGetEnrollmentByUserIdUseCase, 
+	IUpdateLessonProgressUseCase 
+} from "@/domain/IUseCases/IEnrollment";
 
 
 export interface IUseCases {
@@ -26,6 +32,7 @@ export interface IUseCases {
 	getAllActiveCoursesUseCase: (dependencies: IDependencies) => IGetAllActiveCoursesUseCases;
 	updateCourseUseCase: (dependencies: IDependencies) => IUpdateCourseUseCase;
 	getCourseByIdUseCase: (dependencies: IDependencies) => IGetCourseByIdUseCase
+	searchCourseUseCase: (dependencies: IDependencies) => ISearchCourseUseCase
 
 	//enrollment 
 	createEnrollmentUseCase: (dependencies: IDependencies) => ICreateEnrollmentUseCase
