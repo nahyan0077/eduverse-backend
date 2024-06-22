@@ -20,7 +20,8 @@ export const routes = (dependancies: IDependencies) => {
 		createEnrollment,
 		getEnrollmentByUserId,
 		getCourseById,
-		getEnrollmentById
+		getEnrollmentById,
+		updateLessonProgress
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -47,6 +48,7 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment);
 	router.route("/enrollment/user/:userId").get(CurrentUser, RequireAuth, getEnrollmentByUserId);
 	router.route("/enrollment/:id").get(CurrentUser, RequireAuth, getEnrollmentById);
+	router.route("/enrollment/update").post(CurrentUser, RequireAuth, updateLessonProgress)
 
 
 	return router;

@@ -10,7 +10,7 @@ import {
 	IUpdateCourseUseCase,
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
-import { ICreateEnrollmentUseCase, IGetEnrollmentByIdUseCase, IGetEnrollmentByUserIdUseCase } from "@/domain/IUseCases/IEnrollment";
+import { ICreateEnrollmentUseCase, IGetEnrollmentByIdUseCase, IGetEnrollmentByUserIdUseCase, IUpdateLessonProgressUseCase } from "@/domain/IUseCases/IEnrollment";
 
 
 export interface IUseCases {
@@ -31,4 +31,5 @@ export interface IUseCases {
 	createEnrollmentUseCase: (dependencies: IDependencies) => ICreateEnrollmentUseCase
 	getEnrollmentByUserIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByUserIdUseCase;
     getEnrollmentByIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByIdUseCase;
+	updateLessonProgressUseCase: (dependencies: IDependencies) => IUpdateLessonProgressUseCase
 }

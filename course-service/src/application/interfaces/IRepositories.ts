@@ -1,4 +1,5 @@
 import {CategoryEntity, CourseEntity, EnrollmentEntity } from "@/domain/entities";
+import {Types} from 'mongoose'
 
 
 
@@ -20,6 +21,7 @@ export interface IRepositories {
     createEnrollment: (data: EnrollmentEntity) => Promise <EnrollmentEntity | null>
     getEnrollmentByUserId: (userId: string) => Promise<EnrollmentEntity[] | null>;
     getEnrollmentById: (id: string) => Promise<EnrollmentEntity | null>;
+    updateLessonProgress: ( enrollmentId: Types.ObjectId,lessonId: Types.ObjectId, totalLessons: number) => Promise <EnrollmentEntity | null>
 }
 
 
