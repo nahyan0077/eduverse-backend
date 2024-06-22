@@ -12,7 +12,7 @@ export interface IRepositories {
 
     //course
     createCourse: (data: CourseEntity) => Promise < CourseEntity | null >
-    getAllCourse: () => Promise < CourseEntity [] | null >
+    getAllCourse: (page: number, limit: number, search: string) => Promise<{ courses: CourseEntity[], totalPages: number, currentPage: number}>;
     getAllActiveCourses: (data: {page: string | number, limit: string | number }) => Promise < CourseEntity [] | null >
     updateCourse: (data: CourseEntity) => Promise < CourseEntity | null >
     getCourseById: (id: string) => Promise < CourseEntity | null >

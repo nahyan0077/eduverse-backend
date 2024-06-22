@@ -1,5 +1,5 @@
-import { CategoryEntity, CourseEntity } from "@/domain/entities";
+import { CategoryEntity, CourseEntity } from "../../../domain/entities";
 
 export interface IGetAllCourseUseCase {
-    execute() : Promise <CourseEntity[] | null>
-}
+    execute(page: number, limit: number, search: string): Promise<{ courses: CourseEntity[]; totalPages: number; currentPage: number;}>;
+};
