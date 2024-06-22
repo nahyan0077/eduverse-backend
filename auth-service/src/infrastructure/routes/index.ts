@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { controllers } from "../../presentation/controller";
-import { jwtMiddleware } from "@eduverse/common";
+import { CurrentUser, RequireAuth } from "@eduverse/common";
 
 export const routes = (dependancies: IDependancies) => {
 	const {
@@ -31,13 +31,13 @@ export const routes = (dependancies: IDependancies) => {
 
 	router.route("/google-auth").post(googleAuth);
 
-	router.route("/getUser").get(jwtMiddleware, getUser);
+	router.route("/getUser").get(CurrentUser, RequireAuth, getUser);
 
 	router.route("/forgot-password-mail").post(forgotPasswordMail);
 
 	router.route("/update-password").post(updatePassword);
 
-	router.route("/logout").delete(jwtMiddleware, logout);
+	router.route("/logout").delete(CurrentUser, RequireAuth, logout);
 
 	return router;
 };
