@@ -4,16 +4,24 @@ import { Course } from "../../models/CourseModel";
 export const getAllActiveCourses = async (data: {
 	page: string | number;
 	limit: string | number;
+	search: string;
 }) => {
 	try {
-		const page = Number(data.page) || 1;
-		const limit = Number(data.limit) || 6;
+		const page = Number(data.page);
+		const limit = Number(data.limit);
 		const skip = (page - 1) * limit;
 
-		const result = await Course.find({ isBlocked: false, isPublished: true })
+		let query: any = { isBlocked: false, isPublished: true };
+
+		if (data.search) {
+			let searchRegx = new RegExp(data.search, "i");
+			query.$or = [{ title: searchRegx }];
+		}
+
+		const result = await Course.find(query)
 			.populate({
 				path: "instructorRef",
-				select: "firstName profile.avatar" 
+				select: "firstName profile.avatar",
 			})
 			.populate("categoryRef", "categoryName")
 			.sort({ updatedAt: "descending" })
