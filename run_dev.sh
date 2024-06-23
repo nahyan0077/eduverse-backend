@@ -24,4 +24,8 @@ npm run dev &
 cd ../payment-service/
 npm run dev &
 
+# Run chat-service
+cd ../chat-service/
+npm run dev &
+
 wait
