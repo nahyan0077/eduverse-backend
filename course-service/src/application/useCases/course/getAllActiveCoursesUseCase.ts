@@ -5,8 +5,8 @@ export const getAllActiveCoursesUseCase = (dependencies: IDependencies) => {
 		repositories: { getAllActiveCourses },
 	} = dependencies;
 	return {
-		execute: async (page: string | number, limit: string | number) => {
-			let data = { page, limit };
+		execute: async (page: string | number, limit: string | number, search: string) => {
+			let data = { page, limit, search };
 			return await getAllActiveCourses(data);
 		},
 	};

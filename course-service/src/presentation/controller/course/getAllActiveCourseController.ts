@@ -10,8 +10,9 @@ export const getAllActiveCoursesController = (dependencies: IDependencies) => {
             
             const page = parseInt(req.query.page as string) || 0;
             const limit = parseInt(req.query.limit as string) || 0;
+            const search = req.query.search as string
 
-            const result = await getAllActiveCoursesUseCase(dependencies).execute(page,limit)
+            const result = await getAllActiveCoursesUseCase(dependencies).execute(page,limit,search)
             
 
             res.status(200).json({
