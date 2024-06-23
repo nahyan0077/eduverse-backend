@@ -18,6 +18,8 @@ export const getAllActiveCourses = async (data: {
 			query.$or = [{ title: searchRegx }];
 		}
 
+		const totalCourses = await Course.countDocuments(query);
+
 		const result = await Course.find(query)
 			.populate({
 				path: "instructorRef",
@@ -31,7 +33,11 @@ export const getAllActiveCourses = async (data: {
 		if (!result) {
 			throw ErrorResponse.internalError("Active Course fetching failed..!");
 		}
-		return result;
+		return {
+			courses: result,
+			totalPages: Math.ceil(totalCourses / limit),
+			currentPage: page
+		};
 	} catch (error: any) {
 		throw ErrorResponse.internalError(
 			error.message || "An unexpected error occurred"

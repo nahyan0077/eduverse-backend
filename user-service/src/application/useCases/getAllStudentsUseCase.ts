@@ -5,8 +5,8 @@ export const getAllStudentsUseCase = (dependencies: IDependencies) => {
 		repositories: { getAllStudents },
 	} = dependencies;
 	return {
-		execute: async (page?: number, limit?: number) => {
-			return await getAllStudents(page, limit);
+		execute: async (page?: number, limit?: number, search?: string) => {
+			return await getAllStudents(page, limit, search);
 		},
 	};
 };

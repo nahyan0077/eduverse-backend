@@ -1,19 +1,29 @@
 import { UserEntity } from "@/domain/entities";
 import { User } from "../models";
 
-export const getAllStudents = async (page?: number, limit?:number): Promise<UserEntity[] | null> => {
-	try {
+export const getAllStudents = async (page: number = 1, limit: number = 5, search?: string) => {
+    try {
+        const skipNo = (page - 1) * limit;
 
-        const pageNo = page ?? 1
-        const limitNo = limit ?? 10
-        const skipNo = (pageNo - 1) * limitNo
+        const query: any = { role: "student" };
 
-		const data = await User.find({ role: "student" }).skip(skipNo).limit(limitNo);
-		console.log(data,"studuuuu");
-		
-		return data;
-	} catch (error: any) {
+        if (search) {
+            const searchQuery = new RegExp(search, "i");
+            query.$or = [{ firstName: searchQuery }, { userName: searchQuery }];
+        }
 
-		throw new Error(error?.message);
-	}
+        const totalStudents = await User.countDocuments(query);
+
+        const data = await User.find(query)
+            .skip(skipNo)
+            .limit(limit);
+
+        return {
+            data,
+            totalPages: Math.ceil(totalStudents / limit),
+            currentPage: page
+        };
+    } catch (error: any) {
+        throw new Error(error?.message || "An unexpected error occurred");
+    }
 };
