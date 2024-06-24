@@ -53,6 +53,11 @@ const routes = [
         target: String(process.env.PAYMENT_SERVICE),
         changeOrigin: true,
     },
+    {
+        context: "/api/chat",
+        target: String(process.env.CHAT_SERVICE),
+        changeOrigin: true,
+    },
 ]
 
 routes.forEach((route) => {

@@ -19,11 +19,12 @@ const PORT: number = Number(process.env.PORT) || 4001;
 
 // Middleware
 app.use(express.json());
+// app.use()
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 app.use(morgan("dev"));
 
-// Routes
 
 // Home route
 app.get("/test", (req: Request, res: Response) => {
@@ -42,9 +43,5 @@ app.all("*", (req: Request, res: Response) => {
 });
 
 // app.use(errorHandler)
-
-
-
-
 
 export default app;
