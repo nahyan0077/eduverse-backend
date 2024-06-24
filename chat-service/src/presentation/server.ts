@@ -25,7 +25,6 @@ app.use(cookieParser());
 
 app.use(morgan("dev"));
 
-
 // Home route
 app.get("/test", (req: Request, res: Response) => {
 	res.status(200).json({
