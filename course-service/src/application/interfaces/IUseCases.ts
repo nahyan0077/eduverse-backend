@@ -1,6 +1,7 @@
 import {
 	IAddCategoryUseCase,
 	ICreateCourseUseCase,
+	ICreateReviewUseCase,
 	IEditCategoryUseCase,
 	IGetAllActiveCategoriesUseCase,
 	IGetAllActiveCoursesUseCases,
@@ -39,4 +40,7 @@ export interface IUseCases {
 	getEnrollmentByUserIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByUserIdUseCase;
     getEnrollmentByIdUseCase: (dependencies: IDependencies) => IGetEnrollmentByIdUseCase;
 	updateLessonProgressUseCase: (dependencies: IDependencies) => IUpdateLessonProgressUseCase
+
+	//review
+	createReviewUseCase: (dependencies: IDependencies) => ICreateReviewUseCase
 }

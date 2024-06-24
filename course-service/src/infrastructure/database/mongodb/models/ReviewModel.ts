@@ -28,4 +28,4 @@ const reviewSchema = new Schema(
   { timestamps: true }
 );
 
-export const Review = model<ReviewEntity>("Review", reviewSchema);
+export const Review = model<ReviewEntity>("review", reviewSchema);
