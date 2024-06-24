@@ -5,8 +5,8 @@ export const getAllReviewsUseCase = (dependancies: IDependencies) => {
     const { repositories: {getAllReviews} } = dependancies
 
     return{
-        execute: async (page: string | number, limit: string | number) => {
-            return await getAllReviews(page,limit)
+        execute: async (page: string | number, limit: string | number, courseId: string) => {
+            return await getAllReviews(page,limit,courseId)
         }
     }
 }

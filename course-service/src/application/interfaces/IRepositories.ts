@@ -27,5 +27,5 @@ export interface IRepositories {
 
     //review
     createReview: (data: ReviewEntity) => Promise <ReviewEntity | null>
-    getAllReviews: (page: string | number, limit: string | number) => Promise <{ reviews: ReviewEntity[], totalPages: number, currentPage: number}>
+    getAllReviews: (page: string | number, limit: string | number, courseId: string) => Promise <{ reviews: ReviewEntity[], totalPages: number, currentPage: number}>
 }

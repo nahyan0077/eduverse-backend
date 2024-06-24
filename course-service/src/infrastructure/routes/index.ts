@@ -59,7 +59,7 @@ export const routes = (dependancies: IDependencies) => {
 	//create review----------------->
 	router.route('/review')
 			.post(CurrentUser,RequireAuth,createReview)
-			.get(CurrentUser, RequireAuth, getAllReviews)
+			.get(getAllReviews)
 
 
 	return router;
