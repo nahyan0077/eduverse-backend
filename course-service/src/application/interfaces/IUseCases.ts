@@ -1,23 +1,28 @@
 import {
 	IAddCategoryUseCase,
 	ICreateCourseUseCase,
+	ICreateEnrollmentUseCase,
 	ICreateReviewUseCase,
 	IEditCategoryUseCase,
 	IGetAllActiveCategoriesUseCase,
 	IGetAllActiveCoursesUseCases,
 	IGetAllCategoriesUseCase,
 	IGetAllCourseUseCase,
+	IGetAllReviewsUseCase,
 	IGetCourseByIdUseCase,
+	IGetEnrollmentByIdUseCase,
+	IGetEnrollmentByUserIdUseCase,
 	ISearchCourseUseCase,
 	IUpdateCourseUseCase,
+	IUpdateLessonProgressUseCase,
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
-import { 
-	ICreateEnrollmentUseCase, 
-	IGetEnrollmentByIdUseCase, 
-	IGetEnrollmentByUserIdUseCase, 
-	IUpdateLessonProgressUseCase 
-} from "@/domain/IUseCases/IEnrollment";
+// import { 
+// 	ICreateEnrollmentUseCase, 
+// 	IGetEnrollmentByIdUseCase, 
+// 	IGetEnrollmentByUserIdUseCase, 
+// 	IUpdateLessonProgressUseCase 
+// } from "@/domain/IUseCases/IEnrollment";
 
 
 export interface IUseCases {
@@ -43,4 +48,5 @@ export interface IUseCases {
 
 	//review
 	createReviewUseCase: (dependencies: IDependencies) => ICreateReviewUseCase
+	getAllReviewsUseCase: (dependencies: IDependencies) => IGetAllReviewsUseCase
 }

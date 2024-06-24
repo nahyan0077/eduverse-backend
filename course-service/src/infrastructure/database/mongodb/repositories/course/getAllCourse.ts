@@ -5,7 +5,6 @@ export const getAllCourse = async (
 	page: number = 1,
 	limit: number = 5,
 	search: string = "",
-
 ) => {
 	try {
 		const query: Record<string, any> = {};
@@ -16,7 +15,6 @@ export const getAllCourse = async (
 				{ title: { $regex: search, $options: "i" } }
 			];
 		}
-
 
 		const totalCourses = await Course.countDocuments(query);
 

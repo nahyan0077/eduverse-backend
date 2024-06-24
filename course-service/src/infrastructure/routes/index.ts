@@ -24,6 +24,7 @@ export const routes = (dependancies: IDependencies) => {
 		updateLessonProgress,
 		searchCourse,
 		createReview,
+		getAllReviews
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -56,7 +57,10 @@ export const routes = (dependancies: IDependencies) => {
 
 
 	//create review----------------->
-	router.route('/review').post(CurrentUser,RequireAuth,createReview)
+	router.route('/review')
+			.post(CurrentUser,RequireAuth,createReview)
+			.get(CurrentUser, RequireAuth, getAllReviews)
+
 
 	return router;
 };

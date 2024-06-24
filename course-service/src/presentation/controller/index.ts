@@ -20,6 +20,7 @@ import {
 	updateLessonProgressController,
 } from "./enrollment";
 import { createReviewController } from "./review";
+import { getAllReviewsController } from "./review/getAllReviewsController";
 
 export const controller = (dependancies: IDependencies) => {
 	return {
@@ -45,5 +46,6 @@ export const controller = (dependancies: IDependencies) => {
 
 		//review
 		createReview: createReviewController(dependancies),
+		getAllReviews: getAllReviewsController(dependancies)
 	};
 };
