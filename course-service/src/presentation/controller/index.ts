@@ -17,6 +17,7 @@ import {
 	createEnrollmentController,
 	getEnrollmentByIdController,
 	getEnrollmentByUserIdController,
+	getStudentsEnrolledByInstructorController,
 	updateLessonProgressController,
 } from "./enrollment";
 import { createReviewController } from "./review";
@@ -43,6 +44,7 @@ export const controller = (dependancies: IDependencies) => {
 		getEnrollmentByUserId: getEnrollmentByUserIdController(dependancies),
 		getEnrollmentById: getEnrollmentByIdController(dependancies),
 		updateLessonProgress: updateLessonProgressController(dependancies),
+		getStudentsEnrolledByInstructor: getStudentsEnrolledByInstructorController(dependancies),
 
 		//review
 		createReview: createReviewController(dependancies),
