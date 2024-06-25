@@ -1,18 +1,18 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
 
-export const getStudentsEnrolledByInstructorController = (dependancies: IDependencies) => {
-    const { useCases: {getStudentsEnrolledByInstructorUseCase} } = dependancies
+export const getInstructorsByStudentController = (dependancies: IDependencies) => {
+    const { useCases: {getInstructorsByStudentUseCase} } = dependancies
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
 
 
-            const result = await getStudentsEnrolledByInstructorUseCase(dependancies).execute(req.params?.instructorId)
+            const result = await getInstructorsByStudentUseCase(dependancies).execute(req.params?.studentId)
 
             if (!result) {
                 return res.status(200).json({
                     success: false,
-                    message: "No students enrolled under this instructor"
+                    message: "No intructors by this student"
                 })
             }
 

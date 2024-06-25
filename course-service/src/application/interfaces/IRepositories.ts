@@ -24,6 +24,7 @@ export interface IRepositories {
     getEnrollmentById: (id: string) => Promise<EnrollmentEntity | null>;
     updateLessonProgress: ( enrollmentId: Types.ObjectId,lessonId: Types.ObjectId, totalLessons: number) => Promise <EnrollmentEntity | null>
     getStudentsEnrolledByInstructor: (instructorId: string) => Promise <EnrollmentEntity[]>
+    getInstructorsByStudent: (studentId: string) => Promise <CourseEntity[]>
 
 
     //review
