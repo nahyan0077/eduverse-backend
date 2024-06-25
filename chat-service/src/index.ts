@@ -10,6 +10,7 @@ import { createServer } from "http";
 
 		socket(server);
 
+
 		await database();
 
 		server.listen(process.env.PORT, () => {

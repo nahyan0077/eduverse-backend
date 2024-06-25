@@ -1,4 +1,4 @@
-import { User } from "@/infrastructure/database/mongo/models";
+import { User } from "@/infrastructure/database/mongodb/models";
 import { UserEntity } from "@/domain/entities";
 
 export const createUser = async (
