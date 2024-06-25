@@ -12,6 +12,9 @@ export const createChatController = (dependencies: IDependencies) => {
         try {
             const data = req.body;
 
+            console.log(data,"this data");
+            
+
             const result = await createChatUseCase(dependencies)
                 .execute(data);
 

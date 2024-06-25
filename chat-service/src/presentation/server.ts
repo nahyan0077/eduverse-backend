@@ -8,9 +8,9 @@ import express, {
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import morgan from "morgan";
-// import { routes } from '../infrastructure/routes';
-// import { dependancies } from '../_boot/dependancies';
-// import errorHandler from '../_lib/common/error/errorhandler';
+import { routes } from '../infrastructure/routes';
+import { dependancies } from '../_boot/dependancies';
+import errorHandler from '../_lib/common/error/errorhandler';
 
 config();
 
@@ -32,7 +32,7 @@ app.get("/test", (req: Request, res: Response) => {
 	});
 });
 
-// app.use('/', routes(dependancies));
+app.use('/', routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {
@@ -41,6 +41,6 @@ app.all("*", (req: Request, res: Response) => {
 		.json({ success: false, status: 404, message: "API Not found" });
 });
 
-// app.use(errorHandler)
+app.use(errorHandler)
 
 export default app;

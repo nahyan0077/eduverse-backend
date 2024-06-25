@@ -14,34 +14,34 @@ export const socket = (server: HTTPServer) => {
     io.on("connection", (socket: Socket) => {
         console.log("Socket connected", socket.id);
 
-        // Handle new user connection
         socket.on("new-user", (userId: string) => {
             console.log("Received new user:", userId);
 
-            // Update onlineUsers Map
             onlineUsers.set(userId, socket.id);
 
-            // Update onlineUsersList Array
             const existingUserIndex = onlineUsersList.findIndex(user => user.userId === userId);
             if (existingUserIndex === -1) {
-                // Add new user to the list
+
                 onlineUsersList.push({ userId, socketId: socket.id });
             } else {
-                // Update socketId if user already exists in the list
                 onlineUsersList[existingUserIndex].socketId = socket.id;
             }
 
-            // Emit updated onlineUsersList to all clients
             io.emit("online-users", onlineUsersList);
 
             console.log("Current online users:", onlineUsersList);
         });
 
+
+        socket.on("join-room",(senderId: string, reciverId: string)=>{
+            socket.join(senderId)
+        })
+
         // Handle user disconnection
         socket.on("disconnect", () => {
             console.log("Socket disconnected", socket.id);
 
-            // Find userId associated with the disconnecting socket
+
             let disconnectedUserId: string | undefined;
             for (const [userId, socketId] of onlineUsers) {
                 if (socketId === socket.id) {
