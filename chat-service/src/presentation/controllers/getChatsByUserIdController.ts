@@ -11,6 +11,7 @@ export const getChatsByUserIdController = (dependencies: IDependencies) => {
 
         try {
             const id = req.params?.userId;
+            
 
             const result = await getChatsByUserIdUseCase(dependencies)
                 .execute(id);
