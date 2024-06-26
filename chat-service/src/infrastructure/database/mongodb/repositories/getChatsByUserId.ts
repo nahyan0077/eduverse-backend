@@ -4,7 +4,7 @@ import ErrorResponse from "../../../../_lib/common/error/errorResponse";
 
 export const getChatsByUserId = async (userId: string | Types.ObjectId) => {
 	try {
-		const chats = Chat.find({ participants: userId }).populate('participants')
+		const chats = await Chat.find({ participants: userId }).populate('participants')
 
 		if (!chats) {
 			throw ErrorResponse.internalError(" get Chat by userId error");
