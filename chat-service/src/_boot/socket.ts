@@ -14,7 +14,6 @@ export const socket = (server: HTTPServer) => {
     io.on("connection", (socket: Socket) => {
         console.log("Socket connected", socket.id);
 
-        // Handle new user connection
         socket.on("new-user", (userId: string) => {
             console.log("Received new user:", userId);
 
@@ -22,36 +21,33 @@ export const socket = (server: HTTPServer) => {
 
             const existingUserIndex = onlineUsersList.findIndex(user => user.userId === userId);
             if (existingUserIndex === -1) {
+
                 onlineUsersList.push({ userId, socketId: socket.id });
             } else {
                 onlineUsersList[existingUserIndex].socketId = socket.id;
             }
 
             io.emit("online-users", onlineUsersList);
+
             console.log("Current online users:", onlineUsersList);
         });
 
-    
-        // Handle joining a room
-    
-        socket.on("join-room", (roomId: string) => {
-            socket.join(roomId);
-            console.log(`Socket ${socket.id} joined room ${roomId}`);
-        });
 
-        // Handle sending a message
-        socket.on("send-message", (messageData: { roomId: string; content: string }) => {
-            console.log("Message data:", messageData);
-            io.to(messageData.roomId).emit("receive-message", {
-                content: messageData.content,
-                senderId: socket.id,
-                roomId: messageData.roomId,
-            });
-        });
+        socket.on("join-room",(roomId: string)=>{
+            socket.join(roomId)
+            console.log("joined in room");
+            
+        })
+
+        socket.on("send-message",(messageData: any) => {
+            console.log(messageData,"messagedata");
+            io.to(messageData.roomId).emit("receive-message",messageData)
+        })
 
         // Handle user disconnection
         socket.on("disconnect", () => {
             console.log("Socket disconnected", socket.id);
+
 
             let disconnectedUserId: string | undefined;
             for (const [userId, socketId] of onlineUsers) {
@@ -70,6 +66,7 @@ export const socket = (server: HTTPServer) => {
 
                 // Emit updated onlineUsersList to all clients
                 io.emit("online-users", onlineUsersList);
+
                 console.log("Current online users:", onlineUsersList);
             }
         });

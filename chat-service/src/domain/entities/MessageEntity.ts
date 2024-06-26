@@ -2,8 +2,8 @@ import { Types } from "mongoose";
 
 export interface MessageEntity {
     _id?: string | Types.ObjectId;
-    chat: Types.ObjectId | string;
-    sender: Types.ObjectId | string;
+    chatId: Types.ObjectId | string;
+    senderId: Types.ObjectId | string;
     content: string;
     contentType: 'text' | 'image' | 'video' | 'audio' | 'file';
     recieverSeen: boolean;

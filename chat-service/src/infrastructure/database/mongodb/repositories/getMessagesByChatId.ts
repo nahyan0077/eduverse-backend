@@ -5,7 +5,7 @@ import ErrorResponse from "../../../../_lib/common/error/errorResponse";
 export const getMessagesByChatId = async (chatId: string | Types.ObjectId) => {
 	try {
 		const messages = Message.find({
-			chat: chatId,
+			chatId: chatId,
 		});
 
         if(!messages) {

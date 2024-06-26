@@ -2,12 +2,12 @@ import { MessageEntity } from "@/domain/entities";
 import { Schema, model } from "mongoose";
 
 const messageSchema = new Schema<MessageEntity>({
-    chat: {
+    chatId: {
         type: Schema.Types.ObjectId,
         ref: "chats",
         required: true
     },
-    sender: {
+    senderId: {
         type: Schema.Types.ObjectId,
         ref: "users",
         required: true
