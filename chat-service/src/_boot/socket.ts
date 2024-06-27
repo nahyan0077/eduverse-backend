@@ -1,10 +1,11 @@
 import { Server as SocketIOServer, Socket } from "socket.io";
 import { Server as HTTPServer } from "http";
+import { Chat } from "../infrastructure/database/mongodb/models";
 
 let onlineUsers = new Map<string, string>(); 
 let onlineUsersList: { userId: string; socketId: string }[] = []; 
 
-export const socket = (server: HTTPServer) => {
+export const socket =  (server: HTTPServer) => {
     const io = new SocketIOServer(server, {
         cors: {
             origin: process.env.FRONTEND_URL || "*",
@@ -54,7 +55,7 @@ export const socket = (server: HTTPServer) => {
             io.to(roomId).emit("isTyping",  senderId);
         });
 
-        socket.on("disconnect", () => {
+        socket.on("disconnect", async () => {
             let disconnectedUserId: string | undefined;
             for (const [userId, socketId] of onlineUsers) {
                 if (socketId === socket.id) {
@@ -67,6 +68,16 @@ export const socket = (server: HTTPServer) => {
                 onlineUsers.delete(disconnectedUserId);
                 onlineUsersList = onlineUsersList.filter(user => user.socketId !== socket.id);
                 io.emit("online-users", onlineUsersList);
+
+
+                //update last seen
+                let updateSeen = await Chat.updateMany(
+                    { participants: disconnectedUserId },
+                    { $set: { lastSeen: new Date() } }
+                );
+
+                console.log(updateSeen,"last seen");
+                
             }
         });
     });
