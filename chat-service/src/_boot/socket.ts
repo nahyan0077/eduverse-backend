@@ -12,9 +12,14 @@ export const socket = (server: HTTPServer) => {
     });
 
     io.on("connection", (socket: Socket) => {
+
         console.log("Socket connected", socket.id);
 
         socket.on("new-user", (userId: string) => {
+
+            console.log(userId,"new-user---->");
+            
+            
             onlineUsers.set(userId, socket.id);
 
             const existingUserIndex = onlineUsersList.findIndex(user => user.userId === userId);
@@ -23,15 +28,20 @@ export const socket = (server: HTTPServer) => {
             } else {
                 onlineUsersList[existingUserIndex].socketId = socket.id;
             }
-
+            console.log("online-users",onlineUsersList);
+            
             io.emit("online-users", onlineUsersList);
         });
 
         socket.on("join-room", (roomId: string) => {
             socket.join(roomId);
+            console.log("joinded to roomid :  ", roomId  );
+            
         });
 
         socket.on("send-message", (messageData: any) => {
+            console.log(messageData.roomId,"message roomid");
+            
             io.to(messageData.roomId).emit("receive-message", {
                 ...messageData,
                 createdAt: new Date().toISOString()
@@ -39,6 +49,7 @@ export const socket = (server: HTTPServer) => {
         });
 
         socket.on("typing", ({ roomId, senderId }) => {
+            console.log("typing",roomId,"---->",senderId);
             
             io.to(roomId).emit("isTyping",  senderId);
         });

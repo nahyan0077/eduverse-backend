@@ -16,6 +16,9 @@ const chatSchema = new Schema({
         enum:['requested', 'active', 'block'],
         default: 'requested'
     },
+    lastSeen: {
+        type: Date
+    },
     groupName: {
         type: String
     },
