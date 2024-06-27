@@ -18,7 +18,7 @@ const messageSchema = new Schema<MessageEntity>({
     },
     contentType: {
         type: String,
-        enum: ['text', 'image', 'audio', 'video', 'file'],
+        enum: ['text', 'image', 'audio', 'video', 'application'],
         default: 'text'
     },
     recieverSeen: {

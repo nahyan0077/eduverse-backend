@@ -5,7 +5,7 @@ export interface MessageEntity {
     chatId: Types.ObjectId | string;
     senderId: Types.ObjectId | string;
     content: string;
-    contentType: 'text' | 'image' | 'video' | 'audio' | 'file';
+    contentType: 'text' | 'image' | 'video' | 'audio' | 'application';
     recieverSeen: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
