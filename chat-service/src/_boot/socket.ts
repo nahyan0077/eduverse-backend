@@ -21,7 +21,6 @@ export const socket =  (server: HTTPServer) => {
 
             console.log(userId,"new-user---->");
             
-            
             onlineUsers.set(userId, socket.id);
 
             const existingUserIndex = onlineUsersList.findIndex(user => user.userId === userId);
@@ -53,7 +52,7 @@ export const socket =  (server: HTTPServer) => {
         socket.on("typing", ({ roomId, senderId }) => {
             console.log("typing",roomId,"---->",senderId);
             
-            io.to(roomId).emit("isTyping",  senderId);
+            socket.to(roomId).emit("isTyping",  senderId);
         });
 
         socket.on("disconnect", async () => {
