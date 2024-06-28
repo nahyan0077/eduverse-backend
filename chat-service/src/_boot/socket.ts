@@ -1,6 +1,7 @@
 import { Server as SocketIOServer, Socket } from "socket.io";
 import { Server as HTTPServer } from "http";
 import { Chat } from "../infrastructure/database/mongodb/models";
+import { updateLastSeen } from "../infrastructure/database/mongodb/repositories";
 
 let onlineUsers = new Map<string, string>(); 
 let onlineUsersList: { userId: string; socketId: string }[] = []; 
@@ -71,12 +72,9 @@ export const socket =  (server: HTTPServer) => {
 
 
                 //update last seen
-                let updateSeen = await Chat.updateMany(
-                    { participants: disconnectedUserId },
-                    { $set: { lastSeen: new Date() } }
-                );
+                await updateLastSeen(disconnectedUserId)
 
-                console.log(updateSeen,"last seen");
+              
                 
             }
         });
