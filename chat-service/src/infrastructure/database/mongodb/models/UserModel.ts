@@ -88,6 +88,9 @@ const userSchema = new Schema(
 			type: Boolean,
 			default: false
 		},
+		// lastSeen: {
+		// 	type: Date()
+		// },
 	},
 	{
 		timestamps: true,

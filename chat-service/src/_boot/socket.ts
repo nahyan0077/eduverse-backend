@@ -73,7 +73,7 @@ export const socket =  (server: HTTPServer) => {
                 //update last seen
                 await updateLastSeen(disconnectedUserId)
 
-              
+              socket.emit("last-seen",disconnectedUserId)
                 
             }
         });
