@@ -42,6 +42,7 @@ export const socket =  (server: HTTPServer) => {
 
         socket.on("send-message", (messageData: any) => {
             console.log(messageData.roomId,"message roomid");
+
             
             io.to(messageData.roomId).emit("receive-message", {
                 ...messageData,

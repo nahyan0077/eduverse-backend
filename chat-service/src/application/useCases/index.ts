@@ -4,3 +4,4 @@ export * from "./getChatByIdUseCase";
 export * from "./getChatsByUserIdUseCase";
 export * from "./getMessagesByChatId";
 export * from "./updateChatUseCase";
+export * from "./updateMessageuseCase";

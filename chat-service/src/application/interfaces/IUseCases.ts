@@ -1,6 +1,7 @@
 import { 
     ICreateChatUseCase, 
     ICreateMessageUseCase, 
+    IUpdateMessageUseCase, 
     IGetChatByIdUseCase, 
     IGetChatsByUserIdUseCase,
     IGetMessagesByChatIdUseCase,
@@ -15,4 +16,5 @@ export interface IUseCases {
     getChatsByUserIdUseCase: (dependencies: IDependencies) => IGetChatsByUserIdUseCase;
     getMessagesByChatId: (dependencies: IDependencies) => IGetMessagesByChatIdUseCase;
     updateChatUseCase: (dependencies: IDependencies) => IUpdateChatUseCase;
-    }
+    updateMessageUseCase: (depenedencies: IDependencies) => IUpdateMessageUseCase;
+}

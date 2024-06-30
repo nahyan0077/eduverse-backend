@@ -5,6 +5,8 @@ export * from "./getChatsByUserId";
 export * from "./getMessagesByChatId";
 export * from "./updateChat";
 export * from "./updateLastSeen";
+export * from "./updateMessage";
+export * from "./getLatestMessage";
 
 export * from "./createUser";
 export * from "./verifyUser";

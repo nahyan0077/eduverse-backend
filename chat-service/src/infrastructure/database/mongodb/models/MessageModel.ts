@@ -24,6 +24,10 @@ const messageSchema = new Schema<MessageEntity>({
     recieverSeen: {
         type: Boolean,
         default: false
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false,
     }
 }, {
     timestamps: true

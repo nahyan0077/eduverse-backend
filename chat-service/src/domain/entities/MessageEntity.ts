@@ -7,6 +7,7 @@ export interface MessageEntity {
     content: string;
     contentType: 'text' | 'image' | 'video' | 'audio' | 'application';
     recieverSeen: boolean;
+    isDeleted?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }
