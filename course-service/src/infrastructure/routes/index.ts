@@ -40,6 +40,8 @@ export const routes = (dependancies: IDependencies) => {
 
 	router.route('/search').get(searchCourse)
 
+	
+
 	//category----------------------->
 	router
 		.route("/category")

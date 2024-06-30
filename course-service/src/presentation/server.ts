@@ -5,6 +5,10 @@ import { routes } from '../infrastructure/routes'
 import { dependancies } from '../_boot/dependancies'
 import errorHandler from '../_lib/common/error/errorhandler'
 import morgan from 'morgan'
+import PDFDocument from 'pdfkit';
+import { findUserById, getCourseById } from '../infrastructure/database/mongodb/repositories'
+import path from 'path'
+import { generateCertificate } from '../infrastructure/services/generateCertificate'
 
 config()
 
@@ -24,6 +28,7 @@ app.get('/test', (req: Request, res: Response) => {
         message: `${process.env.SERVICE} ON!`
     })
 });
+app.get('/generate-certificate', generateCertificate)
 
 app.use(routes(dependancies))
 
@@ -33,6 +38,7 @@ app.use("*",(req: Request, res: Response) => {
   });  
 
 app.use(errorHandler)
+
   
 const start = () => {
     app.listen(PORT, () => {
