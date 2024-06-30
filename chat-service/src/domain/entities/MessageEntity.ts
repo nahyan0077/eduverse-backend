@@ -6,7 +6,7 @@ export interface MessageEntity {
     senderId: Types.ObjectId | string;
     content: string;
     contentType: 'text' | 'image' | 'video' | 'audio' | 'application';
-    recieverSeen: boolean;
+    receieverSeen: boolean;
     isDeleted?: boolean;
     createdAt?: Date | string;
     updatedAt?: Date | string;

@@ -7,8 +7,8 @@ export const updateMessageUseCase = (dependencies: IDependencies) => {
     } = dependencies;
 
     return {
-        execute: async (id: string) => {
-            return await updateMessage(id);
+        execute: async (data: any) => {
+            return await updateMessage(data);
         }
     }
 }

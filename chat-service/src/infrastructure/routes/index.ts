@@ -15,7 +15,7 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/message/:chatId").get(getMessagesByChatId)
 
 	router.route("/message").post(createMessage)
-							.patch(updateMessage)
+							.put(updateMessage)
 
 	
 	return router;

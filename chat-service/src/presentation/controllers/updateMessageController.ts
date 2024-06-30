@@ -8,19 +8,18 @@ export const updateMessageController = (dependencies: IDependencies) => {
 
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			const id = req.query.id as string;
-
-			console.log(id,"idd message");
+			const { _id, ...updation } = req.body
+			console.log(req.body,"req.bodyy delete message");
 			
 
-			if (!id) {
+			if (!_id) {
 				return res.status(400).json({
 					success: false,
 					message: "User ID is required",
 				});
 			}
 
-			const result = await updateMessageUseCase(dependencies).execute(id);
+			const result = await updateMessageUseCase(dependencies).execute(req.body);
 
 			if (!result) {
 				return res.status(500).json({

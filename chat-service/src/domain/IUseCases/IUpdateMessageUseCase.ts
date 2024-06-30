@@ -1,5 +1,5 @@
 import { MessageEntity } from "../entities";
 
 export interface IUpdateMessageUseCase {
-    execute(id: string): Promise<MessageEntity | null>;
+    execute(data: any): Promise<MessageEntity | null>;
 }
