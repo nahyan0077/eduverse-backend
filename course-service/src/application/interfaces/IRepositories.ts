@@ -17,6 +17,8 @@ export interface IRepositories {
     updateCourse: (data: CourseEntity) => Promise < CourseEntity | null >
     getCourseById: (id: string) => Promise < CourseEntity | null >
     searchCourse: (query: string) => Promise <CourseEntity[] | []>
+    getCoursesByInstructorId: (instructorId: string) => Promise <CourseEntity[] | []>
+ 
 
     //enrollments
     createEnrollment: (data: EnrollmentEntity) => Promise <EnrollmentEntity | null>

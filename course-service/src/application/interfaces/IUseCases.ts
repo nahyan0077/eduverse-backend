@@ -10,6 +10,7 @@ import {
 	IGetAllCourseUseCase,
 	IGetAllReviewsUseCase,
 	IGetCourseByIdUseCase,
+	IGetCoursesByInstructorId,
 	IGetEnrollmentByIdUseCase,
 	IGetEnrollmentByUserIdUseCase,
 	IGetInstructorsByStudentrUseCase,
@@ -36,6 +37,7 @@ export interface IUseCases {
 	updateCourseUseCase: (dependencies: IDependencies) => IUpdateCourseUseCase;
 	getCourseByIdUseCase: (dependencies: IDependencies) => IGetCourseByIdUseCase
 	searchCourseUseCase: (dependencies: IDependencies) => ISearchCourseUseCase
+	getCoursesByInstructorIdUseCase: (depenedencies: IDependencies) => IGetCoursesByInstructorId
 
 	//enrollment 
 	createEnrollmentUseCase: (dependencies: IDependencies) => ICreateEnrollmentUseCase

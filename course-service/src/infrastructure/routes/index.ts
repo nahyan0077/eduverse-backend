@@ -26,7 +26,8 @@ export const routes = (dependancies: IDependencies) => {
 		createReview,
 		getAllReviews,
 		getStudentsEnrolledByInstructor,
-		getInstructorsByStudent
+		getInstructorsByStudent,
+		getCoursesByInstructorId,
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -39,6 +40,8 @@ export const routes = (dependancies: IDependencies) => {
 	router.route("/enrolled/:id").get(CurrentUser,RequireAuth , getCourseById);
 
 	router.route('/search').get(searchCourse)
+
+	router.route('/instructor-courses/:instructorId').get(getCoursesByInstructorId)
 
 	
 
