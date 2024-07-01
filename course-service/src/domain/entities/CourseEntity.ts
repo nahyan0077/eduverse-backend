@@ -53,4 +53,5 @@ export interface CourseEntity {
     isBlocked?: boolean | string;
     isPublished?: boolean | string;
     isRejected?: boolean | string;
+    studentsEnrolled?: number;
 }

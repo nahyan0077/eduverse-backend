@@ -88,6 +88,10 @@ const courseSchema = new Schema({
         type: Boolean,
         default: false
     },
+    studentsEnrolled: {
+        type: Number,
+        default: 0
+    },
     isPublished: {
         type: Boolean,
         default: false

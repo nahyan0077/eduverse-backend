@@ -6,14 +6,19 @@ export const getAllInstructors = async (
 	limit?: number
 ): Promise<UserEntity[] | null> => {
 	try {
-		const pageNo = page ?? 1;
-		const limitNo = limit ?? 10;
-		const skipNo = (pageNo - 1) * limitNo;
+		if (!page || !limit) {
+			const allData = await User.find({ role: "instructor" }).sort({
+				updatedAt: "descending",
+			});
+			return allData;
+		}
+
+		const skipNo = (page - 1) * limit;
 
 		const data = await User.find({ role: "instructor" })
 			.sort({ updatedAt: "descending" })
 			.skip(skipNo)
-			.limit(limitNo);
+			.limit(limit);
 
 		return data;
 	} catch (error: any) {
