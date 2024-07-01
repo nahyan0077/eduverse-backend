@@ -49,6 +49,7 @@ export interface UserEntity {
     isRejected?: boolean;
     lastLoginDate?: Date;
     loginStreak: number;
+    weeklyLogins: boolean[];
     createdAt?: Date;
     updatedAt?: Date;
 }

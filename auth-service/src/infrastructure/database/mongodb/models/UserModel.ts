@@ -1,7 +1,6 @@
 import { UserEntity } from "@/domain/entities";
 import mongoose, { Schema, model } from "mongoose";
 
-
 const userSchema = new Schema(
 	{
 		firstName: {
@@ -36,7 +35,8 @@ const userSchema = new Schema(
 		profile: {
 			avatar: {
 				type: String,
-				default: "https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png"
+				default:
+					"https://www.pngkey.com/png/detail/72-729716_user-avatar-png-graphic-free-download-icon.png",
 			},
 			dateOfBirth: {
 				type: String,
@@ -54,52 +54,55 @@ const userSchema = new Schema(
 				type: String,
 			},
 			social: {
-				type: String
+				type: String,
 			},
 		},
 		profession: {
-            enum: ["student", "working"],
-            type: String,
+			enum: ["student", "working"],
+			type: String,
 		},
 		cv: {
-            type: String,
+			type: String,
 		},
 		profit: {
-            type: Number,
+			type: Number,
 			default: 0,
 		},
-        isBlocked: {
-            type: Boolean,
-            default: false,
-        },
-        isVerified: {
-            type: Boolean,
-            default: false,
-        },
-        isRequested: {
-            type: Boolean,
-            default: true,
-        },
+		isBlocked: {
+			type: Boolean,
+			default: false,
+		},
+		isVerified: {
+			type: Boolean,
+			default: false,
+		},
+		isRequested: {
+			type: Boolean,
+			default: true,
+		},
 		isGAuth: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		isRejected: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		lastLoginDate: {
 			type: Date,
 		},
 		loginStreak: {
 			type: Number,
-			default: 0
-		}
+			default: 0,
+		},
+		weeklyLogins: {
+			type: [Boolean],
+			default: [false, false, false, false, false, false, false],
+		},
 	},
 	{
 		timestamps: true,
 	}
 );
 
-
-export const User = model<UserEntity>("users",userSchema)
+export const User = model<UserEntity>("users", userSchema);

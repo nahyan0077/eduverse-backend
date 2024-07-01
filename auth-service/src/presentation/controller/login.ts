@@ -12,47 +12,52 @@ export const loginController = (dependancies: IDependancies) => {
 		try {
 			const { email, password } = req.body;
 
-			const result = await loginUserUseCase(dependancies).execute(email, password);
-			console.log(result,"login confirm");
+			const result = await loginUserUseCase(dependancies).execute(
+				email,
+				password
+			);
+			console.log(result, "login confirm");
 
-			const userId = result?._id?.toString() as string
+			const userId = result?._id?.toString() as string;
 
-			if (result?.role == 'student') {
-				await updateLoginStreak(userId)
+
+			//updating login streak
+			if (result?.role == "student") {
+				await updateLoginStreak(userId);
 			}
 
-			
 			if (!result) {
 				return res
 					.status(200)
-					.json({ success: false, message: "User doesn't exist or incorrect password" });
+					.json({
+						success: false,
+						message: "User doesn't exist or incorrect password",
+					});
 			}
 
-			if(result.isBlocked){
-				throw ErrorResponse.unauthorized("Eduverse team blocked your account")
-				
+			if (result.isBlocked) {
+				throw ErrorResponse.unauthorized("Eduverse team blocked your account");
 			}
-
 
 			const accessToken = generateAccessToken({
-                _id: String(result?._id),
-                email: result?.email!,
-                role: result?.role!
-            });
+				_id: String(result?._id),
+				email: result?.email!,
+				role: result?.role!,
+			});
 
-            const refreshToken = generateRefreshToken({
-                _id: String(result?._id),
-                email: result?.email!,
-                role: result?.role!
-            });
+			const refreshToken = generateRefreshToken({
+				_id: String(result?._id),
+				email: result?.email!,
+				role: result?.role!,
+			});
 
-            res.cookie("access_token", accessToken, {
-                httpOnly: true
-            });
+			res.cookie("access_token", accessToken, {
+				httpOnly: true,
+			});
 
-            res.cookie("refresh_token", refreshToken, {
-                httpOnly: true
-            });
+			res.cookie("refresh_token", refreshToken, {
+				httpOnly: true,
+			});
 
 			return res.status(200).json({
 				success: true,
@@ -61,7 +66,7 @@ export const loginController = (dependancies: IDependancies) => {
 			});
 		} catch (error: any) {
 			console.log("Login controller error: ", error);
-            next(error)
+			next(error);
 		}
 	};
 };

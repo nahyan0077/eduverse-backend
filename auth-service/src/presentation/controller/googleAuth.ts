@@ -4,6 +4,7 @@ import { IDependancies } from "@/application/interfaces/IDependancies";
 import { Request, Response, NextFunction } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { UserEntity } from "@/domain/entities";
+import { updateLoginStreak } from "../../infrastructure/database/mongodb/repositories/updateLoginStreak";
 
 const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
@@ -15,13 +16,11 @@ export const googleAuthController = (dependancies: IDependancies) => {
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
 			const { credential } = req.body;
-			console.log("auth body", req.body);
 
 			const ticket = await client.verifyIdToken({
 				idToken: credential,
 				audience: process.env.GOOGLE_CLIENT_ID,
 			});
-			console.log("tickt", ticket);
 
 			const payload = ticket.getPayload();
 
@@ -38,6 +37,13 @@ export const googleAuthController = (dependancies: IDependancies) => {
             const { email } = payload
 
             const existingUser = await findUserByEmailUseCase(dependancies).execute(email)
+
+            const userId = existingUser?._id?.toString() as string
+
+            //updating login streak
+			if (existingUser?.role == "student") {
+				await updateLoginStreak(userId);
+			}
 
             if (existingUser && !existingUser.isBlocked) {
                 const accessToken = generateAccessToken({
