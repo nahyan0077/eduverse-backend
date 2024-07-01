@@ -1,3 +1,4 @@
+import { updateLoginStreak } from "../../infrastructure/database/mongodb/repositories/updateLoginStreak";
 import ErrorResponse from "../../_lib/common/error/errorResponse";
 import { generateAccessToken, generateRefreshToken } from "../../_lib/http/jwt";
 import { IDependancies } from "@/application/interfaces/IDependancies";
@@ -13,6 +14,13 @@ export const loginController = (dependancies: IDependancies) => {
 
 			const result = await loginUserUseCase(dependancies).execute(email, password);
 			console.log(result,"login confirm");
+
+			const userId = result?._id?.toString() as string
+
+			if (result?.role == 'student') {
+				await updateLoginStreak(userId)
+			}
+
 			
 			if (!result) {
 				return res

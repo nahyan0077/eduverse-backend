@@ -47,6 +47,8 @@ export interface UserEntity {
     isRequested?: boolean;
     isGAuth?: boolean;
     isRejected?: boolean;
+    lastLoginDate?: Date;
+    loginStreak: number;
     createdAt?: Date;
     updatedAt?: Date;
 }
