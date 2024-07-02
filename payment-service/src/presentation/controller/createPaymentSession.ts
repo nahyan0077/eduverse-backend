@@ -12,7 +12,7 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
                 return res.status(500).send("Internal server error: Stripe secret key is missing");
             }
 
-            const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY)
+            const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY, {apiVersion: '2024-04-10'})
 
             const { courseName, courseThumbnail, userId, courseId, amount } = req.body;
 
@@ -22,7 +22,7 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
                         currency: "INR",
                         product_data: {
                             name: courseName,
-                            images: [courseThumbnail]
+                            images: [courseThumbnail],
                         },
                         unit_amount: Math.floor(amount * 100)
                     },

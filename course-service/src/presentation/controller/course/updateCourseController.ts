@@ -1,17 +1,20 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
 
-export const updateCourseController = (depedencies: IDependencies) => {
-    const { useCases: { updateCourseUseCase } } = depedencies
+export const updateCourseController = (dependencies: IDependencies) => {
+    const { useCases: { updateCourseUseCase } } = dependencies;
+
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
+            const data: any = req.body;
+            const incrementStudentsEnrolled: any = req.query?.incrementStudentsEnrolled;
 
-            const data = req.body
-
-            console.log(data,"set update course data");
+            console.log(incrementStudentsEnrolled,"ernooledddd incrree");
             
 
-            const result = await updateCourseUseCase(depedencies).execute(data)
+            console.log(data, "set update course data");
+
+            const result = await updateCourseUseCase(dependencies).execute(data, incrementStudentsEnrolled);
 
             if (!result) {
                 throw new Error("Course updation failed!");
@@ -22,11 +25,9 @@ export const updateCourseController = (depedencies: IDependencies) => {
                 data: result,
                 message: "Course updated!"
             });
-
-
-
         } catch (error: any) {
-            next(error)
+            console.error("Error updating course:", error);
+            next(error);
         }
-    }
-}
+    };
+};
