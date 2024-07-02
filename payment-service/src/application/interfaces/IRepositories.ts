@@ -5,4 +5,5 @@ export interface IRepositories {
     updatePayment: (data: PaymentEntity) => Promise<PaymentEntity | null>;
     createSession: (data: SessionEntity) => Promise<SessionEntity | null>;
     getPaymentSessionById: (id: string) => Promise<SessionEntity | null>;
+    getAllPayments: () => Promise<PaymentEntity [] | []>;
 }

@@ -1,41 +1,49 @@
 import { User } from "../models";
 
 export const updateLoginStreak = async (userId: string) => {
-	try {
-		const user = await User.findById(userId);
+    const session = await User.startSession();
+    session.startTransaction();
 
-		if (user) {
-			const currentDate: any = new Date();
-			const lastLoginData: any = new Date(user?.lastLoginDate || currentDate);
-			const diffInDays = Math.floor(
-				(currentDate - lastLoginData) / (1000 * 60 * 60 * 24)
-			);
-            const dayOfWeek = currentDate.getDay()
+    try {
+        const user = await User.findById(userId).session(session);
 
-            console.log(dayOfWeek,"days of week------->");
-            
-			if (diffInDays == 1) {
-				user.loginStreak += 1;
-			} else if (diffInDays > 1 || diffInDays == 0 ) {
-				user.loginStreak = 1;
-			}
+        if (!user) {
+            throw new Error("User not found while logging in");
+        }
 
-            //for reseting streak
-            if (dayOfWeek === 0) {
-                user.weeklyLogins = [false, false, false, false, false, false, false];
-            }
+        const currentDate = new Date();
+        currentDate.setUTCHours(0, 0, 0, 0);
 
-            user.weeklyLogins[dayOfWeek - 1] = true
-			user.lastLoginDate = currentDate;
+        const lastLoginDate = user.lastLoginDate ? new Date(user.lastLoginDate) : currentDate;
+        lastLoginDate.setUTCHours(0, 0, 0, 0);
 
-			console.log(user.lastLoginDate, "lasst logind stat");
+        const diffInDays = Math.floor((currentDate.getTime() - lastLoginDate.getTime()) / (1000 * 60 * 60 * 24));
+        const dayOfWeek = currentDate.getUTCDay();
 
-			console.log(user, "update streak");
-			await user.save();
-		} else {
-			throw new Error("User not found while login");
-		}
-	} catch (error: any) {
-		console.log(error?.message);
-	}
+        if (diffInDays === 1) {
+            user.loginStreak += 1;
+        } else if (diffInDays > 1) {
+            user.loginStreak = 1;
+        }
+        // If diffInDays is 0, it's a same-day login, so we don't change the streak
+
+        // Resetting weekly logins on Sunday (0) or if it's been more than a week
+        if (dayOfWeek === 0 || diffInDays >= 7) {
+            user.weeklyLogins = [false, false, false, false, false, false, false];
+        }
+
+        // Mark the current day as logged in
+        user.weeklyLogins[dayOfWeek] = true;
+
+        user.lastLoginDate = currentDate;
+
+        await user.save({ session });
+        await session.commitTransaction();
+    } catch (error: any) {
+        await session.abortTransaction();
+        console.error("Error updating login streak:", error.message);
+        throw error; 
+    } finally {
+        session.endSession();
+    }
 };
