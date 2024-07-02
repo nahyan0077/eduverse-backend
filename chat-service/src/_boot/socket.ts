@@ -49,21 +49,31 @@ export const socket = (server: HTTPServer) => {
 		});
 
 		socket.on("typing", ({ roomId, senderId }) => {
-			console.log("typing", roomId, "---->", senderId);
 
 			socket.to(roomId).emit("isTyping", senderId);
 		});
 
 		socket.on("delete-message", ({ messageId, roomId }: any) => {
-			console.log(messageId, roomId, "two iddssssss");
 
 			io.to(roomId).emit("get-delete-message", messageId);
 		});
 
-		socket.on("message-seen", async ({ messageId, roomId }: any) => {
-			await Message.findByIdAndUpdate(messageId, { receiverSeen: true });
-			io.to(roomId).emit("message-seen-update", { messageId });
+		socket.on("message-seen", async ({ roomId, chatId, userId }) => {
+
+			// this will Find all previous unseen messages and update them
+			
+			const messages = await Message.find({ chatId, receiverSeen: false }).sort({ createdAt: 1 });
+			
+			for (const msg of messages) {
+				
+				await Message.updateMany({_id:msg._id}, {$set:{ receiverSeen: true }});
+				 
+				io.to(roomId).emit("message-seen-update", { messageId: msg._id, userId });
+			}
 		});
+		
+
+
 
 		socket.on("disconnect", async () => {
 			let disconnectedUserId: string | undefined;

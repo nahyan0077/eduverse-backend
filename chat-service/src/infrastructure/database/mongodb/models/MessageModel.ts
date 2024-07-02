@@ -21,7 +21,7 @@ const messageSchema = new Schema<MessageEntity>({
         enum: ['text', 'image', 'audio', 'video', 'application'],
         default: 'text'
     },
-    receieverSeen: {
+    receiverSeen: {
         type: Boolean,
         default: false
     },
