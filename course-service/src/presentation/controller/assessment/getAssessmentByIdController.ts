@@ -17,10 +17,13 @@ export const getAssessmentByIdController = (dependencies: IDependencies) => {
                 .execute(id);
 
             if(!result){
-                throw new Error("Assessment retrievel failed");
+                return res.status(200).json({
+                    success: false,
+                    message: "Failed Assessments retrival!"
+                });
             }
 
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 data: result,
                 message: "Assessments retrieved!"

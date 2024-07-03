@@ -7,8 +7,17 @@ export const updateAssessment = async (
     try {
 
         const { _id, ...updations } = data;
+        console.log("==========>");
+        
+        console.log(data,"data");
+        
+        console.log("==========>");
 
         const assessment = await Assessment.findByIdAndUpdate(_id, updations, { new: true });
+
+        console.log(assessment,"is updaed");
+        
+
 
         if (!assessment) {
             throw new Error("Assessment updation failed!");

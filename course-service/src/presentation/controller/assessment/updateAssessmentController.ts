@@ -13,14 +13,20 @@ export const updateAssessmentController = (dependencies: IDependencies) => {
 
             const data = req.body;
 
+            console.log(data,"ata controlere updett");
+            
+
             const result = await updateAssessmentUseCase(dependencies)
                 .execute(data);
 
             if(!result){
-                throw new Error("Assessment updation failed!");
+                return res.status(200).json({
+                    success: false,
+                    message: "Assessment updation failed!"
+                });
             }
 
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 data: result,
                 message: "Assessment updated!"

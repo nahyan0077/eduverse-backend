@@ -28,6 +28,11 @@ export const routes = (dependancies: IDependencies) => {
 		getStudentsEnrolledByInstructor,
 		getInstructorsByStudent,
 		getCoursesByInstructorId,
+		createAssessment,
+		getAssessmentByCourseId,
+		getAssessmentByInstructorId,
+		getAssessmentById,
+		updateAssessment,
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -37,13 +42,13 @@ export const routes = (dependancies: IDependencies) => {
 		.post(CurrentUser, requireInstructor, createCourse)
 		.put(CurrentUser, RequireAuth, updateCourse);
 
-	router.route("/enrolled/:id").get(CurrentUser,RequireAuth , getCourseById);
+	router.route("/enrolled/:id").get(CurrentUser, RequireAuth, getCourseById);
 
-	router.route('/search').get(searchCourse)
+	router.route("/search").get(searchCourse);
 
-	router.route('/instructor-courses/:instructorId').get(getCoursesByInstructorId)
-
-	
+	router
+		.route("/instructor-courses/:instructorId")
+		.get(getCoursesByInstructorId);
 
 	//category----------------------->
 	router
@@ -58,18 +63,41 @@ export const routes = (dependancies: IDependencies) => {
 
 	//enrollment---------------------->
 	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment);
-	router.route("/enrollment/user/:userId").get(CurrentUser, RequireAuth, getEnrollmentByUserId);
-	router.route("/enrollment/:id").get(CurrentUser, RequireAuth, getEnrollmentById);
-	router.route("/enrollment/update").post(CurrentUser, RequireAuth, updateLessonProgress)
-	router.route("/enrollment/student/:instructorId").get(CurrentUser, requireInstructor, getStudentsEnrolledByInstructor)
-	router.route("/enrollment/instructor/:studentId").get(CurrentUser, RequireAuth, getInstructorsByStudent)
-
+	router
+		.route("/enrollment/user/:userId")
+		.get(CurrentUser, RequireAuth, getEnrollmentByUserId);
+	router
+		.route("/enrollment/:id")
+		.get(CurrentUser, RequireAuth, getEnrollmentById);
+	router
+		.route("/enrollment/update")
+		.post(CurrentUser, RequireAuth, updateLessonProgress);
+	router
+		.route("/enrollment/student/:instructorId")
+		.get(CurrentUser, requireInstructor, getStudentsEnrolledByInstructor);
+	router
+		.route("/enrollment/instructor/:studentId")
+		.get(CurrentUser, RequireAuth, getInstructorsByStudent);
 
 	//create review----------------->
-	router.route('/review')
-			.post(CurrentUser,RequireAuth,createReview)
-			.get(getAllReviews)
+	router
+		.route("/review")
+		.post(CurrentUser, RequireAuth, createReview)
+		.get(getAllReviews);
 
+	//assessment
+
+	router.route("/assessment")
+						.post(createAssessment)
+						.put(updateAssessment);
+
+	router.route("/assessment/course/:courseId").get(getAssessmentByCourseId);
+
+	router
+		.route("/assessment/instructor/:instructorId")
+		.get(getAssessmentByInstructorId);
+
+	router.route("/assessment/:id").get(getAssessmentById);
 
 	return router;
 };

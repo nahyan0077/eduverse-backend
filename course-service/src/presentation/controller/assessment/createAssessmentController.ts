@@ -13,13 +13,15 @@ export const createAssessmentController = (dependencies: IDependencies) => {
 
             const data = req.body;
 
+            console.log(data,"exam data");
+            
+
             const result = await createAssessmentUseCase(dependencies)
                 .execute(data);
 
             if(!result){
                 return res.status(200).json({
                     success: false,
-                    data: result,
                     message: "Assessment creation failed!"
                 });
             }

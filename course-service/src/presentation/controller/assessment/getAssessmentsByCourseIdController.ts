@@ -13,14 +13,20 @@ export const getAssessmentsByCourseIdController = (dependencies: IDependencies) 
 
             const id = req.params.courseId;
 
+            console.log("id--> check existing exam",id);
+            
+
             const result = await getAssessmentsByCourseIdUseCase(dependencies)
                 .execute(id);
 
             if(!result){
-                throw new Error("Assessment retrievel failed");
+                return res.status(200).json({
+                    success: false,
+                    message: "No Assessments exists !"
+                });
             }
 
-            res.status(200).json({
+            return res.status(200).json({
                 success: true,
                 data: result,
                 message: "Assessments retrieved!"

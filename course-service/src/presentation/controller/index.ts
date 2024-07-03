@@ -24,6 +24,7 @@ import {
 } from "./enrollment";
 import { createReviewController } from "./review";
 import { getAllReviewsController } from "./review/getAllReviewsController";
+import { createAssessmentController, getAssessmentByIdController, getAssessmentsByCourseIdController, getAssessmentsByInstructorIdController, updateAssessmentController } from "./assessment";
 
 export const controller = (dependancies: IDependencies) => {
 	return {
@@ -52,9 +53,15 @@ export const controller = (dependancies: IDependencies) => {
 
 		//review
 		createReview: createReviewController(dependancies),
-		getAllReviews: getAllReviewsController(dependancies)
+		getAllReviews: getAllReviewsController(dependancies),
 
 		//assessments
+		createAssessment: createAssessmentController(dependancies),
+		getAssessmentByCourseId: getAssessmentsByCourseIdController(dependancies),
+		getAssessmentByInstructorId: getAssessmentsByInstructorIdController(dependancies),
+		getAssessmentById: getAssessmentByIdController(dependancies),
+		updateAssessment: updateAssessmentController(dependancies),
 		
+
 	};
 };
