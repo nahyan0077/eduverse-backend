@@ -8,6 +8,7 @@ export interface ChatEntity {
     lastSeen?: Date | string;
     groupName?: string | null;
     groupDescription?: string | null;
+    unreadCounts?: number;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }

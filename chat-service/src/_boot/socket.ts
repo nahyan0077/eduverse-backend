@@ -1,6 +1,6 @@
 import { Server as SocketIOServer, Socket } from "socket.io";
 import { Server as HTTPServer } from "http";
-import { Message } from "../infrastructure/database/mongodb/models";
+import { Chat, Message } from "../infrastructure/database/mongodb/models";
 import { updateLastSeen } from "../infrastructure/database/mongodb/repositories";
 
 let onlineUsers = new Map<string, string>();
@@ -39,7 +39,7 @@ export const socket = (server: HTTPServer) => {
 			console.log("joined to roomid: ", roomId);
 		});
 
-		socket.on("send-message", (messageData: any) => {
+		socket.on("send-message", async (messageData: any) => {
 			console.log(messageData.roomId, "message roomid");
 
 			io.to(messageData.roomId).emit("receive-message", {
@@ -49,31 +49,32 @@ export const socket = (server: HTTPServer) => {
 		});
 
 		socket.on("typing", ({ roomId, senderId }) => {
-
 			socket.to(roomId).emit("isTyping", senderId);
 		});
 
 		socket.on("delete-message", ({ messageId, roomId }: any) => {
-
 			io.to(roomId).emit("get-delete-message", messageId);
 		});
 
 		socket.on("message-seen", async ({ roomId, chatId, userId }) => {
-
 			// this will Find all previous unseen messages and update them
-			
-			const messages = await Message.find({ chatId, receiverSeen: false }).sort({ createdAt: 1 });
-			
+
+			const messages = await Message.find({ chatId, receiverSeen: false }).sort(
+				{ createdAt: 1 }
+			);
+
 			for (const msg of messages) {
-				
-				await Message.updateMany({_id:msg._id}, {$set:{ receiverSeen: true }});
-				 
-				io.to(roomId).emit("message-seen-update", { messageId: msg._id, userId });
+				await Message.updateMany(
+					{ _id: msg._id },
+					{ $set: { receiverSeen: true } }
+				);
+
+				io.to(roomId).emit("message-seen-update", {
+					messageId: msg._id,
+					userId,
+				});
 			}
 		});
-		
-
-
 
 		socket.on("disconnect", async () => {
 			let disconnectedUserId: string | undefined;

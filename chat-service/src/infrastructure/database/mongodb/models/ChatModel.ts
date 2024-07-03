@@ -19,6 +19,10 @@ const chatSchema = new Schema({
     lastSeen: {
         type: Date
     },
+    unreadCounts: {
+        type: Number,
+        default: 0,
+    },
     groupName: {
         type: String
     },
