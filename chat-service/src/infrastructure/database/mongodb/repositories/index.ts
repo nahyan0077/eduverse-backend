@@ -7,6 +7,7 @@ export * from "./updateChat";
 export * from "./updateLastSeen";
 export * from "./updateMessage";
 export * from "./getLatestMessage";
+export * from "./updateUnreadCount";
 
 export * from "./createUser";
 export * from "./verifyUser";

@@ -5,7 +5,8 @@ import {
     IGetChatByIdUseCase, 
     IGetChatsByUserIdUseCase,
     IGetMessagesByChatIdUseCase,
-    IUpdateChatUseCase
+    IUpdateChatUseCase,
+    IUpdateUnreadCountUseCase
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
 
@@ -17,4 +18,5 @@ export interface IUseCases {
     getMessagesByChatId: (dependencies: IDependencies) => IGetMessagesByChatIdUseCase;
     updateChatUseCase: (dependencies: IDependencies) => IUpdateChatUseCase;
     updateMessageUseCase: (depenedencies: IDependencies) => IUpdateMessageUseCase;
+    updateUnreadCountUseCase: (depenedencies: IDependencies) => IUpdateUnreadCountUseCase;
 }

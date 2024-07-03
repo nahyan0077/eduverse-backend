@@ -6,6 +6,7 @@ import { getChatsByUserIdController } from "./getChatsByUserIdController";
 import { getMessagesByChatIdController } from "./getMessagesByChatIdController";
 import { updateChatController } from "./updateChatController";
 import { updateMessageController } from "./updateMessageController";
+import { updateUnreadCountController } from "./updateUnreadCountController";
 
 export const controllers = (dependencies: IDependencies) => {
     return {
@@ -15,6 +16,7 @@ export const controllers = (dependencies: IDependencies) => {
         getChatsByUserId: getChatsByUserIdController(dependencies),
         getMessagesByChatId: getMessagesByChatIdController(dependencies),
         updateChat: updateChatController(dependencies),
-        updateMessage: updateMessageController(dependencies)
+        updateMessage: updateMessageController(dependencies),
+        updateUnreadCount: updateUnreadCountController(dependencies)
     }
 };

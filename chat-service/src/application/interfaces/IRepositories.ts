@@ -8,4 +8,5 @@ export interface IRepositories {
     getMessagesByChatId: (id: string) => Promise<MessageEntity[] | null>;
     updateChat: (data: ChatEntity) => Promise<ChatEntity | null>;
     updateMessage: (data: any) => Promise <MessageEntity | null> 
+    updateUnreadCount: (data: any) => Promise <ChatEntity | null> 
 }
