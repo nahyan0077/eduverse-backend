@@ -53,5 +53,8 @@ export const controller = (dependancies: IDependencies) => {
 		//review
 		createReview: createReviewController(dependancies),
 		getAllReviews: getAllReviewsController(dependancies)
+
+		//assessments
+		
 	};
 };

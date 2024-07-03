@@ -20,6 +20,8 @@ import {
 	IUpdateLessonProgressUseCase,
 } from "@/domain/IUseCases";
 import { IDependencies } from "./IDependencies";
+import { ICreateAssessmentUseCase, IGetAllAssessmentsUseCase, IGetAssessmentByIdUseCase, IGetAssessmentsByCourseIdUseCase, IGetAssessmentsByInstructorIdUseCase, IUpdateAssessmentUseCase } from "@/domain/IUseCases/IAssessment";
+
 
 
 
@@ -50,4 +52,15 @@ export interface IUseCases {
 	//review
 	createReviewUseCase: (dependencies: IDependencies) => ICreateReviewUseCase
 	getAllReviewsUseCase: (dependencies: IDependencies) => IGetAllReviewsUseCase
+
+
+	//assessments
+	createAssessmentUseCase: (dependencies: IDependencies) => ICreateAssessmentUseCase;
+    updateAssessmentUseCase: (dependencies: IDependencies) => IUpdateAssessmentUseCase;
+    getAllAssessmentsUseCase: (dependencies: IDependencies) => IGetAllAssessmentsUseCase;
+	getAssessmentByIdUseCase: (dependencies: IDependencies) => IGetAssessmentByIdUseCase;
+	getAssessmentsByCourseIdUseCase: (dependencies: IDependencies) => IGetAssessmentsByCourseIdUseCase;
+	getAssessmentsByInstructorIdUseCase: (dependencies: IDependencies) => IGetAssessmentsByInstructorIdUseCase;
+
+
 }

@@ -1,4 +1,4 @@
-import {CategoryEntity, CourseEntity, EnrollmentEntity, ReviewEntity } from "@/domain/entities";
+import {AssessmentEntity, CategoryEntity, CourseEntity, EnrollmentEntity, ReviewEntity } from "@/domain/entities";
 import {Types} from 'mongoose'
 
 
@@ -32,4 +32,13 @@ export interface IRepositories {
     //review
     createReview: (data: ReviewEntity) => Promise <ReviewEntity | null>
     getAllReviews: (page: string | number, limit: string | number, courseId: string) => Promise <{ reviews: ReviewEntity[], totalPages: number, currentPage: number}>
+
+
+    //assessments
+    createAssessment: (data: AssessmentEntity) => Promise<AssessmentEntity | null>;
+    updateAssessment: (data: AssessmentEntity) => Promise<AssessmentEntity | null>;
+    getAllAssessments: () => Promise<AssessmentEntity[] | null>;
+    getAssessmentById: (id: string) => Promise<AssessmentEntity | null>;
+    getAssessmentsByInstructorId: (id: string) => Promise<AssessmentEntity[] | null>;
+    getAssessmentsByCourseId: (id: string) => Promise<AssessmentEntity[] | null>;
 }
