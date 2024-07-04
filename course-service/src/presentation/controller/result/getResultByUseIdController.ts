@@ -15,7 +15,15 @@ export const getResultByUseIdController = (dependencies: IDependencies) => {
             const result = await getResultByUserIdUseCase(dependencies)
                 .execute(userId);
 
-            res.status(200).json({
+            if (!result) {
+                
+                return res.status(200).json({
+                    success: false,
+                    message: "results retrieval failed..!"
+                });
+            }
+
+            return res.status(200).json({
                 success: true,
                 data: result,
                 message: "results retrieved!"

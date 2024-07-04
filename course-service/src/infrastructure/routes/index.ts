@@ -34,6 +34,7 @@ export const routes = (dependancies: IDependencies) => {
 		getAssessmentById,
 		updateAssessment,
 		createOrUpdateResult,
+		getResutsByUserId,
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -103,6 +104,8 @@ export const routes = (dependancies: IDependencies) => {
 
 	//results
 	router.route('/exam/result').post(createOrUpdateResult)
+
+	router.route('/exam/result/user/:userId').get(getResutsByUserId)
 
 	return router;
 };
