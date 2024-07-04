@@ -25,6 +25,7 @@ import {
 import { createReviewController } from "./review";
 import { getAllReviewsController } from "./review/getAllReviewsController";
 import { createAssessmentController, getAssessmentByIdController, getAssessmentsByCourseIdController, getAssessmentsByInstructorIdController, updateAssessmentController } from "./assessment";
+import { createOrUpdateResultController } from "./result";
 
 export const controller = (dependancies: IDependencies) => {
 	return {
@@ -61,6 +62,10 @@ export const controller = (dependancies: IDependencies) => {
 		getAssessmentByInstructorId: getAssessmentsByInstructorIdController(dependancies),
 		getAssessmentById: getAssessmentByIdController(dependancies),
 		updateAssessment: updateAssessmentController(dependancies),
+
+		//result
+		createOrUpdateResult: createOrUpdateResultController(dependancies),
+		
 		
 
 	};

@@ -2,18 +2,22 @@ import {
 	IAddCategoryUseCase,
 	ICreateCourseUseCase,
 	ICreateEnrollmentUseCase,
+	ICreateOrUpdateResultUseCase,
 	ICreateReviewUseCase,
 	IEditCategoryUseCase,
 	IGetAllActiveCategoriesUseCase,
 	IGetAllActiveCoursesUseCases,
 	IGetAllCategoriesUseCase,
 	IGetAllCourseUseCase,
+	IGetAllResultsUseCase,
 	IGetAllReviewsUseCase,
 	IGetCourseByIdUseCase,
 	IGetCoursesByInstructorId,
 	IGetEnrollmentByIdUseCase,
 	IGetEnrollmentByUserIdUseCase,
 	IGetInstructorsByStudentrUseCase,
+	IGetResultByIdUseCase,
+	IGetResultByUserIdUseCase,
 	IGetStudentsEnrolledByInstructorUseCase,
 	ISearchCourseUseCase,
 	IUpdateCourseUseCase,
@@ -62,5 +66,9 @@ export interface IUseCases {
 	getAssessmentsByCourseIdUseCase: (dependencies: IDependencies) => IGetAssessmentsByCourseIdUseCase;
 	getAssessmentsByInstructorIdUseCase: (dependencies: IDependencies) => IGetAssessmentsByInstructorIdUseCase;
 
-
+	//results
+	getAllResultsUseCase: (dependencies: IDependencies) => IGetAllResultsUseCase;
+    getResultByUserIdUseCase: (dependencies: IDependencies) => IGetResultByUserIdUseCase;
+    createOrUpdateResultUseCase: (dependencies: IDependencies) => ICreateOrUpdateResultUseCase;
+    getResultByIdUseCase: (dependencies: IDependencies) => IGetResultByIdUseCase;
 }

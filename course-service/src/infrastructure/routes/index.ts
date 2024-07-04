@@ -33,6 +33,7 @@ export const routes = (dependancies: IDependencies) => {
 		getAssessmentByInstructorId,
 		getAssessmentById,
 		updateAssessment,
+		createOrUpdateResult,
 	} = controller(dependancies);
 
 	//course------------------------->
@@ -98,6 +99,10 @@ export const routes = (dependancies: IDependencies) => {
 		.get(getAssessmentByInstructorId);
 
 	router.route("/assessment/:id").get(getAssessmentById);
+
+
+	//results
+	router.route('/exam/result').post(createOrUpdateResult)
 
 	return router;
 };
