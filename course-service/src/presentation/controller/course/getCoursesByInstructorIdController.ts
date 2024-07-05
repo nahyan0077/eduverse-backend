@@ -10,8 +10,6 @@ export const getCoursesByInstructorIdController = (dependancies: IDependencies) 
             const instructorId = req.params.instructorId?.toString() as string
 
             const result = await getCoursesByInstructorIdUseCase(dependancies).execute(instructorId)
-
-            console.log(result,"at controller");
             
 
             if (!result) {

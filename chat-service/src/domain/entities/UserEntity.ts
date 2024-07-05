@@ -42,7 +42,6 @@ export interface UserEntity {
     profile: Profile,
     cv?: string,
     profession: Profession,
-    // lastSeen?: Date;
     isBlocked: boolean;
     isVerified?: boolean;
     isRequested?: boolean;
