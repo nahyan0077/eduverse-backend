@@ -9,6 +9,7 @@ export interface ChatEntity {
     groupName?: string | null;
     groupDescription?: string | null;
     unreadCounts?: number;
+    subscriptionType?: "none" | "basic" | "standard" | "premium" ;
     createdAt?: Date | string;
     updatedAt?: Date | string;
 }

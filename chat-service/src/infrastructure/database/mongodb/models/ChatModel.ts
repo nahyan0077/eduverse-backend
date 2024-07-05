@@ -28,6 +28,11 @@ const chatSchema = new Schema({
     },
     groupDescription: {
         type: String
+    },
+    subscriptionType: {
+        type: String,
+        enum: ["none","basic","standard","premium"],
+        default: "none"
     }
 }, {
     timestamps: true
