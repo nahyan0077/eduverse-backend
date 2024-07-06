@@ -2,8 +2,8 @@ import { IDependencies } from "../../application/interfaces/IDependencies";
 import { Request, Response, NextFunction } from "express";
 import Stripe from "stripe";
 
-export const createPaymentSessionController = (dependencies: IDependencies) => {
-    const { useCases: {createSessionUseCase} } = dependencies
+export const createSubscriptionSessionController = (dependencies: IDependencies) => {
+    const { useCases: {createSubscriptionSessionUseCase} } = dependencies
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
 
@@ -14,15 +14,15 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
 
             const stripeInstance = new Stripe(process.env.STRIPE_SECRET_KEY, {apiVersion: '2024-04-10'})
 
-            const { courseName, courseThumbnail, userId, courseId, amount } = req.body;
+            const { planName, subscriptionThumbnail, userId, chatId, amount } = req.body;
 
             const data = [
                 {
                     price_data: {
                         currency: "INR",
                         product_data: {
-                            name: courseName,
-                            images: [courseThumbnail],
+                            name: planName,
+                            images: [subscriptionThumbnail],
                         },
                         unit_amount: Math.floor(amount * 100)
                     },
@@ -34,20 +34,20 @@ export const createPaymentSessionController = (dependencies: IDependencies) => {
                 payment_method_types: ["card"],
                 line_items: data,
                 mode: "payment",
-                success_url: `${process.env.FRONTEND_URL}/payment-success`,
+                success_url: `${process.env.FRONTEND_URL}/subscription-success`,
                 cancel_url: `${process.env.FRONTEND_URL}/payment-failed`
             });
 
-            const result = await createSessionUseCase(dependencies).execute({
+            const result = await createSubscriptionSessionUseCase(dependencies).execute({
                 userId,
-                courseId,
+                chatId,
                 sessionId: session.id
             });
 
             res.status(200).json({
                 success: true,
                 data: result,
-                message: "session created!"
+                message: "subscription session created!"
             });
         } catch (error: any) {
             next(error)

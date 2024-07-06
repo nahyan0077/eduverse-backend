@@ -2,13 +2,14 @@ import { PaymentEntity } from "@/domain/entities";
 import { producer } from "..";
 
 export default async (data: {
-	studentId: string;
-	courseId: string;
+	chatId: string;
+	userId: string;
 	amount: number;
 	instructorId: string;
+	subscriptionType: string;
 }) => {
 	try {
-		const { studentId, courseId, amount, instructorId } = data;
+		const { chatId,  amount, userId, instructorId, subscriptionType } = data;
 
 		await producer.connect();
 		const message: any = [
@@ -16,26 +17,25 @@ export default async (data: {
 				topic: "user-service-topic",
 				messages: [
 					{
-						key: "coursePurchaseSuccess",
+						key: "chatSubscriptionSuccess",
 						value: JSON.stringify({
-							instructorId,
-							courseId: courseId,
-							amount: amount,
-							studentId
+							userId,
+							amount,
+							instructorId
 						}),
 					},
 				],
 			},
 			{
-				topic: "course-service-topic",
+				topic: "chat-service-topic",
 				messages: [
 					{
-						key: "coursePurchaseSuccess",
+						key: "chatSubscriptionSuccess",
 						value: JSON.stringify({
-							instructorId,
-							courseId: courseId,
-							amount: amount,
-							studentId
+							chatId,
+							userId,
+							amount,
+							subscriptionType
 						}),
 					},
 				],
@@ -44,12 +44,11 @@ export default async (data: {
 				topic: "auth-service-topic",
 				messages: [
 					{
-						key: "coursePurchaseSuccess",
+						key: "chatSubscriptionSuccess",
 						value: JSON.stringify({
-							instructorId,
-							courseId: courseId,
-							amount: amount,
-							studentId
+							userId,
+							amount,
+							instructorId
 						}),
 					},
 				],
@@ -59,7 +58,7 @@ export default async (data: {
 
 		await producer.sendBatch({ topicMessages: message });
 
-		console.log(message, "course purchase success produced ( payment-service )--->");
+		console.log(message, "chat subscription success produced ( payment-service )--->");
 	} catch (error: any) {
 		console.error("kafka produce error:", error?.message);
 	} finally {
