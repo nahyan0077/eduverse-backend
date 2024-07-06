@@ -2,7 +2,7 @@ import app from "./presentation/server";
 import database from "./_boot/database";
 import { socket } from "./_boot/socket";
 import { createServer } from "http";
-// import { startConsumer } from './_boot/consumer';
+import { startConsumer } from './_boot/consumer';
 
 (async () => {
 	try {
@@ -10,8 +10,8 @@ import { createServer } from "http";
 
 		socket(server);
 
-
-		await database();
+		
+		await Promise.all([database(),startConsumer()])
 
 		server.listen(process.env.PORT, () => {
 			console.log(

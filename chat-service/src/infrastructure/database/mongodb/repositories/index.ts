@@ -8,6 +8,7 @@ export * from "./updateLastSeen";
 export * from "./updateMessage";
 export * from "./getLatestMessage";
 export * from "./updateUnreadCount";
+export * from "./updateChatSubscription";
 
 export * from "./createUser";
 export * from "./verifyUser";

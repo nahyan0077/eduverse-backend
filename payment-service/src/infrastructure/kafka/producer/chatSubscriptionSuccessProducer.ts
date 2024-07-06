@@ -12,20 +12,20 @@ export default async (data: {
 		const { chatId,  amount, userId, instructorId, subscriptionType } = data;
 
 		await producer.connect();
-		const message: any = [
-			{
-				topic: "user-service-topic",
-				messages: [
-					{
-						key: "chatSubscriptionSuccess",
-						value: JSON.stringify({
-							userId,
-							amount,
-							instructorId
-						}),
-					},
-				],
-			},
+		const message: any = 
+			// {
+			// 	topic: "user-service-topic",
+			// 	messages: [
+			// 		{
+			// 			key: "chatSubscriptionSuccess",
+			// 			value: JSON.stringify({
+			// 				userId,
+			// 				amount,
+			// 				instructorId
+			// 			}),
+			// 		},
+			// 	],
+			// },
 			{
 				topic: "chat-service-topic",
 				messages: [
@@ -34,29 +34,28 @@ export default async (data: {
 						value: JSON.stringify({
 							chatId,
 							userId,
-							amount,
 							subscriptionType
 						}),
 					},
 				],
-			},
-			{
-				topic: "auth-service-topic",
-				messages: [
-					{
-						key: "chatSubscriptionSuccess",
-						value: JSON.stringify({
-							userId,
-							amount,
-							instructorId
-						}),
-					},
-				],
-			},
+			}
+			// {
+			// 	topic: "auth-service-topic",
+			// 	messages: [
+			// 		{
+			// 			key: "chatSubscriptionSuccess",
+			// 			value: JSON.stringify({
+			// 				userId,
+			// 				amount,
+			// 				instructorId
+			// 			}),
+			// 		},
+			// 	],
+			// },
 
-		];
+		;
 
-		await producer.sendBatch({ topicMessages: message });
+		await producer.send( message );
 
 		console.log(message, "chat subscription success produced ( payment-service )--->");
 	} catch (error: any) {

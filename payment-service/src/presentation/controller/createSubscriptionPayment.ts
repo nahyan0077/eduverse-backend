@@ -27,7 +27,11 @@ export const createSubscripionPaymentController = (dependencies: IDependencies) 
                 subscriptionType
             }
 
-            //create subscription producer
+            console.log(producerData,"produser subcrip");
+
+            
+
+            // //create subscription producer
             await chatSubscriptionSuccessProducer(producerData)
 
             res.status(200).json({
