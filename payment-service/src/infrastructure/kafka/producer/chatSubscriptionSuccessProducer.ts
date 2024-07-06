@@ -12,7 +12,7 @@ export default async (data: {
 		const { chatId,  amount, userId, instructorId, subscriptionType } = data;
 
 		await producer.connect();
-		const message: any = 
+		const message: any = [
 			// {
 			// 	topic: "user-service-topic",
 			// 	messages: [
@@ -38,7 +38,7 @@ export default async (data: {
 						}),
 					},
 				],
-			}
+			},
 			// {
 			// 	topic: "auth-service-topic",
 			// 	messages: [
@@ -53,9 +53,9 @@ export default async (data: {
 			// 	],
 			// },
 
-		;
+		];
 
-		await producer.send( message );
+		await producer.sendBatch({ topicMessages: message });
 
 		console.log(message, "chat subscription success produced ( payment-service )--->");
 	} catch (error: any) {

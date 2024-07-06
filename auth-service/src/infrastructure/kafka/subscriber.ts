@@ -6,6 +6,7 @@ import {
 	updateUserConsumer,
 	coursePurchaseSuccessConsumer,
 } from "./consumers";
+import { chatSubscriptionSuccessConsumer } from "./consumers/chatSubscriptionConsumer";
 
 export interface ISubscriber {
 	sendVerificationMail(data: any): Promise<void>;
@@ -14,6 +15,7 @@ export interface ISubscriber {
 	rejectInstructor(data: any): Promise<void>;
 	userUpdated(data: any): Promise <void>;
 	coursePurchaseSuccess(data: any): Promise <void>;
+	chatSubscriptionSuccess(data: any): Promise <void>;
 }
 
 export interface IAuthSubscriber
@@ -25,6 +27,7 @@ export interface IAuthSubscriber
 		| "rejectInstructor"
 		| "userUpdated"
 		| "coursePurchaseSuccess"
+		| "chatSubscriptionSuccess"
 	> {}
 
 export const createSubscriber = (): IAuthSubscriber => {
@@ -34,6 +37,7 @@ export const createSubscriber = (): IAuthSubscriber => {
 		verifyInstructor: verifyInstructorConsumer,
 		rejectInstructor: rejectInstructorConsumer,
 		userUpdated: updateUserConsumer,
-		coursePurchaseSuccess: coursePurchaseSuccessConsumer
+		coursePurchaseSuccess: coursePurchaseSuccessConsumer,
+		chatSubscriptionSuccess: chatSubscriptionSuccessConsumer
 	};
 };
