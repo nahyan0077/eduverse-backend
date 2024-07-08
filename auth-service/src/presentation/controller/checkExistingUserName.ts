@@ -9,18 +9,16 @@ export const chechExistingUserNameController = (dependancies: IDependancies) => 
             console.log(username,"usrn name racherd ");
             
             const result = await checkExistingUserNameUseCase(dependancies).execute(username)
-            console.log(result,"user name exitrs tch");
+
             
             if (!result) {
-                return res.status(200).json({
+                return res.status(409).json({
                     success: false,
-                    data: {},
                     message: "username is already taken",
                 });
             }
             return res.status(200).json({
 				success: true,
-				data: {},
 				message: "username is available",
 			});
         } catch (error: any) {
