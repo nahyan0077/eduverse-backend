@@ -1,23 +1,26 @@
 import { CourseEntity } from "@/domain/entities";
-import ErrorResponse from "../../../../../_lib/common/error/errorResponse";
-import { Course } from "../../models/CourseModel";
+import { ErrorResponse } from "@eduverse/common";
+import { Course } from "../../models";
 
 export const updateCourse = async (data: CourseEntity, incrementStudentsEnrolled: boolean): Promise<CourseEntity | null> => {
     try {
-        const { _id, ...updation } = data;
+        const { _id, studentsEnrolled, ...updation } = data;
 
-        // Build the update object
-        const updateObject: any = { ...updation };
+        console.log(data, "update course data in repo");
+        console.log(incrementStudentsEnrolled, "bool stud enrolled");
 
-        // Conditionally add the $inc operation
+        let updateObject: any = { ...updation };
+
         if (incrementStudentsEnrolled) {
             updateObject.$inc = { studentsEnrolled: 1 };
         }
 
         const result = await Course.findByIdAndUpdate(_id, updateObject, { new: true });
 
+        console.log(result, "result of update course");
+
         if (!result) {
-            throw new Error("Course not found");
+            throw ErrorResponse.internalError(`Error updating course`);
         }
 
         return result;
