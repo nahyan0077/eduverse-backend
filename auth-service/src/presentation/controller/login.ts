@@ -3,6 +3,7 @@ import ErrorResponse from "../../_lib/common/error/errorResponse";
 import { generateAccessToken, generateRefreshToken } from "../../_lib/http/jwt";
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { NextFunction, Request, Response } from "express";
+import { loginSchema } from "../../_lib/validation";
 
 export const loginController = (dependancies: IDependancies) => {
 	const {
@@ -12,11 +13,22 @@ export const loginController = (dependancies: IDependancies) => {
 		try {
 			const { email, password } = req.body;
 
+			//login validation
+			const {error, value} = loginSchema.validate(req.body)
+
+			console.log(error,"backend validat");
+			console.log(value,"val backend validat");
+			
+
+			if (error) {
+				return res.status(400).json({ errors: error.message });
+			}
+
 			const result = await loginUserUseCase(dependancies).execute(
-				email,
-				password
+				value.email,
+				value.password
 			);
-			console.log(result, "login confirm");
+
 
 			const userId = result?._id?.toString() as string;
 
