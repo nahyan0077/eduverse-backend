@@ -12,7 +12,7 @@ const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 2001;
 
 const corsOptions = {
-	origin: String(process.env.GATEWAY_SERVICE),
+	origin: String(process.env.FRONTEND_URL),
 	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 	credentials: true,
 };
