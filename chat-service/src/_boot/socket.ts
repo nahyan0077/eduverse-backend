@@ -76,6 +76,23 @@ export const socket = (server: HTTPServer) => {
 			}
 		});
 
+
+		//video call
+
+		socket.on("start-call",({roomId, id}) => {
+			console.log(roomId,"roomid---vido call");
+			console.log(id,"userid---");
+			socket.to(roomId).emit("incoming-call",id)
+			console.log("emitted---->",roomId);
+			
+		})
+
+		socket.on("end-call", (roomId) => {
+			socket.to(roomId).emit("end-call");
+		});
+	
+		
+
 		socket.on("disconnect", async () => {
 			let disconnectedUserId: string | undefined;
 			for (const [userId, socketId] of onlineUsers) {
@@ -84,6 +101,7 @@ export const socket = (server: HTTPServer) => {
 					break;
 				}
 			}
+			
 
 			if (disconnectedUserId) {
 				onlineUsers.delete(disconnectedUserId);

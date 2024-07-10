@@ -3,7 +3,7 @@ import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import cors from "cors";
 import proxy from 'express-http-proxy'
-import { limiter } from "../_lib/rateLimitter/rateLImitter";
+// import { limiter } from "../_lib/rateLimitter/rateLImitter";
 
 
 config();
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
-app.use(limiter)
+// app.use(limiter)
 
 app.get('/test',(req,res)=>{
     res.status(200).json({
