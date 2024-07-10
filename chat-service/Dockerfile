@@ -12,6 +12,6 @@ RUN ls -al
 
 RUN npm run build
 
-EXPOSE 5001
+EXPOSE 9001
 
 CMD [ "npm", "start" ]
