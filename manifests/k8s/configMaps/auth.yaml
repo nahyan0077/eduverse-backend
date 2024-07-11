@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-config
+  labels:
+    app: eduverse-auth-service
+data:
+  PORT: "4001"
+  MONGODB_URI: "mongodb+srv://nahyanmp4:eFOLhCbmv9BxGjTx@cluster0.pewmo7d.mongodb.net/"
+  SERVICE: "AUTH-SERVICE"
+  REFRESH_TOKEN_SECRET: "refreshtokensecretishere"
+  ACCESS_TOKEN_SECRET: "accesstokensecretishere"
+  FORGOT_PASSWORD_SECRET: "forgotpasswordsecretshere"
+  GOOGLE_CLIENT_ID: "625316687835-2j8pg9ikakffvn1udn46cn4dpt5c29dn.apps.googleusercontent.com"

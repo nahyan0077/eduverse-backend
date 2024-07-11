@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-config
+  labels:
+    app: eduverse-user-service
+data:
+  PORT: "6001"
+  MONGODB_URI: "mongodb+srv://nahyanmp4:2boxG55ZnLf8bndU@cluster0.1shxvb9.mongodb.net/"
+  SERVICE: "USER-SERVICE"
+  REFRESH_TOKEN_SECRET: "refreshtokensecretishere"
+  ACCESS_TOKEN_SECRET: "accesstokensecretishere"
+  FRONTEND_URL: "http://localhost:3001"
