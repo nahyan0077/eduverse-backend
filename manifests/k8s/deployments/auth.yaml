@@ -20,3 +20,15 @@ spec:
         envFrom:
           - configMapRef:
               name: auth-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduverse-auth-service
+spec:
+  selector:
+    app: eduverse-auth-service
+  ports:
+  - protocol: TCP
+    port: 4001
+    targetPort: 4001

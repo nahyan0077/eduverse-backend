@@ -12,4 +12,4 @@ data:
   ACCESS_TOKEN_SECRET: "accesstokensecretishere"
   FORGOT_PASSWORD_SECRET: "forgotpasswordsecretshere"
   GOOGLE_CLIENT_ID: "625316687835-2j8pg9ikakffvn1udn46cn4dpt5c29dn.apps.googleusercontent.com"
-  FRONTEND_URL: "http://localhost:3001"
+  FRONTEND_URL: "http://localhost:3001" 

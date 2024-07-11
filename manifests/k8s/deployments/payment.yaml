@@ -20,3 +20,15 @@ spec:
         envFrom:
           - configMapRef:
               name: payment-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduverse-payment-service
+spec:
+  selector:
+    app: eduverse-payment-service
+  ports:
+  - protocol: TCP
+    port: 8001
+    targetPort: 8001

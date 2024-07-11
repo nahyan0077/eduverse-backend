@@ -20,3 +20,15 @@ spec:
         envFrom:
           - configMapRef:
               name: chat-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduverse-chat-service
+spec:
+  selector:
+    app: eduverse-chat-service
+  ports:
+  - protocol: TCP
+    port: 9001
+    targetPort: 9001
