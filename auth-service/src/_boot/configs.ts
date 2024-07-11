@@ -4,6 +4,8 @@ import {envString, envNumber} from '@/_boot/environment'
 
 config()
 
+
+//this is used to set the cofigurations
 export const configs = {
     http: {
         host: envString('HOST', 'localhost'),
@@ -15,4 +17,5 @@ export const configs = {
         username: envString('DB_USERNAME', ''),
         password: envString('DB_PASSWORD', '')
     }
+
 }
