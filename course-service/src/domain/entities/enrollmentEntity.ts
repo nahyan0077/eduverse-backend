@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 
 
-export enum CompleationStatus {
+export enum CompletionStatus {
     enrolled = 'enrolled',
     inProgress = 'in-progress',
     Completed = 'completed',
@@ -12,7 +12,7 @@ export interface EnrollmentEntity {
     userId: Types.ObjectId;
     courseId: Types.ObjectId;
     enrolledAt?: Date | string;
-    completionStatus?: CompleationStatus;
+    completionStatus?: CompletionStatus;
     progress?: {
         completedLessons?:  Types.ObjectId[] | [] | null;
         completedAssessments?: Types.ObjectId[] | [] | null;

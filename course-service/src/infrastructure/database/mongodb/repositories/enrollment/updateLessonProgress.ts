@@ -1,4 +1,4 @@
-import { EnrollmentEntity, CompleationStatus } from "../../../../../domain/entities";
+import { EnrollmentEntity, CompletionStatus } from "../../../../../domain/entities";
 import { Enrollment } from "../../models";
 import { Types } from "mongoose";
 
@@ -21,7 +21,7 @@ export const updateLessonProgress = async (enrollmentId: Types.ObjectId, lessonI
             enrollment.progress.completedLessons = [];
         }
 
-        const index = enrollment.progress?.completedLessons?.findIndex((item) => item == lessonId )
+        const index = enrollment.progress?.completedLessons?.findIndex((item: any) => item == lessonId )
 
         if (index == -1) {
            (enrollment?.progress?.completedLessons as Types.ObjectId[])?.push(lessonId)
@@ -32,9 +32,9 @@ export const updateLessonProgress = async (enrollmentId: Types.ObjectId, lessonI
         enrollment.progress.overallCompletionPercentage = percentageComplete;
 
         if (percentageComplete === 100) {
-            enrollment.completionStatus  = CompleationStatus.Completed;
+            enrollment.completionStatus  = CompletionStatus.Completed;
         } else if (completedLessons > 0) {
-            enrollment.completionStatus  = CompleationStatus.inProgress;
+            enrollment.completionStatus  = CompletionStatus.inProgress;
         }
 
         const updated = await enrollment.save();
