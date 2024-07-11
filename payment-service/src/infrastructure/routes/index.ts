@@ -11,16 +11,16 @@ export const routes = (dependencies: IDependencies) => {
 	const router = Router();
 
 	//payment sessions
-	router.route("/session").post(createSession);
-	router.route("/session/:id").get(getPaymentSession)
+	router.route("/session").post(CurrentUser, RequireAuth,createSession);
+	router.route("/session/:id").get(CurrentUser, RequireAuth,getPaymentSession)
 
-	router.route('/subscription/session').post(createSubscriptionSession)
+	router.route('/subscription/session').post(CurrentUser, RequireAuth,createSubscriptionSession)
 	
 	//payments
-	router.route('/').post(createPayment)
-	.get(getAllPayments)
+	router.route('/').post(CurrentUser, RequireAuth,createPayment)
+					.get(CurrentUser, RequireAuth,getAllPayments)
 	
-	router.route('/subscription').post(createSubscriptionPayment)
+	router.route('/subscription').post(CurrentUser, RequireAuth,createSubscriptionPayment)
 
 
 	return router;

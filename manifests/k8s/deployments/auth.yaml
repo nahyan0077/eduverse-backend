@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eduverse-auth-deployment
+  labels:
+    name:  auth-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+      - image: nahyan007/eduverse-auth:latest
+        name: auth-service
+        envFrom:
+          - configMapRef:
+              name: auth-service-config

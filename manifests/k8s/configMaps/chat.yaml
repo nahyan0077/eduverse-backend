@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-config
+  labels:
+    app: eduverse-chat-service
+data:
+  PORT: "9001"
+  MONGODB_URI: "mongodb+srv://nahyanmp4:3QUDZx6vhUJlhnxC@cluster0.5swcjdh.mongodb.net/"
+  SERVICE: "CHAT-SERVICE"
+  REFRESH_TOKEN_SECRET: "refreshtokensecretishere"
+  ACCESS_TOKEN_SECRET: "accesstokensecretishere"
+  FORGOT_PASSWORD_SECRET: "forgotpasswordsecretshere"
+  GOOGLE_CLIENT_ID: "625316687835-2j8pg9ikakffvn1udn46cn4dpt5c29dn.apps.googleusercontent.com"
+  FRONTEND_URL: "http://localhost:3001"
