@@ -1,5 +1,5 @@
 
-import { EnrollmentEntity } from "@/domain/entities";
+import { EnrollmentEntity } from "../../entities/EnrollmentEntity";
 
 export interface ICreateEnrollmentUseCase {
     execute(data: EnrollmentEntity): Promise <EnrollmentEntity | null>

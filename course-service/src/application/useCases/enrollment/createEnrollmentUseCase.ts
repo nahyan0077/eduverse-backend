@@ -1,5 +1,5 @@
 import { IDependencies } from "@/application/interfaces/IDependencies";
-import { EnrollmentEntity } from "@/domain/entities";
+import { EnrollmentEntity } from "../../../domain/entities/EnrollmentEntity";
 
 export const createEnrollmentUseCase = (dependecies: IDependencies) => {
     const { repositories: {createEnrollment} } = dependecies

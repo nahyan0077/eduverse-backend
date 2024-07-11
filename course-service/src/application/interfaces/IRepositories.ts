@@ -1,4 +1,5 @@
-import {AssessmentEntity, CategoryEntity, CourseEntity, EnrollmentEntity, ResultEntity, ReviewEntity } from "../../domain/entities";
+import {AssessmentEntity, CategoryEntity, CourseEntity,  ResultEntity, ReviewEntity } from "../../domain/entities";
+import { EnrollmentEntity } from "../../domain/entities/EnrollmentEntity";
 import {Types} from 'mongoose'
 
 

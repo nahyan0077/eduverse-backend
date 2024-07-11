@@ -1,4 +1,4 @@
-import { EnrollmentEntity } from "../../../domain/entities";
+import { EnrollmentEntity } from "../../entities/EnrollmentEntity";
 import {Types} from 'mongoose'
 
 export interface IUpdateLessonProgressUseCase {

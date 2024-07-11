@@ -1,4 +1,5 @@
-import { EnrollmentEntity, CompletionStatus } from "../../../../../domain/entities";
+import { EnrollmentEntity } from "../../../../../domain/entities/EnrollmentEntity";
+import { CompletionStatus } from "../../../../../domain/entities/EnrollmentEntity";
 import { Enrollment } from "../../models";
 import { Types } from "mongoose";
 
