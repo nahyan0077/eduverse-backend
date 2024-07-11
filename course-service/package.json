@@ -29,7 +29,7 @@
     "jsonwebtoken": "^9.0.2",
     "kafkajs": "^2.2.4",
     "module-alias": "^2.2.3",
-    "mongoose": "^8.4.0",
+    "mongoose": "^8.5.0",
     "morgan": "^1.10.0",
     "pdfkit": "^0.15.0",
     "ts-node": "^10.9.2",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.10",
     "@types/pdfkit": "^0.13.4",
     "nodemon": "^3.1.0",
     "typescript": "^5.4.5"
