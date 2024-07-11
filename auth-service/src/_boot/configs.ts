@@ -5,7 +5,7 @@ import {envString, envNumber} from '@/_boot/environment'
 config()
 
 
-//this is used to set the cofigurations
+
 export const configs = {
     http: {
         host: envString('HOST', 'localhost'),
