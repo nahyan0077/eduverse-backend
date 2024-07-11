@@ -20,3 +20,15 @@ spec:
         envFrom:
           - configMapRef:
               name: course-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduverse-course-service
+spec:
+  selector:
+    app: eduverse-course-service
+  ports:
+  - protocol: TCP
+    port: 7001
+    targetPort: 7001

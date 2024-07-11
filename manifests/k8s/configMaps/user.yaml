@@ -10,4 +10,3 @@ data:
   SERVICE: "USER-SERVICE"
   REFRESH_TOKEN_SECRET: "refreshtokensecretishere"
   ACCESS_TOKEN_SECRET: "accesstokensecretishere"
-  FRONTEND_URL: "http://localhost:3001"

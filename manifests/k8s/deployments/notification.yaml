@@ -20,3 +20,15 @@ spec:
         envFrom:
           - configMapRef:
               name: notification-service-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eduverse-notification-service
+spec:
+  selector:
+    app: eduverse-notification-service
+  ports:
+  - protocol: TCP
+    port: 5001
+    targetPort: 5001

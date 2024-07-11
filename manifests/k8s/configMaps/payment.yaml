@@ -12,3 +12,4 @@ data:
   ACCESS_TOKEN_SECRET: "accesstokensecretishere"
   FRONTEND_URL: "http://localhost:3001"
   STRIPE_SECRET_KEY: "sk_test_51PQqK8K2s6ckuYfoU6TcJuof8VN7dZLfkSnvfwZs0Gk7fx8bVN5Et742SrbCBoBxBFvWayWNWMfLwyef8VcOsXc300clzgiQpr"
+  STRIPE_WEBHOOK_SECRET: "whsec_1486689aa4deca1cbc6667201b39f0327c1d7763902866b51d1d4f6b220ad4da"
