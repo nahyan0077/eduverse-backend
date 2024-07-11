@@ -4,7 +4,7 @@ config();
 
 export default async () => {
 	try {
-		const mongoUrl = process.env.MONGO_URI;
+		const mongoUrl = process.env.MONGODB_URI;
 
 		if (!mongoUrl) {
 			throw new Error(
