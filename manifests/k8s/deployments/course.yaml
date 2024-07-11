@@ -2,24 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eduverse-course-deployment
-  labels:
-    name:  course-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: course-service
+      app: eduverse-course-service
   template:
     metadata:
       labels:
-        app: course-service
+        app: eduverse-course-service
     spec:
       containers:
       - image: nahyan007/eduverse-course:latest
-        name: course-service
+        name: eduverse-course-service
         envFrom:
           - configMapRef:
-              name: course-service-config
+              name: course-config
 ---
 apiVersion: v1
 kind: Service

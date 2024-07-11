@@ -2,24 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eduverse-chat-deployment
-  labels:
-    name:  chat-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: chat-service
+      app: eduverse-chat-service
   template:
     metadata:
       labels:
-        app: chat-service
+        app: eduverse-chat-service
     spec:
       containers:
       - image: nahyan007/eduverse-chat:latest
-        name: chat-service
+        name: eduverse-chat-service
         envFrom:
           - configMapRef:
-              name: chat-service-config
+              name: chat-config
 ---
 apiVersion: v1
 kind: Service

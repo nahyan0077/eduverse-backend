@@ -2,24 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eduverse-payment-deployment
-  labels:
-    name:  payment-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment-service
+      app: eduverse-payment-service
   template:
     metadata:
       labels:
-        app: payment-service
+        app: eduverse-payment-service
     spec:
       containers:
       - image: nahyan007/eduverse-payment:latest
-        name: payment-service
+        name: eduverse-payment-service
         envFrom:
           - configMapRef:
-              name: payment-service-config
+              name: payment-config
 ---
 apiVersion: v1
 kind: Service

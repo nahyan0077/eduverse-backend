@@ -2,24 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: eduverse-user-deployment
-  labels:
-    name:  user-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-service
+      app: eduverse-user-service
   template:
     metadata:
       labels:
-        app: user-service
+        app: eduverse-user-service
     spec:
       containers:
-      - image: nahyan007/eduverse-user:latest
-        name: user-service
+      - name: eduverse-user-service
+        image: nahyan007/eduverse-user:latest
         envFrom:
-          - configMapRef:
-              name: user-service-config
+        - configMapRef:
+            name: user-config
 ---
 apiVersion: v1
 kind: Service
