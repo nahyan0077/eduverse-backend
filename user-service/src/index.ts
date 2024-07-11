@@ -2,7 +2,7 @@ import server from './presentation/server'
 import database from './_boot/database';
 import { startConsumer } from './_boot/consumer';
 
-//test
+
 (async () => {
     try {
       server.start();

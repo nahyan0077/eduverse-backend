@@ -1,7 +1,7 @@
 import server from './presentation/server'
 import database from './_boot/database';
 
-//test
+
 (async () => {
     try {
       server.start();

@@ -2,14 +2,14 @@ import server from './presentation/server'
 import database from './_boot/database';
 import { startConsumer } from './_boot/consumer';
 
-//test
+
 (async () => {
     try {
       server.start();
 
-      await database()
+      // await database()
       //check any mistake
-      // await Promise.all([database(),startConsumer()])
+      await Promise.all([database(),startConsumer()])
 
     } catch (error: any) {
         console.error(error?.message || 'An error occurred');

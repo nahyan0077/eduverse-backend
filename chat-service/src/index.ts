@@ -4,7 +4,7 @@ import { socket } from "./_boot/socket";
 import { createServer } from "http";
 import { startConsumer } from './_boot/consumer';
 
-//test
+
 (async () => {
 	try {
 		const server = createServer(app);
