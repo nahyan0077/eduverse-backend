@@ -5,7 +5,10 @@ import { startConsumer } from './_boot/consumer';
 (async () => {
     try {
       server.start();
-      await Promise.all([database(),startConsumer()])
+
+      await database()
+
+      // await Promise.all([database(),startConsumer()])
 
     } catch (error: any) {
         console.error(error?.message || 'An error occurred');
