@@ -1,0 +1,64 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-controller
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/enable-cors: "true" 
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://drop-ship.shop"
+spec:
+  ingressClassName: webapprouting.kubernetes.azure.com
+  rules:
+  - host: drop-ship.shop
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-frontend-service
+            port:
+              number: 3001
+      - path: /api/auth
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-auth-service
+            port:
+              number: 4001
+      - path: /api/user
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-user-service
+            port:
+              number: 6001
+      - path: /api/notification
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-notification-service
+            port:
+              number: 5001
+      - path: /api/course
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-course-service
+            port:
+              number: 7001
+      - path: /api/payment
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-payment-service
+            port:
+              number: 8001
+      - path: /api/chat
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-chat-service
+            port:
+              number: 9001
