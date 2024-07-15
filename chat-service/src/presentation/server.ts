@@ -1,16 +1,16 @@
 import express, {
-	Request,
-	Response,
-	Application,
-	NextFunction,
-	ErrorRequestHandler,
+  Request,
+  Response,
+  Application,
+  NextFunction,
+  ErrorRequestHandler,
 } from "express";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import morgan from "morgan";
-import { routes } from '../infrastructure/routes';
-import { dependancies } from '../_boot/dependancies';
-import errorHandler from '../_lib/common/error/errorhandler';
+import { routes } from "../infrastructure/routes";
+import { dependancies } from "../_boot/dependancies";
+import errorHandler from "../_lib/common/error/errorhandler";
 
 config();
 
@@ -25,22 +25,22 @@ app.use(cookieParser());
 
 app.use(morgan("dev"));
 
-// Home route
-app.get("/test", (req: Request, res: Response) => {
-	res.status(200).json({
-		message: "Chat service ON!",
-	});
+// test route
+app.get("/api/chat/test", (req: Request, res: Response) => {
+  res.status(200).json({
+    message: "Chat service ON!",
+  });
 });
 
-app.use('/', routes(dependancies));
+app.use("/api/chat", routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {
-	res
-		.status(404)
-		.json({ success: false, status: 404, message: "API Not found" });
+  res
+    .status(404)
+    .json({ success: false, status: 404, message: "API Not found--->CHAT" });
 });
 
-app.use(errorHandler)
+app.use(errorHandler);
 
 export default app;

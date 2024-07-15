@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 
 // Routes
 
-// Home route
+// test route
 app.get('/api/auth/test', (req: Request, res: Response) => {
     res.status(200).json({
         message: "Auth service ON!"
