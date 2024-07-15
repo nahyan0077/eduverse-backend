@@ -7,6 +7,12 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/enable-cors: "true" 
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://drop-ship.shop"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/websocket-services: "eduverse-chat-service"
 spec:
   ingressClassName: webapprouting.kubernetes.azure.com
   rules:
