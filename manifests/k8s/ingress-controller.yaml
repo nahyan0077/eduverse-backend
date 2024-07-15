@@ -5,7 +5,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    nginx.ingress.kubernetes.io/enable-cors: "true" 
+    nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://drop-ship.shop"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
@@ -62,6 +62,13 @@ spec:
             port:
               number: 8001
       - path: /api/chat
+        pathType: Prefix
+        backend:
+          service:
+            name: eduverse-chat-service
+            port:
+              number: 9001
+      - path: /socket.io
         pathType: Prefix
         backend:
           service:
