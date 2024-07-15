@@ -16,6 +16,12 @@ export const socket = (server: HTTPServer) => {
 	});
 
 	io.on("connection", (socket: Socket) => {
+
+		const userId = socket.handshake.query.userid
+
+		console.log(userId,"handshake check--------->");
+		
+
 		console.log("Socket connected", socket.id);
 
 		socket.on("new-user", (userId: string) => {
