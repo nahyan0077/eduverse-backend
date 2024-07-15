@@ -11,6 +11,8 @@ import morgan from "morgan";
 import { routes } from "../infrastructure/routes";
 import { dependancies } from "../_boot/dependancies";
 import errorHandler from "../_lib/common/error/errorhandler";
+import http from 'http'
+import { socket } from "@/_boot/socket";
 
 config();
 
@@ -25,12 +27,16 @@ app.use(cookieParser());
 
 app.use(morgan("dev"));
 
+const server = http.createServer(app)
+
 // test route
 app.get("/api/chat/test", (req: Request, res: Response) => {
   res.status(200).json({
     message: "Chat service ON!",
   });
 });
+
+socket(server)
 
 app.use("/api/chat", routes(dependancies));
 
@@ -42,5 +48,11 @@ app.all("*", (req: Request, res: Response) => {
 });
 
 app.use(errorHandler);
+
+server.listen(process.env.PORT, () => {
+	console.log(
+		`The ${process.env.SERVICE} is listening on port ${process.env.PORT}`
+	);
+});
 
 export default app;
