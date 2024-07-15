@@ -22,17 +22,17 @@ app.use(morgan('dev'));
 // Routes
 
 // Home route
-app.get('/', (req: Request, res: Response) => {
+app.get('/api/auth/test', (req: Request, res: Response) => {
     res.status(200).json({
         message: "Auth service ON!"
     });
 });
 
-app.use('/', routes(dependancies));
+app.use('/api/auth', routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {
-    res.status(404).json({ success: false, status: 404, message: "API Not found" });
+    res.status(404).json({ success: false, status: 404, message: "API Not found--->AUTH" });
 });
 
 app.use(errorHandler)
