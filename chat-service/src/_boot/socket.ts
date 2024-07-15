@@ -7,6 +7,8 @@ let onlineUsers = new Map<string, string>();
 let onlineUsersList: { userId: string; socketId: string }[] = [];
 
 export const socket = (server: HTTPServer) => {
+	console.log(process.env.FRONTEND_URL,"frontend url------------>");
+	
 	const io = new SocketIOServer(server, {
 		cors: {
 			origin: process.env.FRONTEND_URL || "*",
