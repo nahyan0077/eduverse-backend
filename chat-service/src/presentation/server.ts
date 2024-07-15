@@ -20,6 +20,7 @@ app.use(morgan("dev"));
 app.use(
   cors({
     origin: "https://drop-ship.shop",
+    // origin: "http://localhost:3001",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
@@ -32,6 +33,7 @@ app.get("/api/chat/test", (req: Request, res: Response) => {
 });
 
 app.use("/api/chat", routes(dependancies));
+// app.use("/", routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {

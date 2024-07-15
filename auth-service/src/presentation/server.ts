@@ -29,6 +29,7 @@ app.get('/api/auth/test', (req: Request, res: Response) => {
 });
 
 app.use('/api/auth', routes(dependancies));
+// app.use('/', routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {

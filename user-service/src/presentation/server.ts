@@ -24,6 +24,7 @@ app.get("/api/user/test", (req: Request, res: Response) => {
 });
 
 app.use("/api/user", userRoutes(dependencies));
+// app.use("/", userRoutes(dependencies));
 
 app.use("*", (req: Request, res: Response) => {
   res

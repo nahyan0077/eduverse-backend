@@ -24,6 +24,7 @@ app.get("/api/notification/test", (req: Request, res: Response) => {
 });
 
 app.use("/api/notification", notificationRouter(dependencies));
+// app.use("/", notificationRouter(dependencies));
 
 app.use("*", (req: Request, res: Response) => {
   res
