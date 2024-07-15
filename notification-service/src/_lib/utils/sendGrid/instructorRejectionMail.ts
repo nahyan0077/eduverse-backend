@@ -26,14 +26,14 @@ We appreciate your interest in joining our team and encourage you to visit our s
 
 Best regards,
 The EduVerse Team
-[EduVerse Website](http://localhost:3001)`,
+[EduVerse Website](https://drop-ship.shop)`,
 		html: `
             <h2>Dear Instructor,</h2>
             <p>We regret to inform you that your application to become an instructor with EduVerse has not been approved at this time.</p>
             <p>Your application has been rejected because the data provided in your CV does not match our instructor application criteria.</p>
             <p>We appreciate your interest in joining our team and encourage you to visit our site and apply again in the future.</p>
             <p>Best regards,<br>The EduVerse Team</p>
-            <p><a href="http://localhost:3001" style="color: #1a73e8;">Visit our website to apply again</a></p>
+            <p><a href="https://drop-ship.shop" style="color: #1a73e8;">Visit our website to apply again</a></p>
         `,
 	};
 

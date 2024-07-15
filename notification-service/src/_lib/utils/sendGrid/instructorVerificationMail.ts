@@ -23,7 +23,7 @@ export const instructorVerificationMail = async (data: { email: string }) => {
 Your account has been successfully verified. Thank you for being a valuable part of EduVerse.
 
 To get started, please click on the link below to visit EduVerse:
-https://www.eduverse.com
+https://drop-ship.shop
 
 Best regards,
 The EduVerse Team`,
