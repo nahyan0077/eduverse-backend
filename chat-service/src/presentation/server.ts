@@ -38,9 +38,9 @@ app.use(
   })
 );
 
-const server = http.createServer(app);
+// const server = http.createServer(app);
 
-socket(server);
+// socket(server);
 // test route
 app.get("/api/chat/test", (req: Request, res: Response) => {
   res.status(200).json({
@@ -59,10 +59,10 @@ app.all("*", (req: Request, res: Response) => {
 
 app.use(errorHandler);
 
-server.listen(process.env.PORT, () => {
-  console.log(
-    `The ${process.env.SERVICE} is listening on port ${process.env.PORT}`
-  );
-});
+// server.listen(process.env.PORT, () => {
+//   console.log(
+//     `The ${process.env.SERVICE} is listening on port ${process.env.PORT}`
+//   );
+// });
 
 export default app;
