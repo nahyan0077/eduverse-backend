@@ -18,22 +18,27 @@ export const updateLoginStreak = async (userId: string) => {
         lastLoginDate.setUTCHours(0, 0, 0, 0);
 
         const diffInDays = Math.floor((currentDate.getTime() - lastLoginDate.getTime()) / (1000 * 60 * 60 * 24));
-        const dayOfWeek = currentDate.getUTCDay();
+        const currentDayOfWeek = currentDate.getUTCDay();
+        const lastLoginDayOfWeek = lastLoginDate.getUTCDay();
 
-        if (diffInDays === 1) {
+        // Check if it's a new week
+        const isNewWeek = currentDayOfWeek < lastLoginDayOfWeek || diffInDays >= 7;
+
+        if (isNewWeek) {
+            // Reset weekly logins for a new week
+            user.weeklyLogins = [false, false, false, false, false, false, false];
+            user.loginStreak = 1; // Reset streak for a new week
+        } else if (diffInDays === 1) {
+            // Consecutive day login
             user.loginStreak += 1;
         } else if (diffInDays > 1) {
+            // Non-consecutive login, but within the same week
             user.loginStreak = 1;
         }
         // If diffInDays is 0, it's a same-day login, so we don't change the streak
 
-        // Resetting weekly logins on Sunday (0) or if it's been more than a week
-        if (dayOfWeek === 0 || diffInDays >= 7) {
-            user.weeklyLogins = [false, false, false, false, false, false, false];
-        }
-
         // Mark the current day as logged in
-        user.weeklyLogins[dayOfWeek] = true;
+        user.weeklyLogins[currentDayOfWeek] = true;
 
         user.lastLoginDate = currentDate;
 
