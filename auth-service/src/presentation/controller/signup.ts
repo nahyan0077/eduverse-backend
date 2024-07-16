@@ -3,8 +3,7 @@ import { IDependancies } from "@/application/interfaces/IDependancies";
 import userCreatedProducer from "../../infrastructure/kafka/producers/userCreatedProducer";
 import { NextFunction, Request, Response } from "express";
 import { generateAccessToken, generateRefreshToken } from "../../_lib/http/jwt";
-import bcrypt from 'bcrypt'
-import { comparePassword } from "@/_lib/http/bcrypt";
+import { updateLoginStreak } from "../../infrastructure/database/mongodb/repositories/updateLoginStreak";
 
 export const signupController = (dependancies: IDependancies) => {
 	const {
@@ -26,6 +25,12 @@ export const signupController = (dependancies: IDependancies) => {
 			} else {
 				//user created data produced to kafka
 				await userCreatedProducer(created);
+
+				const userId = created?._id?.toString() as string
+
+				if (created.role == "student" ) {
+					await updateLoginStreak(userId)
+				}
 
 				const accessToken = generateAccessToken({
 					_id: String(created?._id),
