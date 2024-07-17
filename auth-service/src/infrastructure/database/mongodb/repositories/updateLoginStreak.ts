@@ -38,7 +38,7 @@ export const updateLoginStreak = async (userId: string) => {
         // If diffInDays is 0, it's a same-day login, so we don't change the streak
 
         // Mark the current day as logged in
-        user.weeklyLogins[currentDayOfWeek + 1] = true;
+        user.weeklyLogins[currentDayOfWeek] = true;
 
         console.log(currentDayOfWeek,"current day of week");
         
