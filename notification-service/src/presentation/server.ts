@@ -1,10 +1,10 @@
 import express, { Application, Request, Response } from "express";
-import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import { notificationRouter } from "../infrastructure/routes";
 import { dependencies } from "../_boot/dependencies";
 import morgan from "morgan";
+import helmet from 'helmet'
 
 config();
 
@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(helmet())
 
 //test route
 app.get("/api/notification/test", (req: Request, res: Response) => {

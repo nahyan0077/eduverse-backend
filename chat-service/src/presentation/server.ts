@@ -6,6 +6,7 @@ import { routes } from "../infrastructure/routes";
 import { dependancies } from "../_boot/dependancies";
 import errorHandler from "../_lib/common/error/errorhandler";
 import cors from "cors";
+import helmet from 'helmet'
 
 config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(helmet())
 
 app.use(
   cors({

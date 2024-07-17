@@ -4,6 +4,7 @@ import { config } from "dotenv";
 import morgan from "morgan";
 import { userRoutes } from "../infrastructure/routes";
 import { dependencies } from "../_boot/dependencies";
+import helmet from 'helmet'
 
 config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(helmet())
 
 //test route
 app.get("/api/user/test", (req: Request, res: Response) => {

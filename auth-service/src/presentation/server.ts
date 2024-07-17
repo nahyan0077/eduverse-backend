@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { routes } from '../infrastructure/routes';
 import { dependancies } from '../_boot/dependancies';
 import errorHandler from '../_lib/common/error/errorhandler';
+import helmet from 'helmet'
 
 
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(helmet())
 
 // Routes
 

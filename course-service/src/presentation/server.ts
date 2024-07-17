@@ -5,13 +5,8 @@ import { routes } from "../infrastructure/routes";
 import { dependancies } from "../_boot/dependancies";
 import errorHandler from "../_lib/common/error/errorhandler";
 import morgan from "morgan";
-import PDFDocument from "pdfkit";
-import {
-  findUserById,
-  getCourseById,
-} from "../infrastructure/database/mongodb/repositories";
-import path from "path";
 import { generateCertificate } from "../infrastructure/services/generateCertificate";
+import helmet from 'helmet'
 
 config();
 
@@ -23,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+app.use(helmet())
 
 //test route
 app.get("api/course/test", (req: Request, res: Response) => {
