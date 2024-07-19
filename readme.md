@@ -49,21 +49,8 @@ Eduverse is an innovative educational networking platform where learners and ins
    git clone https://github.com/nahyan0077/eduverse-backend.git
    ```
 
-2. Navigate to the project frontend directory:
 
-   ```bash
-   cd eduverse-backend
-   ```
-
-   ```bash
-   npm install
-   ```
-
-   ```bash
-   npm run dev
-   ```
-
-3. Navigate to the project backend directory:
+2. Navigate to the project backend directory:
 
    ```bash
    cd eduverse-backend
@@ -81,7 +68,7 @@ Eduverse is an innovative educational networking platform where learners and ins
 
 1. Access the application at `http://localhost:3001` (or the port specified in your environment).
 2. Register as a student or apply as an instructor.
-3. Explore courses, participate in live sessions, or create content (for approved instructors).
+3. Explore courses, participate in exams, or create content (for approved instructors).
 
 ## System Architecture
 
