@@ -15,12 +15,11 @@ Eduverse is an innovative educational networking platform where learners and ins
 
 ## Features
 
-- **Comprehensive Course Management**: Offer both free and paid courses with seamless video streaming using HLS format (m3u8) for optimal quality based on internet speed.
+- **Comprehensive Course Management**: Offer both free and paid courses with seamless payments.
 - **Real-time Interaction**: Implement text-chatting, audio/video communication, and file sharing using WebSockets for engaging learning environments.
 - **Microservices Architecture**: Ensure scalability and maintainability using clean architecture principles and Apache Kafka for efficient interservice communication.
 - **Cloud-Native Deployment**: Utilize containerization with Docker and deploy on Azure Kubernetes Service for optimal performance and scalability.
 - **Instructor Onboarding**: Streamlined process for instructors to apply and get admin approval to join the platform.
-- **Dynamic Content Creation**: Tools for instructors to create courses, exams, live sessions, and announcements.
 
 ## Technology Stack
 
@@ -86,7 +85,7 @@ Eduverse is an innovative educational networking platform where learners and ins
 
 ## System Architecture
 
-![Eduverse System Architecture](./docs/system-architecture.png)
+![Eduverse System Architecture](./docs/system-design.png)
 
 Our system utilizes a microservices architecture to ensure scalability and maintainability:
 
