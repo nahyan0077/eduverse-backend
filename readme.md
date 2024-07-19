@@ -1,6 +1,6 @@
 # Eduverse E-Learning Platform
 
-Eduverse is an innovative educational networking platform where learners and instructors connect to share knowledge. Our platform empowers instructors to easily apply, create courses, conduct exams, host live sessions, and make announcements, thereby enriching the learning experience for students worldwide.
+Eduverse is an innovative educational networking platform where learners and instructors connect to share knowledge. Our platform empowers instructors to easily apply, create courses, conduct exams, one-to-one chat with video call, thereby enriching the learning experience for students worldwide.
 
 ## Table of Contents
 - [Features](#features)
@@ -29,7 +29,7 @@ Eduverse is an innovative educational networking platform where learners and ins
 - **Messaging**: Apache Kafka
 - **Containerization**: Docker
 - **Orchestration**: Kubernetes (Azure Kubernetes Service)
-- **Streaming**: HLS (HTTP Live Streaming)
+
 
 ## Getting Started
 
@@ -92,8 +92,8 @@ Our system utilizes a microservices architecture to ensure scalability and maint
 - **API Gateway**: Routes requests to appropriate microservices
 - **Auth Service**: Handles user authentication and authorization
 - **Course Service**: Manages course creation and delivery
-- **Streaming Service**: Handles video streaming using HLS
-- **Interaction Service**: Manages real-time communication features
+- **Chat Service**: Manages real-time communication features
+- **notification Service**: Manages all the notifications 
 - **Payment Service**: Processes payments for paid courses
 
 ## Contributing
