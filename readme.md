@@ -46,13 +46,13 @@ Eduverse is an innovative educational networking platform where learners and ins
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/recurring.git
+   git clone https://github.com/nahyan0077/eduverse-backend.git
    ```
 
 2. Navigate to the project frontend directory:
 
    ```bash
-   cd recurring/recurring-web
+   cd eduverse-backend
    ```
 
    ```bash
@@ -66,7 +66,7 @@ Eduverse is an innovative educational networking platform where learners and ins
 3. Navigate to the project backend directory:
 
    ```bash
-   cd recurring/recurring-backend
+   cd eduverse-backend
    ```
 
    ```bash
@@ -79,7 +79,7 @@ Eduverse is an innovative educational networking platform where learners and ins
 
 ## Usage
 
-1. Access the application at `http://localhost:3000` (or the port specified in your environment).
+1. Access the application at `http://localhost:3001` (or the port specified in your environment).
 2. Register as a student or apply as an instructor.
 3. Explore courses, participate in live sessions, or create content (for approved instructors).
 
