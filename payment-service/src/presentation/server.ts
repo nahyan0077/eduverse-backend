@@ -25,8 +25,8 @@ app.get("/api/payment/test", (req: Request, res: Response) => {
   });
 });
 
-app.use("/api/payment", routes(dependencies));
-// app.use("/", routes(dependencies));
+// app.use("/api/payment", routes(dependencies));
+app.use("/", routes(dependencies));
 
 app.use("*", (req: Request, res: Response) => {
   res

@@ -6,6 +6,8 @@ import { routes } from '../infrastructure/routes';
 import { dependancies } from '../_boot/dependancies';
 import errorHandler from '../_lib/common/error/errorhandler';
 import helmet from 'helmet'
+import { limiter } from '../_lib/rateLimitter/rateLImitter';
+
 
 
 
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(helmet())
+app.use(limiter)
 
 // Routes
 
@@ -30,8 +33,8 @@ app.get('/api/auth/test', (req: Request, res: Response) => {
     });
 });
 
-app.use('/api/auth', routes(dependancies));
-// app.use('/', routes(dependancies));
+// app.use('/api/auth', routes(dependancies));
+app.use('/', routes(dependancies));
 
 // Not found handler
 app.all("*", (req: Request, res: Response) => {

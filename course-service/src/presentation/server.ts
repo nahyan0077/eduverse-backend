@@ -29,8 +29,8 @@ app.get("api/course/test", (req: Request, res: Response) => {
 
 app.get("/api/course/generate-certificate", generateCertificate);
 
-app.use("/api/course", routes(dependancies));
-// app.use("/", routes(dependancies));
+// app.use("/api/course", routes(dependancies));
+app.use("/", routes(dependancies));
 
 app.use("*", (req: Request, res: Response) => {
   res

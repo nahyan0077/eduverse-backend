@@ -19,7 +19,6 @@ export const loginController = (dependancies: IDependancies) => {
 			console.log(error,"backend validat");
 			console.log(value,"val backend validat");
 			
-
 			if (error) {
 				return res.status(400).json({ errors: error.message });
 			}
@@ -29,9 +28,7 @@ export const loginController = (dependancies: IDependancies) => {
 				value.password
 			);
 
-
 			const userId = result?._id?.toString() as string;
-
 
 			//updating login streak
 			if (result?.role == "student") {

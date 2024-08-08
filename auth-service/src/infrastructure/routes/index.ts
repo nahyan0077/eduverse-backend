@@ -2,6 +2,7 @@ import { Router } from "express";
 import { IDependancies } from "@/application/interfaces/IDependancies";
 import { controllers } from "../../presentation/controller";
 import { CurrentUser, RequireAuth } from "@eduverse/common";
+import { otpLimiter } from "../../_lib/rateLimitter/otpLimitter";
 
 export const routes = (dependancies: IDependancies) => {
 	const {
@@ -27,7 +28,7 @@ export const routes = (dependancies: IDependancies) => {
 
 	router.route("/available-username/:username").get(checkExistingUserName);
 
-	router.route("/verify-otp").post(verifyOtp);
+	router.route("/verify-otp").post(otpLimiter,verifyOtp);
 
 	router.route("/google-auth").post(googleAuth);
 

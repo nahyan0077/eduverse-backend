@@ -24,8 +24,8 @@ app.get("/api/notification/test", (req: Request, res: Response) => {
   res.status(200).json({ message: "Notification server is ON!" });
 });
 
-app.use("/api/notification", notificationRouter(dependencies));
-// app.use("/", notificationRouter(dependencies));
+// app.use("/api/notification", notificationRouter(dependencies));
+app.use("/", notificationRouter(dependencies));
 
 app.use("*", (req: Request, res: Response) => {
   res
