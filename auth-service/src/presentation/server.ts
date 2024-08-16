@@ -7,14 +7,26 @@ import { dependancies } from '../_boot/dependancies';
 import errorHandler from '../_lib/common/error/errorhandler';
 import helmet from 'helmet'
 import { limiter } from '../_lib/rateLimitter/rateLImitter';
+import cors from 'cors'
 
 
-
-
-config();
+// Load environment-specific variables
+if (process.env.NODE_ENV === "production") {
+    config({ path: "./.env.production" });
+  } else {
+    config({ path: "./.env.local" });
+  }
+  
 
 const app: Application = express();
 const PORT: number = Number(process.env.PORT) || 4001;
+
+
+const corsOptions = {
+    origin: String(process.env.FRONTEND_URL),
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+};
 
 // Middleware
 app.use(express.json());
@@ -23,6 +35,7 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 app.use(helmet())
 app.use(limiter)
+app.use(cors(corsOptions))
 
 // Routes
 
