@@ -22,6 +22,7 @@
     "@types/jsonwebtoken": "^9.0.6",
     "concurrently": "^8.2.2",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.2.0",
@@ -37,6 +38,7 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.14.10",
     "@types/pdfkit": "^0.13.4",
