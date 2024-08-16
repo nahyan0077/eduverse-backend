@@ -7,7 +7,7 @@
 		"build": "tsc",
 		"start": "node dist/index.js",
 		"dev": "concurrently \"npm run build:watch\" \"npm run serve\"",
-		"build:watch": "tsc --watch",
+		"build:watch": "tsc",
 		"serve": "nodemon dist/index.js"
 	},
 	"keywords": [],
