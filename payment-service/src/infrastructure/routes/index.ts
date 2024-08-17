@@ -2,7 +2,7 @@ import { IDependencies } from "@/application/interfaces/IDependencies";
 import { controllers } from "../../presentation/controller";
 import { Router } from "express";
 import {CurrentUser, RequireAuth} from '@eduverse/common'
-import { getAllPayments } from "../database/mongo/repositories";
+
 
 export const routes = (dependencies: IDependencies) => {
 	const { createSession, getPaymentSession, createPayment, getAllPayments, createSubscriptionSession, createSubscriptionPayment } =
