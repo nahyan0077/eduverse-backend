@@ -16,6 +16,8 @@ if (process.env.NODE_ENV === "production") {
   } else {
     config({ path: "./.env.local" });
   }
+
+  console.log(process.env.FRONTEND_URL,"=======auth=========");
   
 
 const app: Application = express();

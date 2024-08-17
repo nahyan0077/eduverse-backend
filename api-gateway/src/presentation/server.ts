@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === "production") {
   config({ path: "./.env.local" });
 }
 
+console.log(process.env.FRONTEND_URL,"========api========");
+
 const app: Application = express();
 
 const PORT: number = Number(process.env.PORT) || 2001;
