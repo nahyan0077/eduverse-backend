@@ -65,12 +65,10 @@ export const routes = (dependancies: IDependencies) => {
 
 	//enrollment---------------------->
 	router.route("/enrollment").post(CurrentUser, RequireAuth, createEnrollment);
+
 	router
 		.route("/enrollment/user/:userId")
-		.get(getEnrollmentByUserId);
-	// router
-	// 	.route("/enrollment/user/:userId")
-	// 	.get(CurrentUser, RequireAuth, getEnrollmentByUserId);
+		.get(CurrentUser, RequireAuth, getEnrollmentByUserId);
 	router
 		.route("/enrollment/:id")
 		.get(CurrentUser, RequireAuth, getEnrollmentById);
