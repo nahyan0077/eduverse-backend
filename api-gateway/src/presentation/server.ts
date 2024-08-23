@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import { config } from "dotenv";
 import cors from "cors";
 import proxy from "express-http-proxy";
+import helmet from 'helmet'
 // import { limiter } from "../_lib/rateLimitter/rateLImitter";
 
 // Load environment-specific variables
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors(corsOptions));
 // app.use(limiter)
+app.use(helmet())
 
 app.get("/test", (req, res) => {
   res.status(200).json({
