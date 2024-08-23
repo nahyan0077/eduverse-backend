@@ -32,7 +32,8 @@ export const routes = (dependancies: IDependancies) => {
 
 	router.route("/google-auth").post(googleAuth);
 
-	router.route("/getUser").get(CurrentUser, RequireAuth, getUser);
+	router.route("/getUser").get(getUser);
+	// router.route("/getUser").get(CurrentUser, RequireAuth, getUser);
 
 	router.route("/forgot-password-mail").post(forgotPasswordMail);
 
