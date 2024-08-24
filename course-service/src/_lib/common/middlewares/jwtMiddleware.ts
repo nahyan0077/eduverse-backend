@@ -49,7 +49,7 @@ export const jwtMiddleware = async (req: Request, res: Response, next: NextFunct
                 });
                 res.cookie("access_token", newAccessToken, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === 'production',
+                    secure: true, 
                     sameSite: 'none',
                 });
             }
