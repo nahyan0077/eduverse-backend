@@ -46,13 +46,13 @@ export const signupController = (dependancies: IDependancies) => {
 
 				res.cookie("access_token", accessToken, {
 					httpOnly: true,
-					secure: process.env.NODE_ENV === "production",
+					secure: true, 
 					sameSite: "none",
 				  });
 				  
 				  res.cookie("refresh_token", refreshToken, {
 					httpOnly: true,
-					secure: process.env.NODE_ENV === "production",
+					secure: true, 
 					sameSite: "none",
 				  });
 
